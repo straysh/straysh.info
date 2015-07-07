@@ -42,7 +42,7 @@ class CategoryTableSeeder extends BaseTableSeeder
 				'pid' => 0,
 				'nav_name' => 'Yii',
 				'nav_zh' => null,
-				'article_amount' => 0,
+				'article_amount' => 2,
 				'order' => 100
 			],
 			[

@@ -2,6 +2,7 @@
 
 //use Illuminate\Support\Facades\App;
 
+
 class FrontController extends Controller
 {
 

@@ -21,7 +21,7 @@ class CategoryTable extends Migration
 			$table->increments('id');
 			$table->unsignedInteger('pid')->default(0);
 			$table->string('nav_name', 64);
-			$table->string('nav_zh', 64);
+			$table->string('nav_zh', 64)->nullable();
 			$table->unsignedInteger('article_amount')->default(0);
 			$table->unsignedInteger('order')->default(0);
 

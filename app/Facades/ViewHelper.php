@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class ViewHelperFacade extends Facade
+class ViewHelper extends Facade
 {
 	protected static function getFacadeAccessor()
 	{
