@@ -11,11 +11,39 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::group([
+	'namespace' => 'Frontend',
+	'domain' => config('setting.web_host')
+], function()
+{
+	Route::get('article/{id}', 'ArticleController@getIndex' )->where(['id'=>'[0-9]+']);
+	Route::get('article/{category}', 'ArticleController@getList' )->where(['category'=>'[a-zA-Z]+[a-zA-Z0-9]+']);
+	Route::controller('home', 'HomeController');
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+	if( file_exists(app_path().'/Http/Controllers/Frontend/TestController.php') )
+	{
+		Route::controller('test', 'TestController');
+	}
+
+	Route::any('/', [
+		'as' => 'home',
+		'uses' => 'HomeController@getIndex'
+	]);
+
+});
+
+Route::group([
+	'namespace' => 'Api',
+	'domain' => config('setting.api_host'),
+	'middleware' => 'api.version'
+], function()
+{
+//	Route::post('image', 'V1\ImageController@postNormal');
+//
+//	Route::controller('auth', 'V1\Auth\AuthController');
+//	Route::controller('user', 'V1\UserController');
+//	Route::controller('search', 'V1\SearchController');
+//	Route::controller('test', 'V1\TestController');
+
+});

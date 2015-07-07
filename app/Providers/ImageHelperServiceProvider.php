@@ -1,8 +1,9 @@
 <?php namespace App\Providers;
 
+use App\Helpers\ImageHelper;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider {
+class ImageHelperServiceProvider extends ServiceProvider {
 
 	/**
 	 * Bootstrap any application services.
@@ -25,12 +26,9 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bind(
-			'Illuminate\Contracts\Auth\Registrar',
-			'App\Services\Registrar'
-		);
-
-		$this->app->bind('ViewHelper', 'App\Services\ViewHelper');
+		$this->app->singleton('App\Helpers\ImageHelper', function(){
+			return new ImageHelper;
+		});
 	}
 
 }
