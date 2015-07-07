@@ -1,0 +1,29 @@
+{
+  "name": "straysh.info",
+  "version": "0.0.1",
+  "authors": [
+    "straysh"
+  ],
+  "description": "straysh's private blog",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "blog"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "jquery": "~2.1.3",
+    "less": "~2.5.0",
+    "fex-webuploader": "0.1.5"
+  }
+}
