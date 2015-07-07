@@ -19,21 +19,39 @@ class ArticleController extends FrontController
 	|
 	*/
 
-
 	/**
-	 * Show the application dashboard to the user.
+	 * 文章详情页面
+	 * @param $id
+	 * @return \Illuminate\View\View
 	 */
-	public function getIndex()
+	public function getIndex($id)
 	{
-		return view('home.index');
+		$article = Article::getInstance()->find($id);
+		if(empty($article))
+		{
+			return redirect('/');
+		}
+
+
+		$category = $article->atkl_category;
+		return view('article.index', [
+			'crumbs' => $this->articleCrumbs($category),
+			'summary' => $this->articleSummary($category),
+			'articles' => $this->articleDetail($article),
+		]);
 	}
 
+	/**
+	 * 文章列表页面
+	 * @param $category
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+	 */
 	public function getList($category)
 	{
 		$category = Category::getInstance()->findByName($category);
 		if(empty($category))
 		{
-			return redirect('/');
+			return redirect('/site/index');
 		}
 		$articles = Article::getInstance()->findByCategory($category->id);
 		return view('article.catlist', [
@@ -92,6 +110,12 @@ HTML;
 
 		$view = implode('', $str);
 		return ViewHelper::markdownParse($view, ['<content>', '</content>']);
+	}
+
+	private function articleDetail($article)
+	{
+		$view = ViewHelper::markdownParse($article->atkl_content->content);
+		return "<h1 class='justcenter'>{$article->title}</h1>{$view}";
 	}
 
 }

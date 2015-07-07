@@ -6,6 +6,8 @@
     <meta name="robots" content="index,follow,archive">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="{{ asset("/css/app".(config('app.debug')?"":"_min").".css") }}">
+    <script type="text/javascript" src="/js/require.js" data-main="{{ asset( "/js/main".(config('app.debug')?"":"_min") ) }}"></script>
+    @yeild('head')
     <title>Straysh's Blog</title>
     <link rel="icon" href="/favicon.ico" >
 </head>

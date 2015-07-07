@@ -32,6 +32,16 @@ class Article extends FrontendModel
 		return self::$_instance;
 	}
 
+	public function atkl_content()
+	{
+		return $this->hasOne('App\Models\Frontend\ArticleContent', 'article_id', 'id');
+	}
+
+	public function atkl_category()
+	{
+		return $this->hasOne('App\Models\Frontend\Category', 'id', 'nav_id');
+	}
+
 	/**
 	 * 获取商家的摘要信息
 	 * @param $id
@@ -47,7 +57,7 @@ class Article extends FrontendModel
 		$categoryid = filter_var($categoryid, FILTER_VALIDATE_INT);
 		if(empty($categoryid)) return array();
 
-		$result = self::whereRaw('nav_id=?', [$categoryid])->orderBy('id', 'ASC')->get();
+		$result = self::whereRaw('nav_id=?', [$categoryid])->orderBy('id', 'DESC')->get();
 
 		return $result;
 	}
