@@ -147,6 +147,8 @@ return [
 
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 		'Jenssegers\Mongodb\MongodbServiceProvider',
+		'Pingpong\Admin\Providers\SupportServiceProvider',
+		'Pingpong\Admin\AdminServiceProvider',
 	],
 
 	/*

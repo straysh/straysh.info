@@ -2,8 +2,7 @@
 
 use App\Helpers\utils\Parsedown;
 use App\Helpers\Yutils;
-use App\Models\Frontend\Category;
-use Illuminate\Support\Facades\Request;
+use Pingpong\Admin\Entities\Category;
 
 class ViewHelper
 {
@@ -70,9 +69,9 @@ class ViewHelper
 		foreach($data as $item)
 		{
 			$str[] = sprintf($tpl,
-				'/article/'.strtolower($item->nav_name),
-				$item->nav_name,
-				$item->nav_name,
+				'/article/'.strtolower($item->name),
+				$item->name,
+				$item->name,
 				$item->article_amount );
 		}
 		$str[] = '</ul>';

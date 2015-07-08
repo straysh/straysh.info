@@ -2,8 +2,8 @@
 
 
 use App\Facades\ViewHelper;
-use App\Models\Frontend\Article;
-use App\Models\Frontend\Category;
+use Pingpong\Admin\Entities\Article;
+use Pingpong\Admin\Entities\Category;
 
 class ArticleController extends FrontController
 {
@@ -33,7 +33,7 @@ class ArticleController extends FrontController
 		}
 
 
-		$category = $article->atkl_category;
+		$category = $article->category;
 		return view('article.index', [
 			'crumbs' => $this->articleCrumbs($category),
 			'summary' => $this->articleSummary($category),
@@ -65,7 +65,7 @@ class ArticleController extends FrontController
 	{
 		$data = [
 			'homeurl' => ViewHelper::webHost(),
-			'categoryUrl' => "/article/{$category->nav_name}",
+			'categoryUrl' => "/article/{$category->name}",
 			'category' => $category
 		];
 		$file = base_path().'/resources/views/article/crumbs.blade.php';
@@ -77,7 +77,7 @@ class ArticleController extends FrontController
 	{
 		$categories = '/';
 		$summary = <<<HTML
-<summary><a href="{$categories}">分类</a>: {$category->nav_name} ( 共{$category->article_amount}篇文章 )</summary>
+<summary><a href="{$categories}">分类</a>: {$category->name} ( 共{$category->article_amount}篇文章 )</summary>
 HTML;
 
 		return $summary;
@@ -114,7 +114,7 @@ HTML;
 
 	private function articleDetail($article)
 	{
-		$view = ViewHelper::markdownParse($article->atkl_content->content);
+		$view = ViewHelper::markdownParse($article->body);
 		return "<h1 class='justcenter'>{$article->title}</h1>{$view}";
 	}
 

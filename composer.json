@@ -22,7 +22,12 @@
 		],
 		"psr-4": {
 			"App\\": "app/",
-            "Intervention\\Image\\": "app/Helpers/intervention/image/src/Intervention/Image"
+            "Intervention\\Image\\": "app/Helpers/intervention/image/src/Intervention/Image",
+            "Pingpong\\": "app/Helpers/pingpong/admin/src/Pingpong",
+            "Pingpong\\Menus\\": "app/Helpers/pingpong/menus",
+            "Pingpong\\Presenters\\": "app/Helpers/pingpong/presenters",
+            "Pingpong\\Support\\": "app/Helpers/pingpong/support",
+            "Pingpong\\Trusty\\": "app/Helpers/pingpong/trusty"
 		}
 	},
 	"autoload-dev": {
