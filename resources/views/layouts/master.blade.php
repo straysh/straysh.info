@@ -22,7 +22,7 @@
 @show
 
 <div class="site-content" >
-    <a class="fork-me" href="https://github.com/straysh/s_blog">
+    <a class="fork-me" href="https://github.com/straysh/straysh.info">
         <img style="position: absolute; top: 0; right: 0; border: 0 none;" src="/images//forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
     </a>
     @yield("content")
