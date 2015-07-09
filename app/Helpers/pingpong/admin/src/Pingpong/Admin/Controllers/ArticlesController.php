@@ -1,11 +1,12 @@
 <?php namespace Pingpong\Admin\Controllers;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
-use Pingpong\Admin\Repositories\PagesRepository;
+use Pingpong\Admin\Repositories\Pages\PageRepository;
 use Pingpong\Admin\Uploader\ImageUploader;
 use Pingpong\Admin\Validation\Article\Create;
 use Pingpong\Admin\Validation\Article\Update;
