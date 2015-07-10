@@ -28,7 +28,10 @@
             "Pingpong\\Presenters\\": "app/Helpers/pingpong/presenters",
             "Pingpong\\Support\\": "app/Helpers/pingpong/support",
             "Pingpong\\Trusty\\": "app/Helpers/pingpong/trusty"
-		}
+		},
+		"files": [
+		  "app/Http/Support/helpers.php"
+		]
 	},
 	"autoload-dev": {
 		"classmap": [

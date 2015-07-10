@@ -14,9 +14,7 @@ class Authenticate {
 
 	/**
 	 * Create a new filter instance.
-	 *
-	 * @param  Guard  $auth
-	 * @return void
+	 * @param  Guard $auth
 	 */
 	public function __construct(Guard $auth)
 	{
@@ -32,7 +30,13 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->guest())
+//		if (! Auth::check() or ! Auth::user()->is('admin')) {
+//			Auth::logout();
+//
+//			return Redirect::route('admin.login.index');
+//		}
+
+		if ($this->auth->guest() or !$this->auth>user()->is('admin'))
 		{
 			if ($request->ajax())
 			{
@@ -40,7 +44,7 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('auth/login');
+				return redirect()->route('login.index');
 			}
 		}
 

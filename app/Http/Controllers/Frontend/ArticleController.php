@@ -34,7 +34,7 @@ class ArticleController extends FrontController
 
 
 		$category = $article->category;
-		return view('article.index', [
+		return view('frontend.article.index', [
 			'crumbs' => $this->articleCrumbs($category),
 			'summary' => $this->articleSummary($category),
 			'articles' => $this->articleDetail($article),
@@ -54,7 +54,7 @@ class ArticleController extends FrontController
 			return redirect('/site/index');
 		}
 		$articles = Article::getInstance()->findByCategory($category->id);
-		return view('article.catlist', [
+		return view('frontend.article.catlist', [
 			'crumbs' => $this->articleCrumbs($category),
 			'summary' => $this->articleSummary($category),
 			'articles' => $this->articleList($articles),
@@ -68,7 +68,7 @@ class ArticleController extends FrontController
 			'categoryUrl' => "/article/{$category->name}",
 			'category' => $category
 		];
-		$file = base_path().'/resources/views/article/crumbs.blade.php';
+		$file = base_path().'/resources/views/frontend/article/crumbs.blade.php';
 		$view = view()->file($file, $data)->render();
 		return ViewHelper::markdownParse($view, ['<crumbs><h4>' ,'</crumbs></h4>']);
 	}

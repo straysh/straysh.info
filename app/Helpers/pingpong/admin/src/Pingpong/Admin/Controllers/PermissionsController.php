@@ -37,7 +37,7 @@ class PermissionsController extends BaseController
 
         $no = $permissions->firstItem();
 
-        return $this->view('permissions.index', compact('permissions', 'no'));
+        return view('permissions.index', compact('permissions', 'no'));
     }
 
     /**
@@ -47,7 +47,7 @@ class PermissionsController extends BaseController
      */
     public function create()
     {
-        return $this->view('permissions.create');
+        return view('permissions.create');
     }
 
     /**
@@ -75,7 +75,7 @@ class PermissionsController extends BaseController
         try {
             $permission = $this->repository->findById($id);
 
-            return $this->view('permissions.show', compact('permission'));
+            return view('permissions.show', compact('permission'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -92,7 +92,7 @@ class PermissionsController extends BaseController
         try {
             $permission = $this->repository->findById($id);
 
-            return $this->view('permissions.edit', compact('permission'));
+            return view('permissions.edit', compact('permission'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }

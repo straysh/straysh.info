@@ -44,7 +44,7 @@ class UsersController extends BaseController
 
         $no = $users->firstItem();
 
-        return $this->view('users.index', compact('users', 'no'));
+        return view('users.index', compact('users', 'no'));
     }
 
     /**
@@ -54,7 +54,7 @@ class UsersController extends BaseController
      */
     public function create()
     {
-        return $this->view('users.create');
+        return view('users.create');
     }
 
     /**
@@ -83,7 +83,7 @@ class UsersController extends BaseController
     {
         try {
             $user = $this->repository->findById($id);
-            return $this->view('users.show', compact('user'));
+            return view('users.show', compact('user'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -102,7 +102,7 @@ class UsersController extends BaseController
 
             $role = $user->roles->lists('id');
 
-            return $this->view('users.edit', compact('user', 'role'));
+            return view('users.edit', compact('user', 'role'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }

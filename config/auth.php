@@ -28,7 +28,7 @@ return [
 	|
 	*/
 
-	'model' => 'Pingpong\Admin\Entities\User',
+	'model' => 'App\Models\Frontend\User',
 
 	/*
 	|--------------------------------------------------------------------------

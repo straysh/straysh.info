@@ -21,7 +21,7 @@ class HomeController extends FrontController
 	 */
 	public function getIndex()
 	{
-		return view('home.index');
+		return view('frontend.home.index');
 	}
 
 }

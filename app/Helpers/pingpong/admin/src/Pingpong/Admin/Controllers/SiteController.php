@@ -16,7 +16,7 @@ class SiteController extends BaseController
      */
     public function index()
     {
-        return $this->view('index');
+        return view('index');
     }
 
     /**
@@ -44,7 +44,7 @@ class SiteController extends BaseController
             $stdin = fopen("php://stdin", "r");
         }
 
-        return $this->view('settings');
+        return view('settings');
     }
 
     /**

@@ -15,9 +15,7 @@ class RedirectIfAuthenticated {
 
 	/**
 	 * Create a new filter instance.
-	 *
-	 * @param  Guard  $auth
-	 * @return void
+	 * @param  Guard $auth
 	 */
 	public function __construct(Guard $auth)
 	{
@@ -33,9 +31,9 @@ class RedirectIfAuthenticated {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->check())
+		if ($this->auth->check() and $this->auth->user()->is('admin'))
 		{
-			return new RedirectResponse(url('/home'));
+			return new RedirectResponse(route('home'));
 		}
 
 		return $next($request);

@@ -70,7 +70,7 @@ class ArticlesController extends BaseController
 
         $no = $articles->firstItem();
 
-        return $this->view('articles.index', compact('articles', 'no'));
+        return view('articles.index', compact('articles', 'no'));
     }
 
     /**
@@ -80,7 +80,7 @@ class ArticlesController extends BaseController
      */
     public function create()
     {
-        return $this->view('articles.create');
+        return view('articles.create');
     }
 
     /**
@@ -120,7 +120,7 @@ class ArticlesController extends BaseController
         try {
             $article = $this->repository->findById($id);
 
-            return $this->view('articles.show', compact('article'));
+            return view('articles.show', compact('article'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -137,7 +137,7 @@ class ArticlesController extends BaseController
         try {
             $article = $this->repository->findById($id);
 
-            return $this->view('articles.edit', compact('article'));
+            return view('articles.edit', compact('article'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }

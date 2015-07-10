@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers\Frontend;
 
-//use Illuminate\Support\Facades\App;
-
+use App\Http\Controllers\Controller;
 
 class FrontController extends Controller
 {

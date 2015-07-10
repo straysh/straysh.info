@@ -36,7 +36,7 @@ class CategoriesController extends BaseController
      
         $no = $categories->firstItem();
 
-        return $this->view('categories.index', compact('categories', 'no'));
+        return view('categories.index', compact('categories', 'no'));
     }
 
     /**
@@ -46,7 +46,7 @@ class CategoriesController extends BaseController
      */
     public function create()
     {
-        return $this->view('categories.create');
+        return view('categories.create');
     }
 
     /**
@@ -74,7 +74,7 @@ class CategoriesController extends BaseController
         try {
             $category = $this->repository->findById($id);
 
-            return $this->view('categories.show', compact('category'));
+            return view('categories.show', compact('category'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -91,7 +91,7 @@ class CategoriesController extends BaseController
         try {
             $category = $this->repository->findById($id);
 
-            return $this->view('categories.edit', compact('category'));
+            return view('categories.edit', compact('category'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }

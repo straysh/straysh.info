@@ -17,7 +17,7 @@ class ProfileController extends FrontController
 
 	public function getIndex()
 	{
-		return view('profile.index');
+		return view('frontend.profile.index');
 	}
 
 }

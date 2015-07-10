@@ -37,7 +37,7 @@ class RolesController extends BaseController
 
         $no = $roles->firstItem();
 
-        return $this->view('roles.index', compact('roles', 'no'));
+        return view('roles.index', compact('roles', 'no'));
     }
 
     /**
@@ -47,7 +47,7 @@ class RolesController extends BaseController
      */
     public function create()
     {
-        return $this->view('roles.create');
+        return view('roles.create');
     }
 
     /**
@@ -74,7 +74,7 @@ class RolesController extends BaseController
     {
         try {
             $role = $this->repository->findById($id);
-            return $this->view('roles.show', compact('role'));
+            return view('roles.show', compact('role'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -93,7 +93,7 @@ class RolesController extends BaseController
 
             $permission_role = $role->permissions->lists('id');
 
-            return $this->view('roles.edit', compact('role', 'permission_role'));
+            return view('roles.edit', compact('role', 'permission_role'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
