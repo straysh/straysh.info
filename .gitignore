@@ -1,6 +1,10 @@
 /vendor/
 /node_modules/
 /public/packages/
+app/Helpers/pingpong_deprecated/
 .idea
 .env
 _ide_helper.php
+composer.lock
+init.sql
+s_blog.sql
