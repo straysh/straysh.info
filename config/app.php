@@ -145,6 +145,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+        'Collective\Html\HtmlServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 		'Jenssegers\Mongodb\MongodbServiceProvider',
 		'App\Providers\AdminServiceProvider',
@@ -201,6 +202,8 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
 		'ViewHelper' => 'App\Facades\ViewHelper',
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade'
 	],
 
 ];

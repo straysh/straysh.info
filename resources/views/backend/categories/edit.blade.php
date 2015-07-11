@@ -4,14 +4,14 @@
 	<h1>
 		Edit
 		&middot;
-		<small>{!! link_to_route('admin.categories.index', 'Back') !!}</small>
+		<small>{!! link_to_route('categories.index', 'Back') !!}</small>
 	</h1>
 @stop
 
 @section('content')
 	
 	<div>
-		@include('admin::categories.form', array('model' => $category))
+		@include('backend.categories.form', array('model' => $category))
 	</div>
 
 @stop

@@ -5,7 +5,7 @@
 	<h1>
 		Add New
 		&middot;
-		<small>{!! link_to_route('admin.roles.index', 'Back') !!}</small>
+		<small>{!! link_to_route('roles.index', 'Back') !!}</small>
 	</h1>
 	
 @stop
@@ -13,7 +13,7 @@
 @section('content')
 
 	<div>
-		@include('admin::roles.form')
+		@include('backend.roles.form')
 	</div>
 
 @stop

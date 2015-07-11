@@ -4,14 +4,14 @@
 	<h1>
 		{!! $title or 'All Users' !!} ({!! $users->count() !!})
 		&middot;
-		<small>{!! link_to_route('admin.users.create', 'Add New') !!}</small>
+		<small>{!! link_to_route('users.create', 'Add New') !!}</small>
 	</h1>
 @stop
 
 @section('content')
 
 	@if(isset($search))
-		@include('admin::users.search-form')
+		@include('backend.users.search-form')
 	@endif
 
 	<table class="table">
@@ -30,9 +30,9 @@
 				<td>{!! $user->email !!}</td>
 				<td>{!! $user->created_at !!}</td>
 				<td class="text-center">
-					<a href="{!! route('admin.users.edit', $user->id) !!}">Edit</a>
+					<a href="{!! route('users.edit', $user->id) !!}">Edit</a>
 					&middot;
-					@include('admin::partials.modal', ['data' => $user, 'name' => 'users'])
+					@include('backend.partials.modal', ['data' => $user, 'name' => 'users'])
 				</td>
 			</tr>
 			<?php $no++ ;?>

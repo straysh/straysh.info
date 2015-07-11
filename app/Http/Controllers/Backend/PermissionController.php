@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Repositories\Permissions\PermissionRepository;
 //@fixme
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Pingpong\Admin\Validation\Permission\Create;
 use Pingpong\Admin\Validation\Permission\Update;
@@ -25,7 +25,7 @@ class PermissionController extends BackendController
      */
     protected function redirectNotFound()
     {
-        return $this->redirect('permissions.index');
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -39,7 +39,7 @@ class PermissionController extends BackendController
 
         $no = $permissions->firstItem();
 
-        return view('permissions.index', compact('permissions', 'no'));
+        return view('backend.permissions.index', compact('permissions', 'no'));
     }
 
     /**
@@ -49,7 +49,7 @@ class PermissionController extends BackendController
      */
     public function create()
     {
-        return view('permissions.create');
+        return view('backend.permissions.create');
     }
 
     /**
@@ -63,7 +63,7 @@ class PermissionController extends BackendController
 
         $this->repository->create($data);
 
-        return $this->redirect('permissions.index');
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -77,7 +77,7 @@ class PermissionController extends BackendController
         try {
             $permission = $this->repository->findById($id);
 
-            return view('permissions.show', compact('permission'));
+            return view('backend.permissions.show', compact('permission'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -94,7 +94,7 @@ class PermissionController extends BackendController
         try {
             $permission = $this->repository->findById($id);
 
-            return view('permissions.edit', compact('permission'));
+            return view('backend.permissions.edit', compact('permission'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -115,7 +115,7 @@ class PermissionController extends BackendController
             
             $permission->update($data);
 
-            return $this->redirect('permissions.index');
+            return redirect()->route('permissions.index');
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -132,7 +132,7 @@ class PermissionController extends BackendController
         try {
             $this->repository->delete($id);
 
-            return $this->redirect('permissions.index');
+            return redirect()->route('permissions.index');
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }

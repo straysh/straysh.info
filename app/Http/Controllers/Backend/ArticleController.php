@@ -6,7 +6,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 //@fixme
-use Pingpong\Admin\Uploader\ImageUploader;
+use App\Helpers\ImageHelper as ImageUploader;
 use Pingpong\Admin\Validation\Article\Create;
 use Pingpong\Admin\Validation\Article\Update;
 
@@ -54,7 +54,7 @@ class ArticleController extends BackendController
      */
     protected function redirectNotFound()
     {
-        return $this->redirect(isOnPages() ? 'pages.index' : 'articles.index')
+        return redirect()->route(isOnPages() ? 'pages.index' : 'articles.index')
             ->withFlashMessage('Post not found!')
             ->withFlashType('danger');
     }
@@ -80,7 +80,7 @@ class ArticleController extends BackendController
      */
     public function create()
     {
-        return view('articles.create');
+        return view('backend.articles.create');
     }
 
     /**
@@ -106,7 +106,7 @@ class ArticleController extends BackendController
 
         $this->repository->create($data);
 
-        return $this->redirect(isOnPages() ? 'pages.index' : 'articles.index');
+        return redirect()->route(isOnPages() ? 'pages.index' : 'articles.index');
     }
 
     /**
@@ -120,7 +120,7 @@ class ArticleController extends BackendController
         try {
             $article = $this->repository->findById($id);
 
-            return view('articles.show', compact('article'));
+            return view('backend.articles.show', compact('article'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -137,7 +137,7 @@ class ArticleController extends BackendController
         try {
             $article = $this->repository->findById($id);
 
-            return view('articles.edit', compact('article'));
+            return view('backend.articles.edit', compact('article'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -171,7 +171,7 @@ class ArticleController extends BackendController
             $data['slug'] = Str::slug($data['title']);
             $article->update($data);
 
-            return $this->redirect(isOnPages() ? 'pages.index' : 'articles.index');
+            return redirect()->route(isOnPages() ? 'pages.index' : 'articles.index');
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -188,7 +188,7 @@ class ArticleController extends BackendController
         try {
             $this->repository->delete($id);
 
-            return $this->redirect(isOnPages() ? 'pages.index' : 'articles.index');
+            return redirect()->route(isOnPages() ? 'pages.index' : 'articles.index');
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }

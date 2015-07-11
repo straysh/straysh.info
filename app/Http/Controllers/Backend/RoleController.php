@@ -1,10 +1,10 @@
 <?php namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Repositories\Roles\RoleRepository;
 
 //@fixme
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Pingpong\Admin\Validation\Role\Create;
 use Pingpong\Admin\Validation\Role\Update;
@@ -26,7 +26,7 @@ class RoleController extends BackendController
      */
     protected function redirectNotFound()
     {
-        return $this->redirect('roles.index');
+        return redirect()->route('backend.roles.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class RoleController extends BackendController
 
         $no = $roles->firstItem();
 
-        return view('roles.index', compact('roles', 'no'));
+        return view('backend.roles.index', compact('roles', 'no'));
     }
 
     /**
@@ -50,7 +50,7 @@ class RoleController extends BackendController
      */
     public function create()
     {
-        return view('roles.create');
+        return view('backend.roles.create');
     }
 
     /**
@@ -64,7 +64,7 @@ class RoleController extends BackendController
 
         $this->repository->create($data);
 
-        return $this->redirect('roles.index');
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -77,7 +77,7 @@ class RoleController extends BackendController
     {
         try {
             $role = $this->repository->findById($id);
-            return view('roles.show', compact('role'));
+            return view('backend.roles.show', compact('role'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -96,7 +96,7 @@ class RoleController extends BackendController
 
             $permission_role = $role->permissions->lists('id');
 
-            return view('roles.edit', compact('role', 'permission_role'));
+            return view('backend.roles.edit', compact('role', 'permission_role'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -127,7 +127,7 @@ class RoleController extends BackendController
                 $role->permissions()->attach(\Input::get('permissions'));
             }
 
-            return $this->redirect('roles.index');
+            return redirect()->route('roles.index');
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -144,7 +144,7 @@ class RoleController extends BackendController
         try {
             $this->repository->delete($id);
 
-            return $this->redirect('roles.index');
+            return redirect()->route('roles.index');
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }

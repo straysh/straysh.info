@@ -25,7 +25,7 @@ class CategoryController extends BackendController
      */
     protected function redirectNotFound()
     {
-        return $this->redirect('categories.index');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -39,7 +39,7 @@ class CategoryController extends BackendController
      
         $no = $categories->firstItem();
 
-        return view('categories.index', compact('categories', 'no'));
+        return view('backend.categories.index', compact('categories', 'no'));
     }
 
     /**
@@ -49,7 +49,7 @@ class CategoryController extends BackendController
      */
     public function create()
     {
-        return view('categories.create');
+        return view('backend.categories.create');
     }
 
     /**
@@ -63,7 +63,7 @@ class CategoryController extends BackendController
 
         $category = Category::create($data);
 
-        return $this->redirect('categories.index');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -77,7 +77,7 @@ class CategoryController extends BackendController
         try {
             $category = $this->repository->findById($id);
 
-            return view('categories.show', compact('category'));
+            return view('backend.categories.show', compact('category'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -94,7 +94,7 @@ class CategoryController extends BackendController
         try {
             $category = $this->repository->findById($id);
 
-            return view('categories.edit', compact('category'));
+            return view('backend.categories.edit', compact('category'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -115,7 +115,7 @@ class CategoryController extends BackendController
 
             $category->update($data);
 
-            return $this->redirect('categories.index');
+            return redirect()->route('categories.index');
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -132,7 +132,7 @@ class CategoryController extends BackendController
         try {
             $this->repository->delete($id);
 
-            return $this->redirect('categories.index');
+            return redirect()->route('categories.index');
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }

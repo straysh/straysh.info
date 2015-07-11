@@ -4,7 +4,7 @@
 	<h1>
 		All Roles ({!! $roles->count() !!})
 		&middot;
-		<small>{!! link_to_route('admin.roles.create', 'Add New') !!}</small>
+		<small>{!! link_to_route('roles.create', 'Add New') !!}</small>
 	</h1>
 @stop
 
@@ -34,9 +34,9 @@
 				</td>
 				<td>{!! $role->created_at !!}</td>
 				<td class="text-center">
-					<a href="{!! route('admin.roles.edit', $role->id) !!}">Edit</a>
+					<a href="{!! route('roles.edit', $role->id) !!}">Edit</a>
 					&middot;
-					@include('admin::partials.modal', ['data' => $role, 'name' => 'roles'])
+					@include('backend.partials.modal', ['data' => $role, 'name' => 'roles'])
 				</td>
 			</tr>
 			<?php $no++ ;?>

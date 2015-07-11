@@ -3,9 +3,9 @@
 	<ul class="dropdown-menu">
 		@foreach ($child->childs as $item)
 			@if ($item->hasChilds())
-				@include('menus::child.dropdown', ['child' => $item])
+				@include('backend.menus.child.dropdown', ['child' => $item])
 			@else
-				@include('menus::child.item', compact('item'))
+				@include('backend.menus.child.item', compact('item'))
 			@endif
 		@endforeach
 	</ul>

@@ -5,7 +5,7 @@
 	<h1>
 		All Permissions ({!! $permissions->count() !!})
 		&middot;
-		<small>{!! link_to_route('admin.permissions.create', 'Add New') !!}</small>
+		<small>{!! link_to_route('permissions.create', 'Add New') !!}</small>
 	</h1>
 	
 @stop
@@ -30,9 +30,9 @@
 				<td>{!! $permission->description !!}</td>
 				<td>{!! $permission->created_at !!}</td>
 				<td class="text-center">
-					<a href="{!! route('admin.permissions.edit', $permission->id) !!}">Edit</a>
+					<a href="{!! route('permissions.edit', $permission->id) !!}">Edit</a>
 					&middot;
-					@include('admin::partials.modal', ['data' => $permission, 'name' => 'permissions'])
+					@include('backend.partials.modal', ['data' => $permission, 'name' => 'permissions'])
 				</td>
 			</tr>
 			<?php $no++ ;?>

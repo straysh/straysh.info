@@ -1,14 +1,14 @@
 @if(isOnPages())
 	@if(isset($model))
-	{!! Form::model($model, ['method' => 'PUT', 'files' => true, 'route' => ['admin.pages.update', $model->id]]) !!}
+	{!! Form::model($model, ['method' => 'PUT', 'files' => true, 'route' => ['pages.update', $model->id]]) !!}
 	@else
-	{!! Form::open(['files' => true, 'route' => 'admin.pages.store']) !!}
+	{!! Form::open(['files' => true, 'route' => 'pages.store']) !!}
 	@endif
 @else
 	@if(isset($model))
-	{!! Form::model($model, ['method' => 'PUT', 'files' => true, 'route' => ['admin.articles.update', $model->id]]) !!}
+	{!! Form::model($model, ['method' => 'PUT', 'files' => true, 'route' => ['articles.update', $model->id]]) !!}
 	@else
-	{!! Form::open(['files' => true, 'route' => 'admin.articles.store']) !!}
+	{!! Form::open(['files' => true, 'route' => 'articles.store']) !!}
 	@endif
 @endif
 	<div class="form-group">

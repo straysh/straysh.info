@@ -4,13 +4,13 @@
 	<h1>
 		Edit
 		&middot;
-		<small>{!! link_to_route('admin.users.index', 'Back') !!}</small>
+		<small>{!! link_to_route('users.index', 'Back') !!}</small>
 	</h1>
 @stop
 
 @section('content')
 	<div>
-		@include('admin::users.form', array('model' => $user) + compact('role'))
+		@include('backend.users.form', array('model' => $user) + compact('role'))
 	</div>
 
 @stop

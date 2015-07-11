@@ -1,8 +1,4 @@
-<?php
-
-namespace Pingpong\Admin\Repositories\Categories;
-
-use Pingpong\Admin\Entities\Category;
+<?php namespace App\Http\Repositories\Categories;
 
 class EloquentCategoryRepository implements CategoryRepository
 {

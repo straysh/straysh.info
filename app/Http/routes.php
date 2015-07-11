@@ -78,7 +78,7 @@ Route::group([
 			'except' => 'show',
 			'names' => [
 				'index' => 'articles.index',
-//				'create' => 'articles.create',
+				'create' => 'articles.create',
 //				'store' => 'articles.store',
 //				'show' => 'articles.show',
 //				'update' => 'articles.update',

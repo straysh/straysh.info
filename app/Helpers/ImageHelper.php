@@ -1,11 +1,13 @@
 <?php namespace App\Helpers;
 
 use App\Exceptions\DevInvalidParamsException;
-use App\ModelServices\ImageService;
+//use App\ModelServices\ImageService;
 use Intervention\Image\ImageManager;
-use App\Models\Frontend\ImgBsc;
-use App\Models\Frontend\ImgSrc;
-use App\Models\Frontend\UserPhoto;
+
+//@fixme
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
 
 /**
  * http://image.intervention.io/api/
@@ -215,49 +217,104 @@ class ImageHelper extends BaseHelper
 		return $this->baseImageUrl($imgId);
 	}
 
+	/**********************************************************************
+	 *
+	 *********************************************************************/
+
+
 	/**
-	 * 获取商家logo
-	 * @param $id
-	 * @return string
+	 * @var string
 	 */
-	public function restaurantLogo($id)
+	protected $ext = '.png';
+
+	/**
+	 * @param $ext
+	 * @return $this
+	 */
+	public function setExt($ext)
 	{
-		return "#";
-		$url = $this->baseImagePath($imgId);
-		return $url;
+		$this->ext = $ext;
+
+		return $this;
 	}
 
 	/**
-	 * 获取商家页首屏背景图片（高清大图）
-	 * @param $id
 	 * @return string
 	 */
-	public function restaurantBackgroundImage($id)
+	public function getExt()
 	{
-		$id = $id%4+1;
-		return "/images/tpl-design/re-bg/0{$id}.jpg";
+		return $this->ext;
 	}
 
 	/**
-	 * 获取商家Logo
-	 * @param $id
 	 * @return string
 	 */
-	public function restaurantMainImage($id)
+	public function getRandomFilename()
 	{
-		return '';
+		return sha1(str_random()) . $this->getExt();
 	}
 
 	/**
-	 * 获取菜品首图
-	 * @param int $id 菜品id，当前img_id为测试
 	 * @return string
 	 */
-	public function dishImage($id)
+	public function getDestinationFile()
 	{
-		return $this->baseImageUrl($id);
-		$id = $id%8+1;
-		return "/images/tpl-design/photo/0{$id}.jpg";
+		return public_path(str_finish($this->path, '/') . $this->filename);
+	}
+
+	/**
+	 * @param $width
+	 * @return $this
+	 */
+	public function widen($width)
+	{
+		$this->image->widen($width);
+
+		return $this;
+	}
+
+	/**
+	 * @param $file
+	 * @return $this
+	 */
+	public function upload($file)
+	{
+		$this->filename = $this->getRandomFilename();
+		$this->image = Image::make(Input::file($file)->getRealPath());
+
+		return $this;
+	}
+
+	public function getDestinationDirectory()
+	{
+		return dirname($this->getDestinationFile());
+	}
+
+	/**
+	 * @param null $path
+	 * @return mixed
+	 */
+	public function save($path = null)
+	{
+		if (! is_null($path)) {
+			$this->path = $path;
+		}
+
+		if (! is_dir($path = $this->getDestinationDirectory())) {
+			File::makeDirectory($path, 0777, true);
+		}
+
+		$this->image->save($this->getDestinationFile());
+
+		return $this->filename;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getFilename()
+	{
+		return $this->filename;
 	}
 
 }

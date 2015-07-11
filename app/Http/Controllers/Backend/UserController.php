@@ -10,7 +10,7 @@ use Illuminate\Http\Response;
 use Pingpong\Admin\Validation\User\Create;
 use Pingpong\Admin\Validation\User\Update;
 
-class UsersController extends BackendController
+class UserController extends BackendController
 {
 
     /**
@@ -35,7 +35,7 @@ class UsersController extends BackendController
      */
     protected function redirectNotFound()
     {
-        return $this->redirect('users.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -49,7 +49,7 @@ class UsersController extends BackendController
 
         $no = $users->firstItem();
 
-        return view('users.index', compact('users', 'no'));
+        return view('backend.users.index', compact('users', 'no'));
     }
 
     /**
@@ -59,7 +59,7 @@ class UsersController extends BackendController
      */
     public function create()
     {
-        return view('users.create');
+        return view('backend.users.create');
     }
 
     /**
@@ -75,7 +75,7 @@ class UsersController extends BackendController
 
         $user->addRole($request->get('role'));
 
-        return $this->redirect('users.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -88,7 +88,7 @@ class UsersController extends BackendController
     {
         try {
             $user = $this->repository->findById($id);
-            return view('users.show', compact('user'));
+            return view('backend.users.show', compact('user'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -107,7 +107,7 @@ class UsersController extends BackendController
 
             $role = $user->roles->lists('id');
 
-            return view('users.edit', compact('user', 'role'));
+            return view('backend.users.edit', compact('user', 'role'));
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -130,7 +130,7 @@ class UsersController extends BackendController
 
             $user->roles()->sync((array) \Input::get('role'));
 
-            return $this->redirect('users.index');
+            return redirect()->route('users.index');
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }
@@ -147,7 +147,7 @@ class UsersController extends BackendController
         try {
             $this->repository->delete($id);
 
-            return $this->redirect('users.index');
+            return redirect()->route('users.index');
         } catch (ModelNotFoundException $e) {
             return $this->redirectNotFound();
         }

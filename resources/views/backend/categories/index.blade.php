@@ -4,7 +4,7 @@
 	<h1>
 		All Categories ({!! $categories->count() !!})
 		&middot;
-		<small>{!! link_to_route('admin.categories.create', 'Add New') !!}</small>
+		<small>{!! link_to_route('categories.create', 'Add New') !!}</small>
 	</h1>
 @stop
 
@@ -28,9 +28,9 @@
 				<td>{!! $category->description !!}</td>
 				<td>{!! $category->created_at !!}</td>
 				<td class="text-center">
-					<a href="{!! route('admin.categories.edit', $category->id) !!}">Edit</a>
+					<a href="{!! route('categories.edit', $category->id) !!}">Edit</a>
 					&middot;
-					@include('admin::partials.modal', ['data' => $category, 'name' => 'categories'])
+					@include('backend.partials.modal', ['data' => $category, 'name' => 'categories'])
 				</td>
 			</tr>
 			<?php $no++ ;?>

@@ -6,14 +6,14 @@
 	<h1>
 		Add New
 		&middot;
-		<small>{!! link_to_route('admin.permissions.index', 'Back') !!}</small>
+		<small>{!! link_to_route('permissions.index', 'Back') !!}</small>
 	</h1>
 	
 @stop
 @section('content')
 	
 	<div>
-		@include('admin::permissions.form')
+		@include('backend.permissions.form')
 	</div>
 
 @stop

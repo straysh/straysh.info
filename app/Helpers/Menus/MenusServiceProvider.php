@@ -37,27 +37,27 @@ class MenusServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerHtmlPackage();
+//        $this->registerHtmlPackage();
 
         $this->app['menus'] = $this->app->share(function ($app) {
             return new Menu($app['view'], $app['config']);
         });
     }
 
-    /**
-     * Register "iluminate/html" package.
-     */
-    protected function registerHtmlPackage()
-    {
-        $this->app->register('Collective\Html\HtmlServiceProvider');
-
-        $aliases = [
-            'HTML' => 'Collective\Html\HtmlFacade',
-            'Form' => 'Collective\Html\FormFacade',
-        ];
-
-        AliasLoader::getInstance($aliases)->register();
-    }
+//    /**
+//     * Register "iluminate/html" package.
+//     */
+//    protected function registerHtmlPackage()
+//    {
+//        $this->app->register('Collective\Html\HtmlServiceProvider');
+//
+//        $aliases = [
+//            'HTML' => 'Collective\Html\HtmlFacade',
+//            'Form' => 'Collective\Html\FormFacade',
+//        ];
+//
+//        AliasLoader::getInstance($aliases)->register();
+//    }
 
     /**
      * Get the services provided by the provider.
@@ -75,7 +75,7 @@ class MenusServiceProvider extends ServiceProvider
     protected function registerNamespaces()
     {
 //        $this->mergeConfigFrom(__DIR__.'/src/config/config.php', 'menus');
-//        $this->loadViewsFrom(__DIR__.'/src/views', 'menus');
+//        $this->loadViewsFrom(base_path().'/resources/views/backend/menus', 'menus');
 
 //        $this->publishes([
 //            __DIR__.'/src/config/config.php' => config_path('menus.php'),

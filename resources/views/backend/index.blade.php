@@ -338,11 +338,11 @@
 							<input type="title" class="form-control" name="title" placeholder="Title:"/>
 						</div>
 						<div class="form-group">
-							<form class="form-control" placeholder="Category:" name="category_id">
+							<select class="form-control" placeholder="Category:" name="category_id">
 								@foreach(category()->options() as $value=>$label)
 									<option value="{{ $value }}">{{ $label }}</option>
 								@endforeach
-							</form>
+							</select>
 						</div>
 						<div>
 							<textarea class="textarea" placeholder="Content"

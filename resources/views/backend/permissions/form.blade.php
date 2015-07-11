@@ -1,7 +1,7 @@
 @if(isset($model))
-{!! Form::model($model, ['method' => 'PUT', 'files' => true, 'route' => ['admin.permissions.update', $model->id]]) !!}
+{!! Form::model($model, ['method' => 'PUT', 'files' => true, 'route' => ['permissions.update', $model->id]]) !!}
 @else
-{!! Form::open(['files' => true, 'route' => 'admin.permissions.store']) !!}
+{!! Form::open(['files' => true, 'route' => 'permissions.store']) !!}
 @endif
 	<div class="form-group">
 		{!! Form::label('name', 'Name:') !!}
