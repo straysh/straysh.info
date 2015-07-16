@@ -5,8 +5,8 @@ use App\Http\Repositories\Permissions\PermissionRepository;
 //@fixme
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Pingpong\Admin\Validation\Permission\Create;
-use Pingpong\Admin\Validation\Permission\Update;
+use App\Http\Requests\Permission\Create;
+use App\Http\Requests\Permission\Update;
 
 class PermissionController extends BackendController
 {

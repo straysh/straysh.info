@@ -12,7 +12,7 @@ return [
 	],
 	'article' => [
 		'model' => 'App\Models\Frontend\Article',
-		'perpage' => 10
+		'perpage' => 20
 	],
 	'page' => [
 		'perpage' => 10

@@ -2,10 +2,10 @@
 
 session_check();
 
-use App\Http\Requests\Request;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 use Pingpong\Admin\Entities\Article;
 use Pingpong\Admin\Entities\Option;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class SiteController extends BackendController
 {

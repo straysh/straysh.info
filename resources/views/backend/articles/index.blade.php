@@ -34,20 +34,20 @@
 			<tr>
 				<td>{!! $no !!}</td>
 				<td>{!! $article->title !!}</td>
-				<td>{!! $article->user->name !!}</td>
+				<td>{!! $article->author !!}</td>
 				@if( ! isOnPages())
 				<td>{!! $article->category ? $article->category->name : null !!}</td>
 				@endif
-				<td>{!! $article->created_at !!}</td>
+				<td>{!! date('Y-m-d H:i:s', $article->created_at) !!}</td>
 				<td class="text-center">
 					@if(isOnPages())
 						<a href="{!! route('pages.edit', $article->id) !!}">Edit</a>
-						&middot;
-						@include('backend.partials.modal', ['data' => $article, 'name' => 'pages'])
+						{{--&middot;--}}
+						{{--@include('backend.partials.modal', ['data' => $article, 'name' => 'pages'])--}}
 					@else
 						<a href="{!! route('articles.edit', $article->id) !!}">Edit</a>
-						&middot;
-						@include('backend.partials.modal', ['data' => $article, 'name' => 'articles'])
+						{{--&middot;--}}
+						{{--@include('backend.partials.modal', ['data' => $article, 'name' => 'articles'])--}}
 					@endif
 				</td>
 			</tr>

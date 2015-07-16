@@ -2,7 +2,7 @@
 
 use App\Helpers\utils\Parsedown;
 use App\Helpers\Yutils;
-use Pingpong\Admin\Entities\Category;
+use App\Models\Frontend\Category;
 
 class ViewHelper
 {

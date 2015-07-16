@@ -22,7 +22,7 @@ class Article extends FrontendModel
 	/**
 	 * @var string
 	 */
-	protected $presenter = 'Pingpong\Admin\Presenters\Article';
+	protected $presenter = 'App\Helpers\Presenters\Article';
 
 	/**
 	 * @var array
@@ -51,7 +51,7 @@ class Article extends FrontendModel
 	 */
 	public function category()
 	{
-		return $this->belongsTo(__NAMESPACE__ . '\\Category');
+		return $this->belongsTo(__NAMESPACE__ . '\\Category', 'category_id', 'id');
 	}
 
 	/**
@@ -128,6 +128,9 @@ class Article extends FrontendModel
 	{
 		parent::boot();
 
+		static::created(function ($article) {
+            $article->category()->increment('article_amount', 1);
+		});
 		static::deleting(function ($data) {
 			// $data->deleteImage();
 		});

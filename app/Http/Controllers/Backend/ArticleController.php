@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 //@fixme
 use App\Helpers\ImageHelper as ImageUploader;
-use Pingpong\Admin\Validation\Article\Create;
-use Pingpong\Admin\Validation\Article\Update;
+use App\Http\Requests\Article\Create;
+use App\Http\Requests\Article\Update;
 
 class ArticleController extends BackendController
 {
@@ -91,16 +91,6 @@ class ArticleController extends BackendController
     public function store(Create $request)
     {
         $data = $request->all();
-
-        unset($data['image']);
-
-        if (\Input::hasFile('image')) {
-            // upload image
-            $this->uploader->upload('image')->save('images/articles');
-
-            $data['image'] = $this->uploader->getFilename();
-        }
-
         $data['user_id'] = Auth::id();
         $data['slug'] = Str::slug($data['title']);
 
@@ -155,18 +145,6 @@ class ArticleController extends BackendController
             $article = $this->repository->findById($id);
 
             $data = $request->all();
-
-            unset($data['image']);
-            unset($data['type']);
-
-            if (\Input::hasFile('image')) {
-                $article->deleteImage();
-
-                $this->uploader->upload('image')->save('images/articles');
-
-                $data['image'] = $this->uploader->getFilename();
-            }
-
             $data['user_id'] = Auth::id();
             $data['slug'] = Str::slug($data['title']);
             $article->update($data);

@@ -1,5 +1,7 @@
 <?php namespace App\Models\Frontend;
 
+use Illuminate\Support\Facades\DB;
+
 class Category extends FrontendModel
 {
 	private static $_instance;
@@ -58,5 +60,13 @@ class Category extends FrontendModel
 		$result = self::whereRaw('name=?', [$category])->first();
 
 		return $result;
+	}
+
+	public function incArticleAmount($pk)
+	{
+        dd($pk);
+		self::whereRaw('id=?', [$pk])->update([
+            'article_amount'=>DB::raw('article_amount + 1')
+        ]);
 	}
 }

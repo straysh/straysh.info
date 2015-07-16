@@ -6,8 +6,8 @@ use App\Models\Frontend\Category;
 use App\Http\Repositories\Categories\CategoryRepository;
 //@fixme
 use Illuminate\Http\Response;
-use Pingpong\Admin\Validation\Category\Create;
-use Pingpong\Admin\Validation\Category\Update;
+use App\Http\Requests\Category\Create;
+use App\Http\Requests\Category\Update;
 
 class CategoryController extends BackendController
 {

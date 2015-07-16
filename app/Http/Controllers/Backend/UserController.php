@@ -7,8 +7,8 @@ use App\Http\Repositories\Users\UserRepository;
 //@fixme
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Pingpong\Admin\Validation\User\Create;
-use Pingpong\Admin\Validation\User\Update;
+use App\Http\Requests\User\Create;
+use App\Http\Requests\User\Update;
 
 class UserController extends BackendController
 {

@@ -38,7 +38,7 @@ if (! function_exists('isOnPages')) {
      */
     function isOnPages()
     {
-        return Route::is('admin.pages.*');
+        return Route::is('pages.*');
     }
 }
 

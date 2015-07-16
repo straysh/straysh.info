@@ -2,8 +2,8 @@
 
 
 use App\Facades\ViewHelper;
-use Pingpong\Admin\Entities\Article;
-use Pingpong\Admin\Entities\Category;
+use App\Models\Frontend\Article;
+use App\Models\Frontend\Category;
 
 class ArticleController extends FrontController
 {

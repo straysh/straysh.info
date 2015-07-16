@@ -10,14 +10,9 @@ class BackendController extends Controller
 
     public function __construct()
     {
-	    $this->beforeFilter('@before');
+        $this->initUser();
         return TRUE;
     }
-
-	public function before($route, $request)
-	{
-        $this->initUser();
-	}
 
 	protected function viewData($k, $v)
 	{

@@ -6,8 +6,8 @@ use App\Http\Repositories\Roles\RoleRepository;
 //@fixme
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Pingpong\Admin\Validation\Role\Create;
-use Pingpong\Admin\Validation\Role\Update;
+use App\Http\Requests\Role\Create;
+use App\Http\Requests\Role\Update;
 
 class RoleController extends BackendController
 {
