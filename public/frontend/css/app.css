@@ -103,3 +103,10 @@ blockquote:before, blockquote:after {
 content h4, content p, content ul, content ol, content pre, content blockquote, content table {
     margin: 18px 0;
 }
+
+code{
+    /*color: #c7254e;*/
+    /*background-color: #f6f6f6;*/
+    background-color: #bcc;
+    padding: 0 5px;
+}
