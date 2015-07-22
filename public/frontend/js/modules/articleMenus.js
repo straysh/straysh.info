@@ -2,6 +2,7 @@ define(['jquery', 'backbone'], function($){
     function ArticleMenus(){
         this.menusTree = void 0;
         this.menusTreeOpened = false;
+        this.disableMenusTree = false;
         this.init();
     }
 
@@ -27,7 +28,6 @@ define(['jquery', 'backbone'], function($){
             left: self.width
         }).html('>>');
         $button.on("click", function(){
-            if(!self.menusTree) self.drawMenusTree();
             self.menusTreeOpened = !self.menusTreeOpened;
             if(self.menusTreeOpened){
                 $button.addClass("article-menu-open").html('<<');
@@ -37,6 +37,8 @@ define(['jquery', 'backbone'], function($){
                 self.closeMenusTree();
             }
         });
+        if(!self.menusTree) self.drawMenusTree();
+        if(self.disableMenusTree) return;
         $('body').append($button);
     };
 
@@ -78,6 +80,7 @@ define(['jquery', 'backbone'], function($){
                 html: $item.html()
             });
         });
+        if(!h1s.length) return this.disableMenusTree = true;
         var tree = _.template($('#articleMenuTree-tpl').html(), {h1s: h1s});
         return $(tree);
     };
