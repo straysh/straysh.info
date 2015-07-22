@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="{{ asset("/css/app".(config('app.debug')?"":"_min").".css") }}">
     <script type="text/javascript" src="/js/require.js" data-main="{{ asset( "/js/main".(config('app.debug')?"":"_min") ) }}"></script>
-    @yeild('head')
+    @yield('head')
     <title>Straysh's Blog</title>
     <link rel="icon" href="/favicon.ico" >
 </head>
@@ -75,6 +75,7 @@
     </footer>
 </div>
 
+@section("foot")
 @if(!config('app.debug'))
     <script>
         var _hmt = _hmt || [];
@@ -87,5 +88,6 @@
     </script>
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253583555'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1253583555%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 @endif
+@show
 </body>
 </html>

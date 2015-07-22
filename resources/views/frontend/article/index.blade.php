@@ -1,11 +1,17 @@
 @extends("frontend.layouts.master")
 
-@section('head')
-    <link rel="stylesheet" href="/css/highlight/shCore.css">
+@section("content")
+{!! $crumbs !!}
+{!! $summary !!}
+{!! $articles !!}
 @stop
 
-@section("content")
-    {!! $crumbs !!}
-    {!! $summary !!}
-    {!! $articles !!}
+@section("foot")
+    @parent
+
+    {!!
+        ViewHelper::registerJsTemplate([
+            "articleMenuTree"
+        ])
+    !!}
 @stop

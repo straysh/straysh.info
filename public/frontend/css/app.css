@@ -110,3 +110,10 @@ code{
     background-color: #bcc;
     padding: 0 5px;
 }
+
+.post-nav{
+    position: absolute;
+    bottom: 20%;
+    display: block;
+    width: 233px;
+}

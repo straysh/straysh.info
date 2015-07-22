@@ -31,6 +31,7 @@ class Article extends FrontendModel
 		'type',
 		'user_id',
 		'category_id',
+		'author',
 		'title',
 		'slug',
 		'body',

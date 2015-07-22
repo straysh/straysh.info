@@ -70,7 +70,7 @@ class ArticleController extends FrontController
 		];
 		$file = base_path().'/resources/views/frontend/article/crumbs.blade.php';
 		$view = view()->file($file, $data)->render();
-		return ViewHelper::markdownParse($view, ['<crumbs><h4>' ,'</crumbs></h4>']);
+		return ViewHelper::markdownParse($view, ['<crumbs><h4>' ,'</h4></crumbs>']);
 	}
 
 	private function articleSummary($category)
@@ -115,7 +115,7 @@ HTML;
 	private function articleDetail($article)
 	{
 		$view = ViewHelper::markdownParse($article->body);
-		return "<h1 class='justcenter'>{$article->title}</h1>{$view}";
+		return "<h1 class='justcenter'>{$article->title}</h1><article>{$view}</article>";
 	}
 
 }

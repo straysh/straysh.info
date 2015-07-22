@@ -92,7 +92,7 @@ class ArticleController extends BackendController
     {
         $data = $request->all();
         $data['user_id'] = Auth::id();
-        $data['slug'] = Str::slug($data['title']);
+        $data['slug'] = !empty($data['slug']) ? $data['slug'] : Str::slug($data['title']);
 
         $this->repository->create($data);
 
@@ -146,7 +146,7 @@ class ArticleController extends BackendController
 
             $data = $request->all();
             $data['user_id'] = Auth::id();
-            $data['slug'] = Str::slug($data['title']);
+            $data['slug'] = !empty($data['slug']) ? $data['slug'] : Str::slug($data['title']);
             $article->update($data);
 
             return redirect()->route(isOnPages() ? 'pages.index' : 'articles.index');
