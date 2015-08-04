@@ -53,7 +53,7 @@ define(['jquery', 'backbone'], function($){
     ArticleMenus.prototype.drawMenusTree = function(){
         var self = this,
             $tree = $('<div></div>').css({
-                zIndex: 1000,
+                zIndex: 1002,
                 position: 'fixed',
                 top: 0,
                 left: 0,

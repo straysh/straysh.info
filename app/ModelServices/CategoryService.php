@@ -43,6 +43,14 @@ class CategoryService extends BaseService
 		return $results;
 	}
 
+    public function getId($category)
+    {
+        if(empty($category)) return 0;
+        $model = Category::whereRaw("name=?", [$category])->first();
+
+        return $model ? $model->id : 0;
+    }
+
 	protected function format($array)
 	{
 		if(empty($array)) return [];
