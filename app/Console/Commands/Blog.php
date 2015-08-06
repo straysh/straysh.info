@@ -1,6 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use App\Models\Frontend\Article;
+use App\Models\Frontend\Timeline;
 use App\ModelServices\CategoryService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
@@ -81,11 +82,60 @@ class Blog extends Command {
         $file = $this->option('file');
         if(!file_exists($file)) exit(-1);
 
+        $title = pathinfo($file, PATHINFO_FILENAME);
+        $category = pathinfo($file, PATHINFO_DIRNAME);
+        $category = strtolower(pathinfo($category, PATHINFO_FILENAME));
+        if('timeline'===$category)
+        {
+            $this->saveTimeline($title, $category, $file);
+        }else
+        {
+            $this->saveArticle($title, $category, $file);
+        }
+
+		$this->info("work done!");
+	}
+
+    private function parseCategory($category)
+    {
+        return CategoryService::getInstance()->getId($category);
+    }
+
+    private function saveTimeline($title, $category, $file)
+    {
         $time = time();
-        $names = pathinfo($file, PATHINFO_FILENAME);
-        $names = explode('.', $names);
-        $title = $names[0];
-        $slug = $names[1];
+        $title = explode('.', $title);
+        $id = $title[0];
+        $title  = isset($title[1]) ? $title[1] : '';
+        $content = file_get_contents($file);
+
+        if(empty($id) || !is_numeric($id))
+        {
+            echo "id not a number";
+            exit(-1);
+        }
+
+        $model = Timeline::find($id);
+        if(!$model)
+        {
+            $model = new Timeline();
+        }
+        $model->title = $title;
+        $model->content = $content;
+
+        if(!$model->save())
+        {
+            var_dump($model->toArray());
+            exit(-1);
+        }
+    }
+
+    private function saveArticle($title, $category, $file)
+    {
+        $time = time();
+        $title = explode('.', $title);
+        $slug  = $title[1];
+        $title = $title[0];
         $content = file_get_contents($file);
 
         $model = Article::whereRaw("slug=?", [$slug])->first();
@@ -95,7 +145,7 @@ class Blog extends Command {
         }else
         {
             $model = new Article();
-            $category_id = $this->parseCategory($file);
+            $category_id = $this->parseCategory( $category );
             $model->title = $title;
             $model->slug = $slug;
             $model->body = $content;
@@ -110,15 +160,5 @@ class Blog extends Command {
             var_dump($model->toArray());
             exit(-1);
         }
-
-		$this->info("work done!");
-	}
-
-    private function parseCategory($path)
-    {
-        $path = pathinfo($path, PATHINFO_DIRNAME);
-        $path = pathinfo($path, PATHINFO_FILENAME);
-        return CategoryService::getInstance()->getId($path);
     }
-
 }

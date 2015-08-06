@@ -20,6 +20,7 @@ Route::group([
 	Route::get('article/{id}', 'ArticleController@getIndex' )->where(['id'=>'[0-9]+']);
 	Route::get('article/{category}', 'ArticleController@getList' )->where(['category'=>'[a-zA-Z]+[a-zA-Z0-9]+']);
 	Route::controller('profile', 'ProfileController');
+    Route::controller('timeline', 'TimelineController');
 	Route::controller('home', 'HomeController');
 
 	if( file_exists(app_path().'/Http/Controllers/Frontend/TestController.php') )

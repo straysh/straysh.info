@@ -8,3 +8,4 @@ _ide_helper.php
 composer.lock
 init.sql
 s_blog.sql
+release.sh

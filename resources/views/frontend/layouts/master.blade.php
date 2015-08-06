@@ -27,6 +27,7 @@
     </a>
     @yield("content")
 
+    @section("footer")
     <footer class="site-footer" id="site-footer">
         <h2 class="epsilon">创建和维护</h2>
         <ul>
@@ -73,6 +74,7 @@
             <span>Copyright © 2012 - 2015 Straysh. All Rights Reserved</span>
         </div>
     </footer>
+    @show
 </div>
 
 @section("foot")
