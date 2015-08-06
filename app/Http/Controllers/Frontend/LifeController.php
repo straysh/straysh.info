@@ -1,14 +1,14 @@
 <?php namespace App\Http\Controllers\Frontend;
 
 
-use App\Models\Frontend\Timeline;
+use App\Models\Frontend\Life;
 
-class TimelineController extends FrontController
+class LifeController extends FrontController
 {
 
 	public function getIndex()
 	{
-		$article = Timeline::getInstance()->orderByRaw('id desc')->get();
+		$article = Life::getInstance()->orderByRaw('id desc')->get();
 		if(empty($article))
 		{
 			return redirect('/');

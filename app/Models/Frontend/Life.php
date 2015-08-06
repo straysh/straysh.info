@@ -1,13 +1,13 @@
 <?php namespace App\Models\Frontend;
 
-class Timeline extends FrontendModel
+class Life extends FrontendModel
 {
 	private static $_instance;
 
-	protected $table = 'timeline';
+	protected $table = 'life';
 
 	/**
-	 * @return Timeline
+	 * @return Life
 	 */
 	public static function getInstance()
 	{
