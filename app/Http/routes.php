@@ -18,7 +18,7 @@ Route::group([
 ], function()
 {
 	Route::get('article/{id}', 'ArticleController@getIndex' )->where(['id'=>'[0-9]+']);
-	Route::get('article/{category}', 'ArticleController@getList' )->where(['category'=>'[a-zA-Z]+[a-zA-Z0-9]+']);
+	Route::get('article/{category}', 'ArticleController@getList' )->where(['category'=>'[a-zA-Z]+[a-zA-Z0-9]*']);
 	Route::controller('profile', 'ProfileController');
     Route::controller('life', 'LifeController');
 	Route::controller('home', 'HomeController');

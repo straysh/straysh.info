@@ -1,7 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use App\Models\Frontend\Article;
-use App\Models\Frontend\Timeline;
+use App\Models\Frontend\Life;
 use App\ModelServices\CategoryService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
@@ -115,10 +115,10 @@ class Blog extends Command {
             exit(-1);
         }
 
-        $model = Timeline::find($id);
+        $model = Life::find($id);
         if(!$model)
         {
-            $model = new Timeline();
+            $model = new Life();
         }
         $model->title = $title;
         $model->content = $content;
@@ -134,7 +134,13 @@ class Blog extends Command {
     {
         $time = time();
         $title = explode('.', $title);
-        $slug  = $title[1];
+        if(!isset($title[1]))
+        {
+            $slug  = str_replace([' ', '-'], '_', $title[0]);
+        }else
+        {
+            $slug  = $title[1];
+        }
         $title = $title[0];
         $content = file_get_contents($file);
 

@@ -117,3 +117,8 @@ code{
     display: block;
     width: 233px;
 }
+
+blockquote{
+    border-left: 2px solid #008E59;
+    padding-left: 5px;
+}
