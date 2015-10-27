@@ -153,7 +153,7 @@ class Blog extends Command {
             $model = new Article();
             $category_id = $this->parseCategory( $category );
             $model->title = $title;
-            $model->slug = $slug;
+            $model->slug = "{$category}_{$slug}";
             $model->body = $content;
             $model->category_id = $category_id;
             $model->user_id = 1;
