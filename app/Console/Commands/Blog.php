@@ -144,6 +144,7 @@ class Blog extends Command {
         $title = $title[0];
         $content = file_get_contents($file);
 
+        $slug = "{$category}_{$slug}";
         $model = Article::whereRaw("slug=?", [$slug])->first();
         if($model)
         {
@@ -153,7 +154,7 @@ class Blog extends Command {
             $model = new Article();
             $category_id = $this->parseCategory( $category );
             $model->title = $title;
-            $model->slug = "{$category}_{$slug}";
+            $model->slug = $slug;
             $model->body = $content;
             $model->category_id = $category_id;
             $model->user_id = 1;
