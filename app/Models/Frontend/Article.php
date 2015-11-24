@@ -1,7 +1,11 @@
 <?php namespace App\Models\Frontend;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Article extends FrontendModel
 {
+    use SoftDeletes;
+
 	private static $_instance;
 
 	protected $table = 'article';
@@ -158,8 +162,8 @@ class Article extends FrontendModel
 		$categoryid = filter_var($categoryid, FILTER_VALIDATE_INT);
 		if(empty($categoryid)) return array();
 
-		$result = self::whereRaw('category_id=?', [$categoryid])->orderBy('id', 'DESC')->get();
+		$result = self::whereRaw('category_id=?', [$categoryid])->orderBy('id', 'DESC');
 
-		return $result;
+		return $result->get();
 	}
 }

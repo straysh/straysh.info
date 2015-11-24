@@ -1,9 +1,12 @@
 <?php namespace App\Models\Frontend;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends FrontendModel
 {
+    use SoftDeletes;
+
 	private static $_instance;
 
 	protected $table = 'category';
