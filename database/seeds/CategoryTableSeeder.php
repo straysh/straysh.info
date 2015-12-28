@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Frontend\Category;
+use App\Http\Models\Frontend\Category;
 
 class CategoryTableSeeder extends BaseTableSeeder
 {

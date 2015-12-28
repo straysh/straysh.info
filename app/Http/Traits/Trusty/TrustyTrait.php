@@ -1,7 +1,7 @@
 <?php namespace App\Http\Traits\Trusty;
 
 use Illuminate\Support\Collection;
-use App\Models\Frontend\Role;
+use App\Http\Models\Frontend\Role;
 
 trait TrustyTrait
 {

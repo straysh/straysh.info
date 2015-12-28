@@ -4,8 +4,8 @@ return [
 
     'model' => [
         'user' => 'App\Model\Frontend\User',
-        'role' => 'App\Models\Frontend\Role',
-        'permission' => 'App\Models\Frontend\Permission',
+        'role' => 'App\Http\Models\Frontend\Role',
+        'permission' => 'App\Http\Models\Frontend\Permission',
     ],
 
 ];

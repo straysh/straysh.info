@@ -33,10 +33,6 @@ class LoginController extends BackendController
             return redirect()->route('home')->withFlashMessage('Login Success!');
         }
 
-        if (getenv('PINGPONG_ADMIN_TESTING')) {
-            return redirect()->to('admin/login')->withFlashMessage("Login failed!")->withFlashType('danger');
-        }
-
         return redirect()->back()->withFlashMessage("Login failed!")->withFlashType('danger');
     }
 }

@@ -36,7 +36,7 @@ class Authenticate {
 //			return Redirect::route('admin.login.index');
 //		}
 
-		if ($this->auth->guest() or !$this->auth>user()->is('admin'))
+		if ($this->auth->guest() or !$this->auth->user()->is('admin'))
 		{
 			if ($request->ajax())
 			{

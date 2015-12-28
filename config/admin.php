@@ -11,26 +11,26 @@ return [
 		'post' => 'backend.article'
 	],
 	'article' => [
-		'model' => 'App\Models\Frontend\Article',
+		'model' => 'App\Http\Models\Frontend\Article',
 		'perpage' => 20
 	],
 	'page' => [
 		'perpage' => 10
 	],
 	'user' => [
-		'model' => 'App\Models\Frontend\User',
+		'model' => 'App\Http\Models\Frontend\User',
 		'perpage' => 10
 	],
 	'role' => [
-		'model' => 'App\Models\Frontend\Role',
+		'model' => 'App\Http\Models\Frontend\Role',
 		'perpage' => 10
 	],
 	'permission' => [
-		'model' => 'App\Models\Frontend\Permission',
+		'model' => 'App\Http\Models\Frontend\Permission',
 		'perpage' => 10
 	],
 	'category' => [
-		'model' => 'App\Models\Frontend\Category',
+		'model' => 'App\Http\Models\Frontend\Category',
 		'perpage' => 10
 	],
 ];

@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Frontend;
 
 
-use App\Facades\ViewHelper;
-use App\Models\Frontend\Article;
-use App\Models\Frontend\Category;
+use App\Http\Facades\ViewHelper;
+use App\Http\Models\Frontend\Article;
+use App\Http\Models\Frontend\Category;
 
 class ArticleController extends FrontController
 {

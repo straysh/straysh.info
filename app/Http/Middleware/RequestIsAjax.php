@@ -1,7 +1,7 @@
 <?php namespace App\Http\Middleware;
 
-use App\Helpers\ErrorCode;
-use App\Helpers\JsonHelper;
+use App\Http\Helpers\ErrorCode;
+use App\Http\Helpers\JsonHelper;
 use Closure;
 
 class RequestIsAjax

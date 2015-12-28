@@ -1,6 +1,6 @@
 <?php namespace App\Http\Composers;
 
-use App\Models\Frontend\Role;
+use App\Http\Models\Frontend\Role;
 
 class UserFormComposer
 {

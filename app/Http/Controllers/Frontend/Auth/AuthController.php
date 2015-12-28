@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Exceptions\DevBaseException;
-use App\Helpers\JsonHelper;
-use App\Models\Frontend\ForbiddenUsername;
-use App\Models\Frontend\LoginUserHistory;
+use App\Http\Helpers\JsonHelper;
+use App\Http\Models\Frontend\ForbiddenUsername;
+use App\Http\Models\Frontend\LoginUserHistory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Frontend\FrontController;
 use Illuminate\Contracts\Auth\Guard;

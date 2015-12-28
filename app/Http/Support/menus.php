@@ -2,7 +2,7 @@
 
 Menu::create('admin-menu', function ($menu) {
     $menu->enableOrdering();
-    $menu->setPresenter('App\Helpers\Presenters\SidebarMenuPresenter');
+    $menu->setPresenter('App\Http\Helpers\Presenters\SidebarMenuPresenter');
     $menu->route('home', trans('menus.dashboard'), [], 0, ['icon' => 'fa fa-dashboard']);
     $menu->dropdown(trans('menus.articles.title'), function ($sub) {
         $sub->route('articles.index', trans('menus.articles.all'), [], 1);

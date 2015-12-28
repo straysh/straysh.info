@@ -1,5 +1,4 @@
 <?php
-
 //use Pingpong\Admin\Entities\Option;
 //use Pingpong\Admin\Entities\Category;
 
@@ -51,7 +50,7 @@ if (! function_exists('option')) {
     function option($key, $default = null)
     {
         try {
-            $option = \App\Models\Frontend\Option::findByKey($key)->first();
+            $option = \App\Http\Models\Frontend\Option::findByKey($key)->first();
 
             return ! empty($option) ? $option->value : $default;
         } catch (PDOException $e) {
@@ -147,7 +146,7 @@ if (! function_exists('article')) {
      */
     function article()
     {
-        return new \App\Models\Frontend\Article;
+        return new \App\Http\Models\Frontend\Article;
     }
 }
 
@@ -171,6 +170,6 @@ if (! function_exists('category')) {
      */
     function category()
     {
-        return new \App\Models\Frontend\Category;
+        return new \App\Http\Models\Frontend\Category;
     }
 }

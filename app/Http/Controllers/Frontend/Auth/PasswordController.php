@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Helpers\ErrorCode;
-use App\Helpers\JsonHelper;
-use App\Models\Frontend\LoginUser;
-use App\Models\Frontend\PasswordReset;
+use App\Http\Helpers\ErrorCode;
+use App\Http\Helpers\JsonHelper;
+use App\Http\Models\Frontend\LoginUser;
+use App\Http\Models\Frontend\PasswordReset;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Frontend\FrontController;
 use Illuminate\Contracts\Auth\Guard;

@@ -1,6 +1,6 @@
 <?php namespace App\Http\Composers;
 
-use App\Models\Frontend\Permission;
+use App\Http\Models\Frontend\Permission;
 
 class RoleFormComposer
 {

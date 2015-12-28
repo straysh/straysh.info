@@ -2,12 +2,12 @@
 
 use App\Events\Credit;
 use App\Exceptions\DevBaseException;
-use App\Helpers\JsonHelper;
-use App\Helpers\LookUp;
+use App\Http\Helpers\JsonHelper;
+use App\Http\Helpers\LookUp;
 use App\Http\Controllers\Frontend\FrontController;
-use App\Models\Frontend\LoginUser;
-use App\ModelServices\UserShareService;
-use App\ModelServices\UserSocializeService;
+use App\Http\Models\Frontend\LoginUser;
+use App\Http\ModelServices\UserShareService;
+use App\Http\ModelServices\UserSocializeService;
 use Facebook\FacebookRequest;
 use Facebook\FacebookRequestException;
 use Facebook\FacebookSession;

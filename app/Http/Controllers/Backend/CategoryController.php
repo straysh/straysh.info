@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use App\Models\Frontend\Category;
+use App\Http\Models\Frontend\Category;
 use App\Http\Repositories\Categories\CategoryRepository;
 //@fixme
 use Illuminate\Http\Response;

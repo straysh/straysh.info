@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers\Frontend;
 
 
-use App\Models\Frontend\Life;
+use App\Http\Models\Frontend\Life;
 
 class LifeController extends FrontController
 {

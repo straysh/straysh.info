@@ -1,6 +1,6 @@
 <?php namespace App\Providers;
 
-use App\Helpers\ImageHelper;
+use App\Http\Helpers\ImageHelper;
 use Illuminate\Support\ServiceProvider;
 
 class ImageHelperServiceProvider extends ServiceProvider {
@@ -26,7 +26,7 @@ class ImageHelperServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->singleton('App\Helpers\ImageHelper', function(){
+		$this->app->singleton('App\Http\Helpers\ImageHelper', function(){
 			return new ImageHelper;
 		});
 	}

@@ -31,7 +31,7 @@
     <footer class="site-footer" id="site-footer">
         <h2 class="epsilon">创建和维护</h2>
         <ul>
-            <li><a href="{{ Request::url() }}">jobhancao Chao</a></li>
+            <li><a href="{{ Request::url() }}">Jobkhan Chao</a></li>
         </ul>
 
         <h2 class="epsilon">个人简介</h2>

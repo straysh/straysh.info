@@ -6,7 +6,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 //@fixme
-use App\Helpers\ImageHelper as ImageUploader;
+use App\Http\Helpers\ImageHelper as ImageUploader;
 use App\Http\Requests\Article\Create;
 use App\Http\Requests\Article\Update;
 

@@ -1,8 +1,8 @@
 <?php namespace App\Console\Commands;
 
-use App\Models\Frontend\Article;
-use App\Models\Frontend\Life;
-use App\ModelServices\CategoryService;
+use App\Http\Models\Frontend\Article;
+use App\Http\Models\Frontend\Life;
+use App\Http\ModelServices\CategoryService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
 use Symfony\Component\Console\Input\InputOption;

@@ -21,6 +21,7 @@
         <div class="form-box" id="login-box">
             <div class="header">Sign In</div>
             <form action="{{ route('login.store') }}" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="body bg-gray">
                     @if(Session::has('flash_message'))
                         <p class="login-flash-text text-danger">

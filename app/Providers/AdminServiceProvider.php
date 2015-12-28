@@ -19,10 +19,10 @@ class AdminServiceProvider extends ServiceProvider
      * @var array
      */
     protected $providers = [
-        'App\Http\Composers\ComposerServiceProvider',
-        'App\Providers\SupportServiceProvider',
-        'App\Helpers\Menus\MenusServiceProvider',
-        'App\Providers\RepositoriesServiceProvider',
+        \App\Http\Composers\ComposerServiceProvider::class,
+        \App\Providers\SupportServiceProvider::class,
+        \App\Http\Helpers\Menus\MenusServiceProvider::class,
+        \App\Providers\RepositoriesServiceProvider::class,
 //        'Pingpong\Trusty\TrustyServiceProvider',
 //        'Pingpong\Admin\Providers\ConsoleServiceProvider',
 //        'Pingpong\Admin\Providers\RepositoriesServiceProvider',
@@ -34,7 +34,7 @@ class AdminServiceProvider extends ServiceProvider
      * @var array
      */
     protected $facades = [
-        'Menu' => 'App\Helpers\Menus\MenuFacade',
+        'Menu' => \App\Http\Helpers\Menus\MenuFacade::class,
 //        'Role' => 'Pingpong\Trusty\Entities\Role',
 //        'Permission' => 'Pingpong\Trusty\Entities\Permission',
 //        'Trusty' => 'Pingpong\Trusty\Facades\Trusty',

@@ -9,6 +9,11 @@
 		{!! $errors->first('name', '<div class="text-danger">:message</div>') !!}
 	</div>
 	<div class="form-group">
+		{!! Form::label('name_zh', '中文名:') !!}
+		{!! Form::text('name_zh', null, ['class' => 'form-control']) !!}
+		{!! $errors->first('name_zh', '<div class="text-danger">:message</div>') !!}
+	</div>
+	<div class="form-group">
 		{!! Form::label('slug', 'Slug:') !!}
 		{!! Form::text('slug', null, ['class' => 'form-control']) !!}
 		{!! $errors->first('slug', '<div class="text-danger">:message</div>') !!}

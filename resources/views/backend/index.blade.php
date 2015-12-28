@@ -37,7 +37,7 @@
 		<div class="small-box bg-green">
 			<div class="inner">
 				<h3>
-					{!! App\Models\Frontend\Article::onlyPost()->count() !!}
+					{!! App\Http\Models\Frontend\Article::onlyPost()->count() !!}
 				</h3>
 
 				<p>

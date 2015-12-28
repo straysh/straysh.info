@@ -2,9 +2,9 @@
 
 session_check();
 
+use App\Http\Helpers\Presenters\Article;
+use App\Http\Models\Frontend\Option;
 use Illuminate\Http\Request;
-use Pingpong\Admin\Entities\Article;
-use Pingpong\Admin\Entities\Option;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class SiteController extends BackendController
@@ -96,7 +96,7 @@ class SiteController extends BackendController
     /**
      * Show article.
      *
-     * @param  int $id
+     * @param  int $idFormFacade
      * @return mixed
      */
     public function showArticle($id)

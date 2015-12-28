@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider {
 			'App\Services\Registrar'
 		);
 
-		$this->app->bind('ViewHelper', 'App\Services\ViewHelper');
+		$this->app->bind('ViewHelper', 'App\Http\Services\ViewHelper');
 	}
 
 }
