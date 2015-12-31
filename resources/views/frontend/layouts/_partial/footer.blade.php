@@ -2,12 +2,12 @@
 <footer class="site-footer" id="site-footer">
     <h2 class="epsilon">创建和维护</h2>
     <ul>
-        <li><a href="{{ Request::url() }}">Jobkhan Chao</a></li>
+        <li><a href="/v2">Jobkhan Chao</a></li>
     </ul>
 
     <h2 class="epsilon">个人简介</h2>
     <ul>
-        <li><a href="/profile/index">曹庭汉</a></li>
+        <li><a href="/v2/profile">曹庭汉</a></li>
     </ul>
 
     <h2 class="epsilon">电子邮件</h2>
@@ -28,7 +28,7 @@
     </p>
 
     <div>
-        <a href="{{ Request::url() }}" target="_blank">Straysh's Blog</a>
+        <a href="/v2" target="_blank">Straysh's Blog</a>
         |
         <a href="mailto:jobhancao@gmail.com">给我留言</a>
         |
@@ -42,6 +42,6 @@
             {{--</div>--}}
         </div>
         <br/>
-        <span>Copyright © 2012 - 2015 Straysh. All Rights Reserved</span>
+        <span>Copyright © 2012 - 2016 Straysh. All Rights Reserved</span>
     </div>
 </footer>
