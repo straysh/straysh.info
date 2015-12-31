@@ -33,9 +33,9 @@
             <div class="nav-content">
                 <h1>Straysh的后院</h1>
                 <div class="introduce">
-                    妳是风中的叶，
+                    妳是风中的叶，风起而走,我向去追,
                     <br />
-                    我怎么抓的住。
+                    怎么抓的住?
                 </div>
                 <ul id="nav-menu" class="nav-menu">
                     <li class="menu-item active"><a href="/v2">首页</a></li>
