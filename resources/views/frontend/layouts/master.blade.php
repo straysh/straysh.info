@@ -31,12 +31,12 @@
     <footer class="site-footer" id="site-footer">
         <h2 class="epsilon">创建和维护</h2>
         <ul>
-            <li><a href="{{ Request::url() }}">Jobkhan Chao</a></li>
+            <li><a href="/v2/profile">Jobkhan Chao</a></li>
         </ul>
 
         <h2 class="epsilon">个人简介</h2>
         <ul>
-            <li><a href="/profile/index">曹庭汉</a></li>
+            <li><a href="/v2/profile">曹庭汉</a></li>
         </ul>
 
         <h2 class="epsilon">电子邮件</h2>

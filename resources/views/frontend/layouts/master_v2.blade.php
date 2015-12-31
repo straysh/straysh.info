@@ -12,16 +12,16 @@
 <body class="{{ $bodyClass or "output" }}" id="main-container" role="main" ontouchstart="" data-ctrl-name="pageview" data-dpr="2" >
 <div class="navbar navbar-jianshu expanded">
     <div class="dropdown">
-        <a class="active logo" role="button" data-original-title="个人主页" data-container="div.expanded" href="/">
+        <a class="active logo" href="/v2">
             <b>S</b>{{--<i class="fa fa-home hidden"></i>--}}<span class="title hidden">首页</span>
         </a>
-        <a data-toggle="tooltip" data-placement="right" data-original-title="专题" data-container="div.expanded" href="/collections">
+        <a href="javascript:void 0;">
             <i class="fa fa-th"></i><span class="title hidden">Category</span>
         </a>
     </div>
     <div class="nav-user">
         {{--<a href="#view-mode-modal" data-toggle="modal"><i class="fa fa-font"></i><span class="title">显示模式</span></a>--}}
-        <a class="signin" data-signin-link="true" data-toggle="modal" data-placement="right" data-original-title="登录" data-container="div.expanded" href="/sign_in">
+        <a class="signin" href="javascript:void 0;">
             <i class="fa fa-sign-in"></i><span class="title hidden">登录</span>
         </a>
     </div>
@@ -47,7 +47,7 @@
             <div class="img-info">
                 <i class="fa fa-info"></i>
                 <div class="info">
-                    Photo by <a target="_blank" href="http://unsplash.com/">unsplash</a>
+                    Photo by <a target="_blank" href="javascript:void 0;">unsplash</a>
                 </div>
             </div>
         </div>
@@ -55,13 +55,13 @@
             <div class="page-title">
                 <ul class="recommened-nav navigation clearfix">
                     <li class="active">
-                        <a data-pjax="true" href="/trending/now">发现</a>
+                        <a data-pjax="true" href="javascript:void 0;">发现</a>
                     </li>
                     {{--<li>
                         <a data-pjax="true" href="/trending/now">发现</a>
                     </li>--}}
                     <li class="search">
-                        <form class="search-form" target="_blank" action="/search" accept-charset="UTF-8" method="get">
+                        <form class="search-form" target="_blank" action="#" accept-charset="UTF-8" method="get">
                             <input name="utf8" type="hidden" value="✓">
                             <input type="search" name="q" placeholder="搜索" class="input-medium search-query" onfocus="$(this).stop().animate({width: '300px'});" onblur="$(this).stop().animate({width:'150px'});">
                             <span class="search_trigger" onclick="$('form.search-form').submit();"><i class="fa fa-search"></i></span>

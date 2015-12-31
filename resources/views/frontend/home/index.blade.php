@@ -3,9 +3,9 @@
 @section("content")
     <header class="site-header" id="site-header">
         <hgroup>
-            <h1  class="site-title"><a href="{{ Request::url() }}">Straysh的后花园</a></h1>
+            <h1  class="site-title"><a href="/v2">Straysh的后院</a></h1>
         </hgroup>
-        作者：<a href="/profile/index" target="_blank">Straysh</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://t.qq.com/Straysh" target="_blank">关注我的微博</a>
+        作者：<a href="/v2/profile">Straysh</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://t.qq.com/Straysh" target="_blank">关注我的微博</a>
         <iframe src="http://follow.v.t.qq.com/index.php?c=follow&a=quick&name=straysh&style=5&t=1354873775992&f=1" marginwidth="0" marginheight="0" allowtransparency="true" frameborder="0" height="24" scrolling="auto" width="178"></iframe>
     </header>
 
