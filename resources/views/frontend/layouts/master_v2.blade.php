@@ -34,6 +34,7 @@
                 <h1>Straysh的后院</h1>
                 <div class="introduce">
                     妳是风中的叶，
+                    <br />
                     我怎么抓的住。
                 </div>
                 <ul id="nav-menu" class="nav-menu">
