@@ -33,8 +33,8 @@
             <div class="nav-content">
                 <h1>Straysh的后院</h1>
                 <div class="introduce">
-                    在夜深人静的夜空中，
-                    寻找最初失去的温柔。
+                    妳是风中的叶，
+                    我怎么抓的住。
                 </div>
                 <ul id="nav-menu" class="nav-menu">
                     <li class="menu-item active"><a href="/v2">首页</a></li>
