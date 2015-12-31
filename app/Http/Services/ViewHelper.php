@@ -3,9 +3,26 @@
 use App\Http\Helpers\utils\Parsedown;
 use App\Http\Helpers\Yutils;
 use App\Http\Models\Frontend\Category;
+use Illuminate\Support\Facades\App;
 
 class ViewHelper
 {
+	public function registerLang()
+	{
+		$lang = App::getLocale();
+		$langPath = base_path()."/resources/lang/{$lang}";
+
+		$results = [];
+		foreach (new \DirectoryIterator($langPath) as $fileInfo) {
+			if($fileInfo->isDot()) continue;
+			if(mb_substr($fileInfo, 0, 1) === '.') continue;
+			$results[pathinfo($fileInfo, PATHINFO_FILENAME)] = include("{$langPath}/{$fileInfo}");
+		}
+
+		$lang = "<script>var Ylang = eval(".json_encode($results).");</script>";
+		return $lang;
+	}
+
 	public function registerRequireScript($templateId)
 	{
 		return Yutils::getInstance()->registerRequireScript($templateId);
@@ -21,7 +38,7 @@ class ViewHelper
 		$tplTag = "<script id='%s-tpl' type='text/template'>%s</script>";
 		$errorTag = "<script>%s</script>";
 		$tpl = '';
-		$path = base_path().'/resources/views/frontend/JsTemplate';
+		$path = base_path().'/resources/views/JsTemplate';
 		$emptyTemplate = $path."/empty.blade.php";
 		foreach($templateArray as $id)
 		{
@@ -30,14 +47,63 @@ class ViewHelper
 			{
 				$view = view()->file($file, ["__id"=>$id])->render();
 				$view = sprintf($tplTag, str_replace('.', '-', $id), $view);
-				$tpl .= str_replace(['-feed-', '-timeline-'], '-timeline-feed-', $view);
+				$tpl .= str_replace(['-feed-', '-timeline-'], '-timelineFeed-', $view);
 			}else{
 				$file = $emptyTemplate;
 				$view = view()->file($file, ["__id"=>$id])->render();
 				$tpl .= sprintf($errorTag, $view);
 			}
 		}
-		return $tpl;
+		return $this->trimJsTpl($tpl);
+	}
+
+	public function registerRequirejs($name)
+	{
+		$name = explode('/', $name);
+		$filename = $name[1];
+		$version = config('app.debug') ? time() : config('setting.app_version');
+		if( config('app.debug') )
+		{
+			$js[] = "<script src='/js_develop/app/mainConfigFile.js'></script>";
+			$js[] = "<script data-main='/js_develop/app/%s.js?r={$version}' src='/js_develop/require.js'></script>";
+		}else
+		{
+			$js[] = "<script src='/js/%s.min.js?r={$version}'></script>";
+		}
+
+		$js = implode('', $js);
+
+		return sprintf($js, $filename);
+	}
+
+	public function registerCssScript($filename)
+	{
+		$version = config('app.debug') ? time() : config('setting.app_version');
+		if(config('app.debug'))
+		{
+			$href = asset("/css_develop/{$filename}.css?r={$version}");
+		}else
+		{
+			$href = asset("/css/{$filename}.min.css?r={$version}");
+		}
+		return "<link rel=\"stylesheet\" href=\"{$href}\" />";
+	}
+
+	/**
+	 * 去除js模板中的空白字符
+	 * @param $tpl
+	 * @return string
+	 */
+	protected function trimJsTpl($tpl)
+	{
+		if(empty($tpl) || !is_string($tpl))
+		{
+			return '';
+		}
+		/* 去除html空格与换行 */
+		$find     = array("~<!--.*-->~", "~>\s+<~","~>(\s+\n|\r)~", "~}}\s+{{~","~}}(\s+\n|\r)~", "~>\s+{{~", '~}}\s+<~');
+		$replace  = array('', '><','>', '}}{{', '}}', '>{{', '}}<');
+		return preg_replace($find, $replace, $tpl);
 	}
 
 	public function apiHost()
@@ -55,11 +121,35 @@ class ViewHelper
 		return 'http://'.config('setting.chat_host');
 	}
 
+	public function staticHost()
+	{
+		return config('setting.static_host');
+	}
+
 	public function json_encode($array)
 	{
 		$json = json_encode($array);
 		return $json ?: 'null';
 	}
+
+	public function encryptEmailToken($rawToken, $email)
+	{
+		return Yutils::getInstance()->encryptEmailToken($rawToken, $email);
+	}
+
+//	/**
+//	 * @param string $url 图片的url
+//	 * @param int $w 目标图片宽
+//	 * @param int $h 目标图片高
+//	 * @param string $quality 图片质量
+//	 * @param int $type 剪切类型：1->强制缩放;2->等比缩放;3->中心剪切
+//	 *
+//	 * @return string
+//	 */
+//	public function resizeImage($url, $w=0, $h=0, $type=2, $quality='')
+//	{
+//		return ImageHelper::getInstance()->resize($url, $w, $h, $type, $quality);
+//	}
 
 	public function renderSideTree()
 	{

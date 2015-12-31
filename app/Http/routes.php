@@ -22,6 +22,7 @@ Route::group([
 	Route::controller('profile', 'ProfileController');
     Route::controller('life', 'LifeController');
 	Route::controller('home', 'HomeController');
+	Route::controller('v2', 'V2Controller');
 
 	if( file_exists(app_path().'/Http/Controllers/Frontend/TestController.php') )
 	{
