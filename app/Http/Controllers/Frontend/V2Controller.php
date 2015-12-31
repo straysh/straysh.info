@@ -8,12 +8,14 @@ class V2Controller extends FrontController
 
     public function getIndex()
     {
-        return view('frontend.v2.index');
+        $this->viewData('navMenuActive', 'homepage');
+        return view('frontend.v2.index', $this->viewData);
     }
 
     public function getProfile()
     {
-        return view('frontend.v2.profile');
+        $this->viewData('navMenuActive', 'profile');
+        return view('frontend.v2.profile', $this->viewData);
     }
 
     public function getLife()
@@ -38,8 +40,9 @@ class V2Controller extends FrontController
 
             }
         }
-        return view('frontend.v2.life', [
-            'articles' => $article,
-        ]);
+
+        $this->viewData('navMenuActive', 'life');
+        $this->viewData('articles', $article);
+        return view('frontend.v2.life', $this->viewData);
     }
 }

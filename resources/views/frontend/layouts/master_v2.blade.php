@@ -38,11 +38,11 @@
                     怎么抓的住?
                 </div>
                 <ul id="nav-menu" class="nav-menu">
-                    <li class="menu-item active"><a href="/v2">首页</a></li>
-                    <li class="menu-item"><a href="javascript:void 0;">工作学习</a></li>
-                    <li class="menu-item"><a href="javascript:void 0;">随笔</a></li>
-                    <li class="menu-item"><a href="/v2/life">杂记</a></li>
-                    <li class="menu-item"><a href="/v2/profile">关于博主</a></li>
+                    <li class="menu-item {{ ViewHelper::navMenuActive("homepage", $navMenuActive) }}"><a href="/v2">首页</a></li>
+                    <li class="menu-item {{ ViewHelper::navMenuActive("tech-article", $navMenuActive) }}"><a href="javascript:void 0;">工作学习</a></li>
+                    <li class="menu-item {{ ViewHelper::navMenuActive("essay", $navMenuActive) }}"><a href="javascript:void 0;">随笔</a></li>
+                    <li class="menu-item {{ ViewHelper::navMenuActive("life", $navMenuActive) }}"><a href="/v2/life">杂记</a></li>
+                    <li class="menu-item {{ ViewHelper::navMenuActive("profile", $navMenuActive) }}"><a href="/v2/profile">关于博主</a></li>
                 </ul>
             </div>
             <div class="img-info">

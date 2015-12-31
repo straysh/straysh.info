@@ -175,4 +175,9 @@ class ViewHelper
 		return "{$closeTags[0]}{$str}{$closeTags[1]}";
 	}
 
+	public function navMenuActive($menu, $active)
+	{
+		return $menu === $active ? "active" : "";
+	}
+
 }
