@@ -28,8 +28,8 @@
 </div>
 <div class="row-fluid">
     <div class="recommended">
-        <div class="span3 left-aside">
-            <div class="cover-img" style="background-image: url(/images/left_images/2.jpg)"></div>
+        <div class="span3 left-aside" style="background-image: url(/images/left_images/2.jpg)">
+            {{--<div class="cover-img" style="background-image: url(/images/left_images/2.jpg)"></div>--}}
             <div class="nav-content">
                 <h1>Straysh的后院</h1>
                 <div class="introduce">
@@ -44,11 +44,11 @@
                     <li class="menu-item {{ ViewHelper::navMenuActive("life", $navMenuActive) }}"><a href="/v2/life">杂记</a></li>
                     <li class="menu-item {{ ViewHelper::navMenuActive("profile", $navMenuActive) }}"><a href="/v2/profile">关于博主</a></li>
                 </ul>
-            </div>
-            <div class="img-info">
-                <i class="fa fa-info"></i>
-                <div class="info">
-                    Photo by <a target="_blank" href="javascript:void 0;">unsplash</a>
+                <div class="img-info">
+                    <i class="fa fa-info"></i>
+                    <div class="info">
+                        Photo by <a target="_blank" href="javascript:void 0;">unsplash</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,3 +1,4 @@
+html,body{height: 100%;}
 body {
   margin: 0;
   font-size: 14px;
@@ -5,11 +6,10 @@ body {
   background-color: white;
 }
 .output{
-  padding-left: 45px;
+  padding-left: 4%;
 }
 .navbar {
   overflow: visible;
-  margin-bottom: 20px;
 }
 
 .navbar-jianshu {
@@ -18,14 +18,15 @@ body {
   width: 4%;
   z-index: 1049;
   -webkit-backface-visibility: hidden;
+  .dropdown{.displayFlex;flex-flow: column wrap;}
   .nav-user {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    //width: 100%;
     padding-bottom: 5px;
   }
   a{
-    display: block;
+    display: inline-block;
     padding: 10px;
     font-size: 16px;
     line-height: 25px;
@@ -74,7 +75,7 @@ body {
  * 全局框架
  *********************/
 [class*="span"] {
-  float: left;
+  //float: left;
   min-height: 1px;
   margin-left: 20px;
 }
@@ -82,12 +83,12 @@ body {
   width: 220px;
 }
 .left-aside {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 45px;
-  z-index: 9999;
+  position: relative;
+  //top: 0;
+  //left: 0;
+  //bottom: 0;
+  //left: 4%;
+  //z-index: 1000;
   .img-info {
     position: absolute;
     right: 0;
@@ -156,8 +157,12 @@ body {
   border-bottom: 2px solid #d9d9d9;
   font-size: 14px;
 }
+.right-aside{
+  flex: 1 auto;
+}
 .row-fluid {
   width: 100%;
+  height: 100%;
   .beforeAfterClearboth;
   [class*="span"] {
     display: block;
@@ -166,8 +171,7 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    float: left;
-    margin-left: 0%;
+    margin-left: 0;
   }
   [class*="span"]:first-child {
     margin-left: 0;
@@ -176,13 +180,15 @@ body {
     width: 25.0%;
   }
   .offset3 {
-    margin-left: 25.0%;
+    //margin-left: 25.0%;
   }
   .span7 {
     //padding-left: 12px;
     width: 75%;
   }
   .recommended {
+    position: relative;
+    height: 100%;
     .span7 {
       max-width: 1000px;
     }
@@ -315,6 +321,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   color: #FFF;
@@ -438,3 +445,40 @@ body {
   }
 }
 
+@media all and(min-device-width: 1024px){
+  .left-aside, .right-aside{float: left;}
+  .left-aside{
+    display: inline-block;
+    height: 100%;
+  }
+  .right-aside{
+    display: inline-block;
+    height: 100%;
+  }
+}
+@media all and (max-device-width: 1024px) {
+  .navbar-jianshu{display: none;}
+  .output{
+    padding-left: 0 !important;
+    .expanded{height: 45px;}
+    .navbar-jianshu{
+      width: 100%;
+      .dropdown{top:0;left:0;flex-flow:row nowrap;}
+      .nav-user{top:0;right:0;bottom:auto;}
+    }
+  }
+  .recommended{
+    flex-direction: column;
+    flex-wrap: wrap;
+    .span3{width:100%;}
+    .span7{width: 100%;}
+    .offset3{margin-left: 0;}
+    .left-aside{left: 0;position: static;height: 100%;}
+    .right-aside{
+      .page-title{display: none;}
+    }
+  }
+  .qq-zone-card{
+    img{width:100% !important;}
+  }
+}
