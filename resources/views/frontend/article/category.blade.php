@@ -12,5 +12,5 @@
     <script>
         UI.$CONFIG.currentPage = 'category';
     </script>
-    {!! ViewHelper::registerRequirejs('app/theme') !!}
+    {!! ViewHelper::registerRequirejs('app/app') !!}
 @stop

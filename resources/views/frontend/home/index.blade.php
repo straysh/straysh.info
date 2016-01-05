@@ -19,5 +19,5 @@
     <script>
         UI.$CONFIG.currentPage = 'homepage';
     </script>
-    {!! ViewHelper::registerRequirejs('app/theme') !!}
+    {!! ViewHelper::registerRequirejs('app/app') !!}
 @stop

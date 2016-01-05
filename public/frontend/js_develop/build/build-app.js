@@ -1,7 +1,7 @@
 ({
     optimize: 'none',
-    name: 'app/article',
-    out: '../../js_dist/article.js',
+    name: 'app/app',
+    out: '../../js_dist/app.js',
     baseUrl: '../',
     mainConfigFile: '../../js_develop/app/mainConfigFile.js',
     paths: {

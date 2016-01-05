@@ -21,5 +21,5 @@
     <script>
         UI.$CONFIG.currentPage = 'timeline';
     </script>
-    {!! ViewHelper::registerRequirejs('app/theme') !!}
+    {!! ViewHelper::registerRequirejs('app/app') !!}
 @stop
