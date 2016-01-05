@@ -6,6 +6,8 @@
         @if(config('app.debug'))
             {!! ViewHelper::registerCssScript('app') !!}
             {!! ViewHelper::registerCssScript('test') !!}
+        @else
+            {!! ViewHelper::registerCssScript('app') !!}
         @endif
     @show
 </head>
