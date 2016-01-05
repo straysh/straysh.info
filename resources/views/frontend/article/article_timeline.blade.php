@@ -28,6 +28,14 @@
         </li>
         @endforeach
     </ul>
+    {!! ViewHelper::pagination($page, $maxPage) !!}
+    {{--<div class="pagination">--}}
+        {{--<a href="http://ymblog.net/">最前</a>--}}
+        {{--<a href="http://ymblog.net/page/6/">上一页</a>--}}
+        {{--<a href="http://ymblog.net/page/5/" class="inactive">5</a>--}}
+        {{--<a href="http://ymblog.net/page/6/" class="inactive">6</a>--}}
+        {{--<span class="current">7</span>--}}
+    {{--</div>--}}
 @stop
 
 @section("modal")
@@ -35,5 +43,5 @@
     <script>
         UI.$CONFIG.currentPage = 'article-timeline';
     </script>
-    {!! ViewHelper::registerRequirejs('app/app') !!}
+    {!! ViewHelper::registerRequirejs('app/v2') !!}
 @stop

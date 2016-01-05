@@ -172,8 +172,9 @@ class Article extends FrontendModel
         $query = self::orderBy('id', 'DESC');
 
         $this->concatOrder($query, $options);
+        $maxPage = $this->parseMaxpage($query, $options);
         $result = $query->paginate($options['limit']);
-        $result = $this->parseMaxpage($query, $result, $options);
+        $result->maxPage = $maxPage;
         return $result;
 	}
 }

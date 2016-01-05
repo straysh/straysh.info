@@ -185,4 +185,28 @@ class ViewHelper
         return date("Y-m-d H:i:s", $time?:time());
 	}
 
+	public function pagination($page, $maxPage)
+	{
+        $str = <<<PAGINATION
+<div class="pagination">
+        <a href="http://ymblog.net/">最前</a>
+        <a href="http://ymblog.net/page/6/">上一页</a>
+        <a href="http://ymblog.net/page/5/" class="inactive">5</a>
+        <a href="http://ymblog.net/page/6/" class="inactive">6</a>
+        <span class="current">7</span>
+    </div>
+PAGINATION;
+        $html = [];
+        $html[] = '<div class="pagination">';
+        for($i=1;$i<=$maxPage;$i++)
+        {
+            $html[] = $i == $page
+                ? sprintf('<span class="current">%s</span>', $i)
+                : sprintf("<a href='/article/timeline?page=%1\$s' class='%2\$s'>%1\$s</a>", $i, "");
+        }
+        $html[] = '</div>';
+
+        return implode('', $html);
+	}
+
 }

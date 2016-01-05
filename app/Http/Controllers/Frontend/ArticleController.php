@@ -49,6 +49,7 @@ class ArticleController extends FrontController
         $options = $this->pageParams($request->all());
         $articles = ArticleService::getInstance()->timeline($options);
         $this->viewData('maxPage', $articles['maxPage']);
+        $this->viewData('page', $request->input('page', 1));
         unset($articles['maxPage']);
         $this->viewData('articles', $articles);
 
