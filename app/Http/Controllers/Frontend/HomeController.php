@@ -21,7 +21,8 @@ class HomeController extends FrontController
 	 */
 	public function getIndex()
 	{
-		return view('frontend.home.index');
+		$this->viewData('navMenuActive', 'homepage');
+		return view('frontend.home.index', $this->viewData);
 	}
 
 }

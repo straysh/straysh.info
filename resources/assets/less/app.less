@@ -2,12 +2,31 @@
 @import "core.less";
 @import "form.less";
 @import "components.less";
-@import "jianshu.less";
+@import "./jianshu/nav-bar.less";
+@import "./jianshu/normal.less";
+@import "./jianshu/article.less";
+@import "./jianshu/timeline.less";
 @import "../less-font-awesome/font-awesome.less";
+@import "./highlight/monokai_sublime.less";
 
+html,body{height: 100%;}
+body {
+  margin: 0;
+  font-size: 14px;
+  color: #555555;
+  background-color: white;
+}
+.output{
+  padding-left: 4%;
+}
 a {
   color: black ;
 }
+code{
+  background-color: #bcc;
+  padding: 0 5px;
+}
+
 
 #list-container{
   margin-top: 50px;
@@ -19,6 +38,7 @@ a {
   text-align: center;
 }
 #welcome{font-size: 36px;}
+
 .site-footer {
   clear: both;
   padding-top: 40px !important;
@@ -36,9 +56,10 @@ a {
   }
 }
 
-.profile{
-  ul{padding-left: 3em;}
-  li{list-style: disc !important;}
+.profile, timeline, content{
+  ul,ol{padding-left: 3em;}
+  ul li{list-style: disc !important;}
+  ol li{list-style: decimal !important;}
   h3{
     color: rgb(51, 51, 51);
     font-size: 24px;
@@ -48,7 +69,7 @@ a {
     line-height: 1.2;
   }
 }
-.site-footer, .profile{
+.site-footer, .profile, timeline{
   p{margin: 0 0 10.5px;}
   a{
     color: #008E59;

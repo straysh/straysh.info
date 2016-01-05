@@ -17,7 +17,8 @@ class ProfileController extends FrontController
 
 	public function getIndex()
 	{
-		return view('frontend.profile.index');
+		$this->viewData('navMenuActive', 'profile');
+		return view('frontend.profile.index', $this->viewData);
 	}
 
 }

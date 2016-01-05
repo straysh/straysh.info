@@ -58,5 +58,4 @@ class Yutils
 		];
 		return in_array($clientType, $mobiles);
 	}
-
 }

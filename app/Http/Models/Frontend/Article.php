@@ -166,4 +166,14 @@ class Article extends FrontendModel
 
 		return $result->get();
 	}
+
+    public function timeline($options)
+    {
+        $query = self::orderBy('id', 'DESC');
+
+        $this->concatOrder($query, $options);
+        $result = $query->paginate($options['limit']);
+        $result = $this->parseMaxpage($query, $result, $options);
+        return $result;
+	}
 }

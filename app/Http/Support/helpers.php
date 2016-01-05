@@ -173,3 +173,45 @@ if (! function_exists('category')) {
         return new \App\Http\Models\Frontend\Category;
     }
 }
+
+if (! function_exists('dde')) {
+    /**
+     * var_dump and exit
+     *
+     * @return void
+     */
+    function dde()
+    {
+        $args = func_get_args();
+        foreach($args as $v)
+        {
+            var_export($v);
+            echo PHP_EOL;
+        }
+        exit;
+    }
+}
+
+if (! function_exists('checkRequired')) {
+    /**
+     * var_dump and exit
+     *
+     * @param $params
+     * @param array $required
+     * @param bool $isset
+     * @return bool
+     */
+    function checkRequired($params, $required=[], $isset=false)
+    {
+        foreach($required as $k)
+        {
+            if($isset ? !isset($params[$k]) : empty($params[$k]))
+            {
+                if(config('app.debug')) dde($k);
+
+                return FALSE;
+            }
+        }
+        return TRUE;
+    }
+}

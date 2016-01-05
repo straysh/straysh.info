@@ -9,10 +9,10 @@
         @endif
     @show
 </head>
-<body class="{{ $bodyClass or "output" }}" id="main-container" role="main" ontouchstart="" data-ctrl-name="pageview" data-dpr="2" >
+<body class="{{ $bodyClass or "output" }}" id="{{ $bodyId or "main-container" }}" role="main" ontouchstart="" data-ctrl-name="pageview" data-dpr="2" >
 <div class="navbar navbar-jianshu expanded">
     <div class="dropdown">
-        <a class="active logo" href="/v2">
+        <a class="active logo" href="/">
             <b>S</b>{{--<i class="fa fa-home hidden"></i>--}}<span class="title hidden">首页</span>
         </a>
         <a href="javascript:void 0;">
@@ -28,6 +28,7 @@
 </div>
 <div class="row-fluid">
     <div class="recommended">
+        @if(isset($navMenuActive) && 'article-detail'!==$navMenuActive)
         <div class="span3 left-aside" style="background-image: url(/images/left_images/2.jpg)">
             {{--<div class="cover-img" style="background-image: url(/images/left_images/2.jpg)"></div>--}}
             <div class="nav-content">
@@ -38,11 +39,11 @@
                     怎么抓的住?
                 </div>
                 <ul id="nav-menu" class="nav-menu">
-                    <li class="menu-item {{ ViewHelper::navMenuActive("homepage", $navMenuActive) }}"><a href="/v2">首页</a></li>
-                    <li class="menu-item {{ ViewHelper::navMenuActive("tech-article", $navMenuActive) }}"><a href="javascript:void 0;">工作学习</a></li>
+                    <li class="menu-item {{ ViewHelper::navMenuActive("homepage", $navMenuActive) }}"><a href="/">首页</a></li>
+                    <li class="menu-item {{ ViewHelper::navMenuActive("article-timeline", $navMenuActive) }}"><a href="/article/timeline">工作学习</a></li>
                     <li class="menu-item {{ ViewHelper::navMenuActive("essay", $navMenuActive) }}"><a href="javascript:void 0;">随笔</a></li>
-                    <li class="menu-item {{ ViewHelper::navMenuActive("life", $navMenuActive) }}"><a href="/v2/life">杂记</a></li>
-                    <li class="menu-item {{ ViewHelper::navMenuActive("profile", $navMenuActive) }}"><a href="/v2/profile">关于博主</a></li>
+                    <li class="menu-item {{ ViewHelper::navMenuActive("timeline", $navMenuActive) }}"><a href="/life">杂记</a></li>
+                    <li class="menu-item {{ ViewHelper::navMenuActive("profile", $navMenuActive) }}"><a href="/profile">关于博主</a></li>
                 </ul>
                 <div class="img-info">
                     <i class="fa fa-info"></i>
@@ -52,7 +53,9 @@
                 </div>
             </div>
         </div>
+        @endif
         <div class="span7 offset3 right-aside">
+            @if(isset($navMenuActive) && 'article-detail'!==$navMenuActive)
             <div class="page-title">
                 <ul class="recommened-nav navigation clearfix">
                     <li class="active">
@@ -70,6 +73,7 @@
                     </li>
                 </ul>
             </div>
+            @endif
             <div id="list-container">
                 @yield("contents")
             </div>

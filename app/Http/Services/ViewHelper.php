@@ -38,7 +38,7 @@ class ViewHelper
 		$tplTag = "<script id='%s-tpl' type='text/template'>%s</script>";
 		$errorTag = "<script>%s</script>";
 		$tpl = '';
-		$path = base_path().'/resources/views/JsTemplate';
+		$path = base_path().'/resources/views/frontend/JsTemplate';
 		$emptyTemplate = $path."/empty.blade.php";
 		foreach($templateArray as $id)
 		{
@@ -178,6 +178,11 @@ class ViewHelper
 	public function navMenuActive($menu, $active)
 	{
 		return $menu === $active ? "active" : "";
+	}
+
+	public function timeFormat($time)
+	{
+        return date("Y-m-d H:i:s", $time?:time());
 	}
 
 }

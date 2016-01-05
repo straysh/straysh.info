@@ -56,6 +56,35 @@ abstract class FrontendModel extends CModel
 		return $query->orderbyRaw("created_at DESC")->first();
 	}
 
+	protected function concatOrder($sql, $params)
+	{
+		if(!empty($params['orderby']))
+		{
+			$sql->orderByRaw($params['orderby']);
+		}
+
+		return $sql;
+	}
+
+	protected function parseMaxpage($sql, $results, $options)
+	{
+		if( 1 === $options['page'] )
+		{
+			$results->maxPage = (int)!$results->isEmpty();
+
+			if($results->hasMorePages())
+			{
+				$total = $sql->count('*');
+				$results->maxPage = (int) ceil($total / $options['limit']);
+			}
+		}else
+		{
+			$results->maxPage = null;
+		}
+
+		return $results;
+	}
+
 	/**
 	 * ooxx_amount +/- 1の处理逻辑,该函数只应该被event listener调用
 	 * @param int   $pk

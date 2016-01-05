@@ -8,11 +8,11 @@ class LifeController extends FrontController
 
 	public function getIndex()
 	{
-		$article = Life::getInstance()->orderByRaw('id desc')->get();
-		if(empty($article))
-		{
-			return redirect('/');
-		}
+        $article = Life::getInstance()->orderByRaw('id desc')->get();
+        if(empty($article))
+        {
+            return redirect('/');
+        }
 
         $pattern = '#原文:(.*)\n#i';
         foreach($article as $item)
@@ -28,9 +28,10 @@ class LifeController extends FrontController
 
             }
         }
-		return view('frontend.timeline.index', [
-			'articles' => $article,
-		]);
+
+        $this->viewData('navMenuActive', 'timeline');
+        $this->viewData('articles', $article);
+        return view('frontend.timeline.index', $this->viewData);
 	}
 
 }

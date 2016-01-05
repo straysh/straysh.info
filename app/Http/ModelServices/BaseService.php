@@ -56,4 +56,18 @@ class BaseService
 		return $array;
 	}
 
+	protected function parseMaxpage(&$data)
+	{
+		$array = [];
+		if(!isset($data->maxPage)) return $array;
+		$array['maxPage'] = $data->maxPage;
+		unset($data['maxPage']);
+		return $array;
+	}
+
+	protected function checkRequired($params, $required=[], $isset=false)
+	{
+		return checkRequired($params, $required, $isset);
+	}
+
 }

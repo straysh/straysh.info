@@ -4,6 +4,8 @@
 use App\Http\Facades\ViewHelper;
 use App\Http\Models\Frontend\Article;
 use App\Http\Models\Frontend\Category;
+use App\Http\ModelServices\ArticleService;
+use Illuminate\Http\Request;
 
 class ArticleController extends FrontController
 {
@@ -32,15 +34,28 @@ class ArticleController extends FrontController
 			return redirect('/');
 		}
 
-
 		$category = $article->category;
-		return view('frontend.article.index', [
-			'crumbs' => $this->articleCrumbs($category),
-			'summary' => $this->articleSummary($category),
-			'articles' => $this->articleDetail($article),
-		]);
+        $this->viewData('crumbs', $this->articleCrumbs($category));
+        $this->viewData('summary', $this->articleSummary($category));
+		$this->viewData('articles', $this->articleDetail($article));
+		$this->viewData('bodyId', 'article-container');
+        $this->viewData('navMenuActive', 'article-detail');
+//		return view('frontend.article.index', $this->viewData);
+		return view('frontend.article.article_detail', $this->viewData);
 	}
 
+    public function getTimeline(Request $request)
+    {
+        $options = $this->pageParams($request->all());
+        $articles = ArticleService::getInstance()->timeline($options);
+        $this->viewData('maxPage', $articles['maxPage']);
+        unset($articles['maxPage']);
+        $this->viewData('articles', $articles);
+
+        $this->viewData('navMenuActive', 'article-timeline');
+        return view("frontend.article.article_timeline", $this->viewData);
+	}
+	
 	/**
 	 * 文章列表页面
 	 * @param $category
@@ -54,11 +69,12 @@ class ArticleController extends FrontController
 			return redirect('/site/index');
 		}
 		$articles = Article::getInstance()->findByCategory($category->id);
-		return view('frontend.article.catlist', [
-			'crumbs' => $this->articleCrumbs($category),
-			'summary' => $this->articleSummary($category),
-			'articles' => $this->articleList($articles),
-		]);
+        $this->viewData('crumbs', $this->articleCrumbs($category));
+        $this->viewData('summary', $this->articleSummary($category));
+        $this->viewData('articles', $this->articleList($articles));
+        $this->viewData('bodyId', 'article-container');
+        $this->viewData('navMenuActive', 'article-detail');
+		return view('frontend.article.category', $this->viewData);
 	}
 
 	private function articleCrumbs($category)
@@ -68,7 +84,7 @@ class ArticleController extends FrontController
 			'categoryUrl' => "/article/{$category->name}",
 			'category' => $category
 		];
-		$file = base_path().'/resources/views/frontend/article/crumbs.blade.php';
+		$file = base_path().'/resources/views/frontend/article/_partial/crumbs.blade.php';
 		$view = view()->file($file, $data)->render();
 		return ViewHelper::markdownParse($view, ['<crumbs><h4>' ,'</h4></crumbs>']);
 	}
