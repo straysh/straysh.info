@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Frontend;
 
-
 use App\Http\Facades\ViewHelper;
 use App\Http\Models\Frontend\Article;
 use App\Http\Models\Frontend\Category;
@@ -9,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ArticleController extends FrontController
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
 	/*
 	|--------------------------------------------------------------------------

@@ -21,4 +21,8 @@ Menu::create('admin-menu', function ($menu) {
         $sub->route('roles.index', trans('menus.roles'), [], 4);
         $sub->route('permissions.index', trans('menus.permissions'), [], 5);
     }, 3, ['icon' => 'fa fa-users']);
+    $menu->dropdown(trans('menus.nagging.title'), function ($sub) {
+        $sub->route('nagging.index', trans('menus.nagging.all'), [], 1);
+        $sub->divider(3);
+    }, 4, ['icon' => 'fa fa-users']);
 });

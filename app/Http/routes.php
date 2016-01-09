@@ -149,8 +149,16 @@ Route::group([
 //				'destroy' => 'permissions.destroy',
 			]
 		]);
+        Route::post('nagging/active', 'NagController@update');
+		Route::resource('nagging', 'NagController', [
+			'except' => 'show',
+			'names' => [
+				'index' => 'nagging.index',
+                'update' => 'nagging.update',
+			]
+		]);
 
-//		// backup & reset
+		// backup & reset
 //		Route::get('backup/reset', ['as' => 'reset', 'uses' => 'SiteController@reset']);
 //		Route::get('app/reinstall', ['as' => 'reinstall', 'uses' => 'SiteController@reinstall']);
 //		Route::get('cache/clear', ['as' => 'cache.clear', 'uses' => 'SiteController@clearCache']);

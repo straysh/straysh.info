@@ -4,6 +4,11 @@
 class HomeController extends FrontController
 {
 
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
 	/*
 	|--------------------------------------------------------------------------
 	| Home Controller

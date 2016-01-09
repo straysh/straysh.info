@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Helpers\ErrorCode;
 use App\Http\Helpers\JsonHelper;
 use App\Http\Helpers\Yutils;
+use App\Http\Models\Frontend\Nag;
 
 class FrontController extends Controller
 {
@@ -18,6 +19,7 @@ class FrontController extends Controller
     {
         //父类没有构造函数
         $this->initUser();
+        $this->viewData('nag', Nag::getInstance()->getOne());
     }
 
     private function initUser()

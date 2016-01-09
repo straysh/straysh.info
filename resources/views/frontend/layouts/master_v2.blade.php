@@ -36,9 +36,7 @@
             <div class="nav-content">
                 <h1>Straysh的后院</h1>
                 <div class="introduce">
-                    妳是风中的叶，风起而走,我想去追,
-                    <br />
-                    怎么抓的住?
+                    {!! $nag or "" !!}
                 </div>
                 <ul id="nav-menu" class="nav-menu">
                     <li class="menu-item {{ ViewHelper::navMenuActive("homepage", $navMenuActive) }}"><a href="/">首页</a></li>
