@@ -33,7 +33,7 @@
             "Intervention\\Image\\": "app/Helpers/intervention/image/src/Intervention/Image"
         },
         "files": [
-          "app/Http/Support/helpers.php"
+          "app/Http/Helpers/helpers.php"
         ]
     },
     "autoload-dev": {
