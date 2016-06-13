@@ -21,7 +21,7 @@
                 <h4 class="title"><a class="title-gray" href="/article/{{ $item['id'] }}">{{ $item['title'] }}</a></h4>
                 <div class="list-footer">
                     <a target="_blank" href="javascript:void 0;">
-                        阅读 0
+                        阅读 {{ $item['hits'] }}
                     </a>
                     <a target="_blank" href="javascript:void 0;">
                         · 评论 暂无评论

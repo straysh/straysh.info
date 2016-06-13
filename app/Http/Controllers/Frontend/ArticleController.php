@@ -33,6 +33,7 @@ class ArticleController extends FrontController
 	 */
 	public function getIndex($id)
 	{
+        /* @var Article $article */
 		$article = Article::getInstance()->find($id);
 		if(empty($article))
 		{
@@ -46,6 +47,9 @@ class ArticleController extends FrontController
 		$this->viewData('bodyId', 'article-container');
         $this->viewData('navMenuActive', 'article-detail');
 //		return view('frontend.article.index', $this->viewData);
+
+        $article->hits += 1;
+        $article->save();
 		return view('frontend.article.article_detail', $this->viewData);
 	}
 
