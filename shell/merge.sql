@@ -1,4 +1,5 @@
 -- 备份原始数据
+create database IF NOT EXISTS straysh_old;
 mysqldump strayshInfo > storage/strayshInfo.sql;
 mysql straysh_old < storage/strayshInfo.sql;
 
