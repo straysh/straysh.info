@@ -2,6 +2,9 @@
 
 @section("contents")
     <ul class="unstyled clearfix sort-nav" id="collection-categories-nav" data-js-module="collection-category" data-fetch-url="/recommendations/notes">
+        @foreach($categories as $item)
+            <li class="{{ isset($item['active']) ? 'active' : '' }}"><a class="category" href="/article/timeline?category={{ $item['id'] }}">{!! $item['name'] !!}({{ $item['total'] }})</a></li>
+        @endforeach
     </ul>
     <ul class="article-list thumbnails">
         @foreach($articles as $item)
@@ -11,7 +14,7 @@
             @endif
             <div>
                 <p class="list-top">
-                    <a class="author-name blue-link" target="_blank" href="/article/list/{{ $item['category'] }}">{{ $item['category'] }}</a>
+                    <a class="author-name blue-link" href="/article/list/{{ $item['category'] }}">{{ $item['category'] }}</a>
                     <em>·</em>
                     <span class="time" data-ctime="{{ $item['created_at'] }}">{{ ViewHelper::timeFormat($item['created_at']) }}</span>
                 </p>

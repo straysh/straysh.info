@@ -4,6 +4,7 @@ use App\Http\Facades\ViewHelper;
 use App\Http\Models\Frontend\Article;
 use App\Http\Models\Frontend\Category;
 use App\Http\ModelServices\ArticleService;
+use App\Http\ModelServices\CategoryService;
 use Illuminate\Http\Request;
 
 class ArticleController extends FrontController
@@ -51,13 +52,14 @@ class ArticleController extends FrontController
     public function getTimeline(Request $request)
     {
         $options = $this->pageParams($request->all());
-        $articles = ArticleService::getInstance()->timeline($options);
+        $articles = ArticleService::getInstance()->timeline($request->input('category'), $options);
         $this->viewData('maxPage', $articles['maxPage']);
         $this->viewData('page', $request->input('page', 1));
         unset($articles['maxPage']);
         $this->viewData('articles', $articles);
 
         $this->viewData('navMenuActive', 'article-timeline');
+		$this->viewData('categories', CategoryService::getInstance()->categorySummary($request->input('category')));
         return view("frontend.article.article_timeline", $this->viewData);
 	}
 	

@@ -21,6 +21,7 @@ Route::group([
 	Route::get('article/list/{category}', 'ArticleController@getList' )->where(['category'=>'[a-zA-Z]+[a-zA-Z0-9]*']);
 	Route::controller('profile', 'ProfileController');
     Route::controller('life', 'LifeController');
+    Route::controller('essay', 'EssayController');
 	Route::controller('home', 'HomeController');
 //	Route::controller('v2', 'V2Controller');
 	Route::controller('article', 'ArticleController');

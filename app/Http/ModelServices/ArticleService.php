@@ -39,9 +39,9 @@ class ArticleService extends BaseService
 		return $array;
 	}
 
-    public function timeline($options)
+    public function timeline($category=NULL, $options)
     {
-        $model = Article::getInstance()->timeline($options);
+        $model = Article::getInstance()->timeline($category, $options);
         $model = $model->isEmpty() ? [] : $model;
         $result = $this->parseMaxpage($model);
         foreach($model as $item)
@@ -53,4 +53,5 @@ class ArticleService extends BaseService
 
         return $result;
 	}
+
 }

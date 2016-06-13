@@ -1,5 +1,6 @@
 <?php namespace App\Http\ModelServices;
 
+use App\Http\Models\Frontend\Article;
 use App\Http\Models\Frontend\Category;
 
 class CategoryService extends BaseService
@@ -57,5 +58,27 @@ class CategoryService extends BaseService
 		$array = $array->toArray();
 
 		return $array;
+	}
+
+	public function categorySummary($category)
+	{
+        $query = Article::selectRaw('category_id, count(article.id) as total, category.name')
+            ->leftJoin('category', 'category.id', '=', 'article.category_id')
+            ->groupBy('article.category_id')
+            ->whereRaw('category.pid=0');
+        $model = $query->get();
+        $result = [];
+        foreach($model as $item)
+        {
+            $temp = [
+                'id' => $item->category_id,
+                'total' => $item->total,
+                'name' => $item->name,
+            ];
+            if($category==$item->category_id) $temp['active'] = true;
+            $result[] = $temp;
+        }
+
+        return $result;
 	}
 }

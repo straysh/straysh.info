@@ -59,9 +59,12 @@ class BaseService
 	protected function parseMaxpage(&$data)
 	{
 		$array = [];
-		if(!isset($data->maxPage)) return $array;
-		$array['maxPage'] = $data->maxPage;
-		unset($data['maxPage']);
+		$array['maxPage'] = NULL;
+		if(isset($data->maxPage))
+		{
+			$array['maxPage'] = $data->maxPage;
+			unset($data['maxPage']);
+		}
 		return $array;
 	}
 

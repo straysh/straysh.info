@@ -41,7 +41,7 @@
                 <ul id="nav-menu" class="nav-menu">
                     <li class="menu-item {{ ViewHelper::navMenuActive("homepage", $navMenuActive) }}"><a href="/">首页</a></li>
                     <li class="menu-item {{ ViewHelper::navMenuActive("article-timeline", $navMenuActive) }}"><a href="/article/timeline">工作学习</a></li>
-                    <li class="menu-item {{ ViewHelper::navMenuActive("essay", $navMenuActive) }}"><a href="javascript:void 0;">随笔</a></li>
+                    <li class="menu-item {{ ViewHelper::navMenuActive("essay", $navMenuActive) }}"><a href="/essay">随笔</a></li>
                     <li class="menu-item {{ ViewHelper::navMenuActive("timeline", $navMenuActive) }}"><a href="/life">杂记</a></li>
                     <li class="menu-item {{ ViewHelper::navMenuActive("profile", $navMenuActive) }}"><a href="/profile">关于博主</a></li>
                 </ul>
@@ -59,7 +59,7 @@
             <div class="page-title">
                 <ul class="recommened-nav navigation clearfix">
                     <li class="active">
-                        <a data-pjax="true" href="javascript:void 0;">发现</a>
+                        <a data-pjax="true" href="javascript:void 0;">文章</a>
                     </li>
                     {{--<li>
                         <a data-pjax="true" href="/trending/now">发现</a>

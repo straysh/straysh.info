@@ -68,22 +68,7 @@ abstract class FrontendModel extends CModel
 
 	protected function parseMaxpage($sql, $options)
 	{
-//		if( 1 === $options['page'] )
-//		{
-//			$results->maxPage = (int)!$results->isEmpty();
-//
-//			if($results->hasMorePages())
-//			{
-//				$total = $sql->count('*');
-//				$results->maxPage = (int) ceil($total / $options['limit']);
-//			}
-//		}else
-//		{
-//			$results->maxPage = null;
-//		}
-
 		$total = $sql->count('*');
-//        dd($sql->toSql(), $sql->getBindings(), $total, $options);
 		return (int) ceil($total / $options['limit']);
 	}
 

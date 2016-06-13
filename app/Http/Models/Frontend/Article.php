@@ -167,9 +167,11 @@ class Article extends FrontendModel
 		return $result->get();
 	}
 
-    public function timeline($options)
+    public function timeline($category=NULL, $options)
     {
         $query = self::orderBy('id', 'DESC');
+		if($category)
+			$query->where('category_id', $category);
 
         $this->concatOrder($query, $options);
         $maxPage = $this->parseMaxpage($query, $options);

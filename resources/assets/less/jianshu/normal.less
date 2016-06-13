@@ -240,8 +240,28 @@
   }
 
   .sort-nav {
-    padding: 13px 0 0 20px;
+    //padding: 13px 0 0 20px;
     margin-bottom: 0;
+    li{
+      float: left;
+      margin: 10px 15px 5px 0;
+      line-height: 20px;
+      &.active a {
+        color: white;
+        border-color: #e78170;
+        background: #e78170;
+      }
+      a{
+        padding: 5px 10px;
+        border: 1px solid #d9d9d9;
+        border-radius: 14px;
+        box-sizing: border-box;
+        font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 1.5;
+      }
+    }
   }
 
   /***********************
@@ -421,10 +441,10 @@
     margin: 50px auto;
     a {
       font-size: 14px;
-      margin: 2px 6px 2px 0;
       background: #fff;
       border: 1px solid #e5e5e5;
       color: #787878;
+      margin: 2px 6px 2px 0;
       padding: 2px 10px;
       text-decoration: none;
     }
@@ -433,6 +453,7 @@
       border: 1px solid #8d8d8d;
       color: #393939;
       font-size: 14px;
+      margin: 2px 6px 2px 0;
       padding: 2px 10px;
     }
   }
