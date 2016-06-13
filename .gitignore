@@ -1,7 +1,10 @@
+/vender.bz2
 /vendor
 /node_modules
 Homestead.yaml
 Homestead.json
 .env
+/public/frontend/css_develop/app.css.map
+.idea
 composer.lock
 _ide_helper.php
