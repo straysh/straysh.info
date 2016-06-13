@@ -7,4 +7,4 @@ mysql straysh_old < storage/strayshInfo.sql;
 mysql strayshInfo < storage/t.sql;
 
 -- 恢复hits字段
-update strayshInfo t,straysh_old o set t.hits=o.hits where t.id=o.id;
+update strayshInfo.article t,straysh_old.article o set t.hits=o.hits where t.id=o.id;
