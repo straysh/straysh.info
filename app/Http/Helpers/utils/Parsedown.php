@@ -15,7 +15,7 @@
 
 class Parsedown
 {
-	private $_highlight_prefix = 'language-';
+	private $_highlight_prefix = '';
 	private $lineno = 0;
     #
     # Philosophy
