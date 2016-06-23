@@ -1268,6 +1268,9 @@ i {
 #article-container #list-container .justcenter {
   text-align: center;
 }
+#article-container #list-container > article ul li {
+  list-style: decimal;
+}
 timeline hr {
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
