@@ -34,7 +34,7 @@ class ArticleService extends BaseService
 		if(empty($array)) return [];
         $category = $array->category;
 		$array = $array->toArray();
-        $array['category'] = $category->name;
+        $array['category'] = isset($category->name) ? $category->name : 'N/A';
         
 		return $array;
 	}
