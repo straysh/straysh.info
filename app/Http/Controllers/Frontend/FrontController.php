@@ -108,7 +108,7 @@ class FrontController extends Controller
 
     protected function redirectBack()
     {
-        return back(200);
+        return back(302);
     }
 
 }

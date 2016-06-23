@@ -9,6 +9,7 @@ class EssayController extends FrontController
 
 	public function getIndex(Request $request)
 	{
+        return $this->redirectBack();
         $options = $this->pageParams($request->all());
         $articles = [];//ArticleService::getInstance()->timeline($options);
         $this->viewData('maxPage', 0);
