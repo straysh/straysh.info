@@ -1276,6 +1276,10 @@ i {
   border-left: 5px solid lightblue;
   padding-left: 10px;
 }
+#article-container #list-container > article img {
+  width: auto;
+  height: auto;
+}
 timeline hr {
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
