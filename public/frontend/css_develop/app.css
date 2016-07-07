@@ -1212,7 +1212,7 @@ i {
   font-size: 18px;
 }
 #article-container #list-container p {
-  margin: 0 0 10.5px;
+  margin: 0 0 0.1em;
 }
 #article-container #list-container crumbs strong {
   color: #556677;
@@ -3532,8 +3532,11 @@ a {
   color: black ;
 }
 code {
-  background-color: #bcc;
+  color: green;
+  background-color: rgba(204, 204, 204, 0.5);
   padding: 0 5px;
+  margin: 0 0.1em;
+  border-radius: 0.2em;
 }
 #list-container {
   margin-top: 50px;
