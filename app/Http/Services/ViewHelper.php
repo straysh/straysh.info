@@ -185,7 +185,7 @@ class ViewHelper
         return date("Y-m-d H:i:s", $time?:time());
 	}
 
-	public function pagination($page, $maxPage)
+	public function pagination($page, $maxPage, $category=NULL)
 	{
         $str = <<<PAGINATION
 <div class="pagination">
@@ -202,7 +202,7 @@ PAGINATION;
         {
             $html[] = $i == $page
                 ? sprintf('<span class="current">%s</span>', $i)
-                : sprintf("<a href='/article/timeline?page=%1\$s' class='%2\$s'>%1\$s</a>", $i, "");
+                : sprintf("<a href='/article/timeline?page=%1\$s%3\$s' class='%2\$s'>%1\$s</a>", $i, "", $category?"&category={$category}":"");
         }
         $html[] = '</div>';
 

@@ -31,7 +31,7 @@
         </li>
         @endforeach
     </ul>
-    {!! ViewHelper::pagination($page, $maxPage) !!}
+    {!! ViewHelper::pagination($page, $maxPage, $category) !!}
     {{--<div class="pagination">--}}
         {{--<a href="http://ymblog.net/">最前</a>--}}
         {{--<a href="http://ymblog.net/page/6/">上一页</a>--}}

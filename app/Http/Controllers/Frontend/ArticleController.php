@@ -56,6 +56,7 @@ class ArticleController extends FrontController
     public function getTimeline(Request $request)
     {
         $options = $this->pageParams($request->all());
+		$category = $request->input('category');
         $articles = ArticleService::getInstance()->timeline($request->input('category'), $options);
         $this->viewData('maxPage', $articles['maxPage']);
         $this->viewData('page', $request->input('page', 1));
@@ -63,7 +64,8 @@ class ArticleController extends FrontController
         $this->viewData('articles', $articles);
 
         $this->viewData('navMenuActive', 'article-timeline');
-		$this->viewData('categories', CategoryService::getInstance()->categorySummary($request->input('category')));
+		$this->viewData('categories', CategoryService::getInstance()->categorySummary($category));
+		$this->viewData('category', $category);
         return view("frontend.article.article_timeline", $this->viewData);
 	}
 	
