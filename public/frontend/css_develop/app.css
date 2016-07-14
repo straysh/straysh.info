@@ -1214,6 +1214,9 @@ i {
 #article-container #list-container p {
   margin: 0 0 0.1em;
 }
+#article-container #list-container p + p {
+  margin-top: 0.5em;
+}
 #article-container #list-container crumbs strong {
   color: #556677;
 }
