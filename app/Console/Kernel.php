@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\Inspire::class,
         \App\Console\Commands\Blog::class,
+        \App\Console\Commands\PriceWatcher::class,
     ];
 
     /**

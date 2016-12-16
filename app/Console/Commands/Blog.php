@@ -145,7 +145,7 @@ class Blog extends Command {
         $content = file_get_contents($file);
 
         $slug = "{$category}_{$slug}";
-        $model = Article::whereRaw("slug=?", [$slug])->first();
+        $model = Article::withTrashed()->whereRaw("slug=?", [$slug])->first();
         if($model)
         {
             $model->body = $content;

@@ -4,6 +4,7 @@
 Homestead.yaml
 Homestead.json
 .env
+/storage
 /public/frontend/css_develop/app.css.map
 .idea
 composer.lock
