@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Helpers\ErrorCode;
 use App\Http\Helpers\JsonHelper;
 use App\Http\Helpers\Yutils;
-use App\Http\Models\Frontend\Nag;
+use App\Http\Models\Www\Nag;
 
 class WwwBaseController extends Controller
 {

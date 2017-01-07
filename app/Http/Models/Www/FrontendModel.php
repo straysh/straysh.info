@@ -1,4 +1,4 @@
-<?php  namespace App\Http\Models\Frontend;
+<?php  namespace App\Http\Models\Www;
 
 use App\Exceptions\DevDbException;
 use Illuminate\Database\Eloquent\Model as CModel;

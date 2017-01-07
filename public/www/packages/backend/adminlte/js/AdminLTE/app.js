@@ -1,4 +1,4 @@
-/*!
+/*
  * Author: Abdullah A Almsaeed
  * Date: 4 Jan 2014
  * Description:
@@ -154,7 +154,7 @@ function fix_sidebar() {
 
 /*END DEMO*/
 $(window).load(function() {
-    /*! pace 0.4.17 */
+    /* pace 0.4.17 */
     (function() {
         var a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V = [].slice, W = {}.hasOwnProperty, X = function(a, b) {
             function c() {
@@ -740,7 +740,7 @@ $(window).load(function() {
     }}
 )(jQuery, this);
 
-/*!
+/*
  * SlimScroll https://github.com/rochal/jQuery-slimScroll
  * =======================================================
  * 
@@ -889,7 +889,7 @@ $(window).load(function() {
     jQuery.fn.extend({slimscroll: jQuery.fn.slimScroll})
 })(jQuery);
 
-/*! iCheck v1.0.1 by Damir Sultanov, http://git.io/arlzeA, MIT Licensed */
+/* iCheck v1.0.1 by Damir Sultanov, http://git.io/arlzeA, MIT Licensed */
 (function(h) {
     function F(a, b, d) {
         var c = a[0], e = /er/.test(d) ? m : /bl/.test(d) ? s : l, f = d == H ? {checked: c[l], disabled: c[s], indeterminate: "true" == a.attr(m) || "false" == a.attr(w)} : c[e];

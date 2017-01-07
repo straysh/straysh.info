@@ -1,4 +1,4 @@
-/*!
+/*
  * Bootstrap's Gruntfile
  * http://getbootstrap.com
  * Copyright 2013-2015 Twitter, Inc.
@@ -41,7 +41,7 @@ module.exports = function (grunt) {
 
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*!\n' +
+    banner: '/*\n' +
             ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
             ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
             ' * Licensed under the <%= pkg.license %> license\n' +

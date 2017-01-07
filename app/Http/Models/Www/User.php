@@ -1,4 +1,4 @@
-<?php namespace App\Http\Models\Frontend;
+<?php namespace App\Http\Models\Www;
 
 use App\Http\Traits\Trusty\TrustyTrait;
 use Illuminate\Auth\Authenticatable;

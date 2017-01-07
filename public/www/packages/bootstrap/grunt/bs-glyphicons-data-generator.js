@@ -1,4 +1,4 @@
-/*!
+/*
  * Bootstrap Grunt task for Glyphicons data generation
  * http://getbootstrap.com
  * Copyright 2014-2015 Twitter, Inc.

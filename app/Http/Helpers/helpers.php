@@ -50,7 +50,7 @@ if (! function_exists('option')) {
     function option($key, $default = null)
     {
         try {
-            $option = \App\Http\Models\Frontend\Option::findByKey($key)->first();
+            $option = \App\Http\Models\Www\Option::findByKey($key)->first();
 
             return ! empty($option) ? $option->value : $default;
         } catch (PDOException $e) {
@@ -146,7 +146,7 @@ if (! function_exists('article')) {
      */
     function article()
     {
-        return new \App\Http\Models\Frontend\Article;
+        return new \App\Http\Models\Www\Article;
     }
 }
 
@@ -170,7 +170,7 @@ if (! function_exists('category')) {
      */
     function category()
     {
-        return new \App\Http\Models\Frontend\Category;
+        return new \App\Http\Models\Www\Category;
     }
 }
 

@@ -1,4 +1,4 @@
-/*!
+/*
  * jQuery JavaScript Library v1.9.0
  * http://jquery.com/
  *
@@ -12,7 +12,7 @@
  * Date: 2013-1-14
  */
 
-/*!
+/*
  * Sizzle CSS Selector Engine
  * Copyright 2012 jQuery Foundation and other contributors
  * Released under the MIT license

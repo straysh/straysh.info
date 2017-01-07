@@ -26276,7 +26276,7 @@ define('parse', ['./esprimaAdapter', 'lang'], function (esprima, lang) {
 
                 if (!existsMap[value] && (value.indexOf('license') !== -1 ||
                         (commentNode.type === 'Block' &&
-                            value.indexOf('/*!') === 0) ||
+                            value.indexOf('/*') === 0) ||
                         value.indexOf('opyright') !== -1 ||
                         value.indexOf('(c)') !== -1)) {
 

@@ -48,14 +48,4 @@ class Yutils
 		return $js;
 	}
 
-	public function isMobile($clientType)
-	{
-		$mobiles = [
-			Yconst::CLIENT_TYPE_IOS_PHONE,
-			Yconst::CLIENT_TYPE_IOS_PAD,
-			Yconst::CLIENT_TYPE_ANDROID_PHONE,
-			Yconst::CLIENT_TYPE_ANDROID_PAD
-		];
-		return in_array($clientType, $mobiles);
-	}
 }

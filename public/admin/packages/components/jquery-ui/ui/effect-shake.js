@@ -1,4 +1,4 @@
-/*!
+/*
  * jQuery UI Effects Shake 1.11.2
  * http://jqueryui.com
  *

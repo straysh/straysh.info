@@ -2,8 +2,8 @@
 
 session_check();
 
-use App\Http\Models\Frontend\Article;
-use App\Http\Models\Frontend\Option;
+use App\Http\Models\Www\Article;
+use App\Http\Models\Www\Option;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 

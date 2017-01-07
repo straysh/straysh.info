@@ -25,11 +25,8 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bind(
-			'Illuminate\Contracts\Auth\Registrar',
-			'App\Services\Registrar'
-		);
-
+//		$this->app->bind('Yuser', 'App\Http\Services\Yuser');
+//		$this->app->singleton('Webuser', 'App\Http\Services\Webuser');
 		$this->app->bind('ViewHelper', 'App\Http\Services\ViewHelper');
 	}
 

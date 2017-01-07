@@ -14138,7 +14138,7 @@ wysihtml5.views.View = Base.extend(
 
   });
 })(wysihtml5);
-/*!
+/*
 
  handlebars v1.3.0
 

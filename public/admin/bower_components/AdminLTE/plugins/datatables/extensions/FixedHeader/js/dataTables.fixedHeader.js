@@ -1,4 +1,4 @@
-/*! FixedHeader 2.1.2
+/* FixedHeader 2.1.2
  * ©2010-2014 SpryMedia Ltd - datatables.net/license
  */
 

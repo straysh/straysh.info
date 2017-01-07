@@ -1,4 +1,4 @@
-/*!
+/*
  * Bootstrap Colorpicker
  * http://mjolnic.github.io/bootstrap-colorpicker/
  *

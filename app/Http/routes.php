@@ -17,6 +17,8 @@ Route::group([
 	'domain' => config('setting.web_host')
 ], function()
 {
+    Route::controller('auth', 'Auth\AuthController');
+//    Route::controller('password', 'Auth\PasswordController');
 	Route::get('article/{id}', 'ArticleController@getIndex' )->where(['id'=>'[0-9]+']);
 	Route::get('article/list/{category}', 'ArticleController@getList' )->where(['category'=>'[a-zA-Z]+[a-zA-Z0-9]*']);
 	Route::controller('profile', 'ProfileController');
@@ -26,7 +28,7 @@ Route::group([
 //	Route::controller('v2', 'V2Controller');
 	Route::controller('article', 'ArticleController');
 
-	if( file_exists(app_path().'/Http/Controllers/Frontend/TestController.php') )
+	if( config('app.debug') && file_exists(app_path().'/Http/Controllers/Frontend/TestController.php') )
 	{
 		Route::controller('test', 'TestController');
 	}
@@ -43,6 +45,11 @@ Route::group([
 	'domain' => config('setting.admin_host')/*,
 	'middleware' => 'api.version'*/
 ], function () {
+	if( config('app.debug') && file_exists(app_path().'/Http/Controllers/Admin/TestController.php') )
+	{
+		Route::controller('test', 'TestController');
+	}
+
     Route::any('/', [
         'as' => 'home',
         'uses' => 'HomeController@getIndex'

@@ -32,7 +32,7 @@ class JsonHelper
 		return response()->json($result);
 	}
 
-	public static function success($data, $options=array())
+	public static function success($data=null, $options=array())
 	{
 		return self::json($data, 'success', ErrorCode::NORMAL_SUCCESS, $options);
 	}

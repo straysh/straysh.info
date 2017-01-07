@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Models\Frontend\User;
+use App\Http\Models\Www\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Repositories\Users\UserRepository;
 

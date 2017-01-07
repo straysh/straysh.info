@@ -6,6 +6,6 @@ class TestController extends AdminBaseController
 {
 	public function getIndex(Request $request)
 	{
-//		dd( $request->getUri() );
+		dd( bcrypt('884168a@') );
 	}
 }

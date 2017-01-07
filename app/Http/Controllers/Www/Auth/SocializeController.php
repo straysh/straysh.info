@@ -5,7 +5,7 @@ use App\Exceptions\DevBaseException;
 use App\Http\Helpers\JsonHelper;
 use App\Http\Helpers\LookUp;
 use App\Http\Controllers\Frontend\FrontController;
-use App\Http\Models\Frontend\LoginUser;
+use App\Http\Models\Www\LoginUser;
 use App\Http\ModelServices\UserShareService;
 use App\Http\ModelServices\UserSocializeService;
 use Facebook\FacebookRequest;

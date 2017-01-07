@@ -2,7 +2,7 @@
 
 use App\Http\Helpers\utils\Parsedown;
 use App\Http\Helpers\Yutils;
-use App\Http\Models\Frontend\Category;
+use App\Http\Models\Www\Category;
 use Illuminate\Support\Facades\App;
 
 class ViewHelper

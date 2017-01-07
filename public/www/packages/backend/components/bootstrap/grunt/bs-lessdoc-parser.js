@@ -1,4 +1,4 @@
-/*!
+/*
  * Bootstrap Grunt task for parsing Less docstrings
  * http://getbootstrap.com
  * Copyright 2014 Twitter, Inc.

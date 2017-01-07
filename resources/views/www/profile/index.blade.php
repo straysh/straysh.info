@@ -2,7 +2,9 @@
 
 @section("contents")
     <div class="profile">
-        <center><img src="/images/profile/1.jpg" alt="香山" style="width: 350px;" /></center>
+        <div>
+            <img src="/images/profile/1.jpg" alt="香山" style="display:block;width: 350px;margin:0 auto;" />
+        </div>
         <p>曹庭汉，男，87年生，身高165，体重110，未婚，籍贯湖北，现居北京朝阳。</p>
         <p>此前在湖北武汉从事网络维护，工作无甚压力，颇感蹉跎青春，激情渐消。2011年开始接触web开发，兴趣浓厚，亦有志于此。遂来京于【LAMP兄弟连】培训约半年。</p>
         <p>2012.8-2013.9 在新影数讯科技有限公司工作。期间，担任PHP研发工程师一职。主要工作：后台管理系统（CMS）的研发，部分社交媒体、影视站点数据采集、分析，微信公众平台以及少量新浪微博APP的开发。</p>

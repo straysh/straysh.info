@@ -2,8 +2,8 @@
 
 use App\Http\Helpers\ErrorCode;
 use App\Http\Helpers\JsonHelper;
-use App\Http\Models\Frontend\LoginUser;
-use App\Http\Models\Frontend\PasswordReset;
+use App\Http\Models\Www\LoginUser;
+use App\Http\Models\Www\PasswordReset;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Frontend\FrontController;
 use Illuminate\Contracts\Auth\Guard;

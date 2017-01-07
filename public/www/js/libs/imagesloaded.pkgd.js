@@ -1,11 +1,11 @@
-/*!
+/*
  * imagesLoaded PACKAGED v3.1.8
  * JavaScript is all like "You images are done yet or what?"
  * MIT License
  */
 
 
-/*!
+/*
  * EventEmitter v4.2.6 - git.io/ee
  * Oliver Caldwell
  * MIT license
@@ -478,7 +478,7 @@
 	}
 }.call(this));
 
-/*!
+/*
  * eventie v1.0.4
  * event binding helper
  *   eventie.bind( elem, 'click', myFn )
@@ -556,7 +556,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( this );
 
-/*!
+/*
  * imagesLoaded v3.1.8
  * JavaScript is all like "You images are done yet or what?"
  * MIT License

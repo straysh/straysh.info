@@ -1,6 +1,7 @@
 <?php
 
 return [
+	'site_label' => "Straysh的后院",
 	'api_host' => env('API_HTTP_DOMAIN', 'api.straysh.info'),
 	'web_host' => env('APP_HTTP_DOMAIN', 'www.straysh.info'),
 	'admin_host' => env('ADMIN_HTTP_DOMAIN', 'admin.straysh.info'),

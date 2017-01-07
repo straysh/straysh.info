@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers\Www;
 
 use App\Http\Facades\ViewHelper;
-use App\Http\Models\Frontend\Article;
-use App\Http\Models\Frontend\Category;
+use App\Http\Models\Www\Article;
+use App\Http\Models\Www\Category;
 use App\Http\ModelServices\ArticleService;
 use App\Http\ModelServices\CategoryService;
 use Illuminate\Http\Request;

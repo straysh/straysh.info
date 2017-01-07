@@ -1,4 +1,4 @@
-<?php namespace App\Http\Models\Frontend;
+<?php namespace App\Http\Models\Www;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;

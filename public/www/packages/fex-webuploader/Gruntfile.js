@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
         build: {
             options: {
-                banner: '/*! WebUploader <%= pkg.version %> */\n'
+                banner: '/* WebUploader <%= pkg.version %> */\n'
             },
 
             all: {

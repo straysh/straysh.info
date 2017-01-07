@@ -1,4 +1,4 @@
-/*!
+/*
  * jQuery UI Effects 1.11.2
  * http://jqueryui.com
  *
@@ -30,7 +30,7 @@ $.effects = {
 	effect: {}
 };
 
-/*!
+/*
  * jQuery Color Animations v2.1.2
  * https://github.com/jquery/jquery-color
  *

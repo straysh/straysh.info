@@ -13734,7 +13734,7 @@ define('parse', ['./esprima', './uglifyjs/index'], function (esprima, uglify) {
                 }
 
                 if (value.indexOf('license') !== -1 ||
-                    (commentNode.type === 'Block' && value.indexOf('/*!') === 0) ||
+                    (commentNode.type === 'Block' && value.indexOf('/*') === 0) ||
                     value.indexOf('opyright') !== -1 ||
                     value.indexOf('(c)') !== -1) {
 

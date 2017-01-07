@@ -1,4 +1,4 @@
-/*! AutoFill 1.2.1
+/* AutoFill 1.2.1
  * ©2008-2014 SpryMedia Ltd - datatables.net/license
  */
 

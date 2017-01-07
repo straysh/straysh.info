@@ -1,7 +1,7 @@
 <?php namespace App\Http\ModelServices;
 
-use App\Http\Models\Frontend\Article;
-use App\Http\Models\Frontend\Category;
+use App\Http\Models\Www\Article;
+use App\Http\Models\Www\Category;
 
 class ArticleService extends BaseService
 {

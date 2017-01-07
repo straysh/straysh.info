@@ -27,16 +27,16 @@
     //[class*="span"]:first-child {
     //  margin-left: 0;
     //}
-    .span3 {
-      width: 25%;
-    }
+    //.span3 {
+    //  width: 25%;
+    //}
     .offset3 {
       //margin-left: 25.0%;
     }
-    .span7 {
-      //padding-left: 12px;
-      width: 75%;
-    }
+    //.span7 {
+    //  //padding-left: 12px;
+    //  width: 75%;
+    //}
     .recommended {
       position: relative;
       height: 100%;
@@ -162,9 +162,9 @@
   }
 
   .left-aside {
+    width: 30rem;
     position: fixed;
     top: 0;
-    left: 4%;
     bottom: 0;
     z-index: 1000;
     .img-info {
@@ -236,7 +236,7 @@
     font-size: 14px;
   }
   .right-aside{
-    margin-left: 25%;
+    margin-left: 30rem;
   }
 
   .sort-nav {
@@ -455,6 +455,17 @@
       font-size: 14px;
       margin: 2px 6px 2px 0;
       padding: 2px 10px;
+    }
+  }
+}
+
+@media all and (max-width: 1500px){
+  .recommended {
+    .left-aside{
+      width: 24% !important;
+    }
+    .right-aside{
+      margin-left: 25% !important;
     }
   }
 }

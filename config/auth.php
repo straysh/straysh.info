@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => \App\Http\Models\Frontend\User::class,
+    'model' => App\Http\Models\Www\LoginUser::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'table' => 'users',
+    'table' => 'login_user',
 
     /*
     |--------------------------------------------------------------------------
@@ -60,7 +60,7 @@ return [
 
     'password' => [
         'email' => 'emails.password',
-        'table' => 'password_resets',
+        'table' => 'password_reset',
         'expire' => 60,
     ],
 

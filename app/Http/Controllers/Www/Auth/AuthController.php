@@ -1,19 +1,22 @@
 <?php namespace App\Http\Controllers\Www\Auth;
 
 use App\Exceptions\DevBaseException;
+use App\Http\Controllers\Www\WwwBaseController;
+use App\Http\Helpers\ErrorCode;
 use App\Http\Helpers\JsonHelper;
-use App\Http\Models\Frontend\ForbiddenUsername;
-use App\Http\Models\Frontend\LoginUserHistory;
+use App\Http\Helpers\Yconst;
+use App\Http\Helpers\Yutils;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Frontend\FrontController;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Traits\Registar as ValidatorTrait;
 
 class AuthController extends WwwBaseController
 {
+    use ValidatorTrait;
 
 	/*
 	|--------------------------------------------------------------------------
@@ -32,12 +35,10 @@ class AuthController extends WwwBaseController
 	 * Create a new authentication controller instance.
 	 *
 	 * @param  \Illuminate\Contracts\Auth\Guard  $auth
-	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
 	 */
-	public function __construct(Guard $auth, Registrar $registrar)
+	public function __construct(Guard $auth)
 	{
 		$this->auth = $auth;
-		$this->registrar = $registrar;
 
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
@@ -49,7 +50,7 @@ class AuthController extends WwwBaseController
      */
     public function getRegister()
     {
-        return view('auth.register');
+        return $this->redirectNotFound();
     }
 
     /**
@@ -60,77 +61,15 @@ class AuthController extends WwwBaseController
      */
     public function postRegister(Request $request)
     {
-        if(!$request->ajax()) return JsonHelper::invalidRequest();
-        $flag = ForbiddenUsername::getInstance()->checkName($request->request->get('username'));
-        if($flag)
-            return JsonHelper::json('', '用户名非法!', 40002);
-        $validator = $this->registrar->validator($request->all());
-        if ($validator->fails())
-        {
-            return JsonHelper::json('', $validator->messages(), 50001);
-        }
-        try{
-            $this->auth->login($this->registrar->create($request->all()));
-
-            DB::commit();
-            return JsonHelper::json('', 'register success', 10000);
-        }catch (DevBaseException $e)
-        {
-            DB::rollback();
-            if(config('app.debug')){var_export($e->getMessage());exit;}
-            return JsonHelper::InternalDbFail();
-        }
-    }
-
-	/**
-	 * 预检测 username
-	 * @param Request $request
-	 * @return \Symfony\Component\HttpFoundation\Response
-	 */
-    public function postCheckname(Request $request)
-    {
-        if(!$request->ajax()) return JsonHelper::invalidRequest();
-        $flag = ForbiddenUsername::getInstance()->checkName($request->request->get('username'));
-        if($flag)
-            return JsonHelper::json('','用户名非法!',40002);
-        $validator = Validator::make(
-            ['username' =>$request->request->get('username')],
-            ['username' => 'required|min:5|unique:login_user']
-        );
-        if ($validator->fails())
-        {
-            return JsonHelper::json('', $validator->messages(), 50001);
-        }
-        return JsonHelper::json('', $validator->messages(), 10000);
-    }
-
-	/**
-	 * 预检测 email
-	 * @param Request $request
-	 * @return \Symfony\Component\HttpFoundation\Response
-	 */
-    public function postCheckemail(Request $request)
-    {
-        if(!$request->ajax()) return JsonHelper::invalidRequest();
-        $forbiddenUsername = ForbiddenUsername::all();
-        $forbiddenUsername = $forbiddenUsername->toArray();
-        if(in_array(strtolower($request->request->get('username')),$forbiddenUsername))return JsonHelper::json('','用户名非法!',50001);
-        $validator = Validator::make(
-            ['email' =>$request->request->get('email')],
-            [
-                'email' => 'required|regex:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/|unique:login_user'
-            ]
-        );
-        if ($validator->fails())
-        {
-            return JsonHelper::json('', $validator->messages(), 50001);
-        }
-        return JsonHelper::json('', $validator->messages(), 10000);
+        return $this->redirectNotFound();
     }
 
     public function getLogin()
     {
-        return view('auth.login');
+        $this->viewData('pageTitle', '登陆');
+        $this->viewData('site_label', config('setting.site_label'));
+        $this->viewData('bodyClass', '');
+        return view('www.auth.login', $this->viewData);
     }
 
     /**
@@ -141,27 +80,33 @@ class AuthController extends WwwBaseController
      */
     public function postLogin(Request $request)
     {
-        if(!$request->ajax()) return JsonHelper::invalidRequest();
-        $validator = Validator::make(
-            ['email' =>$request->request->get('email'),'password'=>$request->request->get('password')],
-            [
-                'email' => 'required|regex:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/',
-                'password'=>'required|regex:/^[0-9A-Za-z!@#$%*]{6,20}$/'
-            ]
-        );
+        $account = $request->input('account');
+        $inputPasswrod = $request->input("password");
+        if(empty($account) || empty($inputPasswrod))
+        {
+            return JsonHelper::invalidParams();
+        }
+
+        $validator = $this->validatorEmail([
+            'email' => $account
+        ]);
+        $this->setCustomMessages($validator);
         if ($validator->fails())
         {
-            return JsonHelper::json('', $validator->messages(), 50001);
+            $messages = $validator->messages();
+            $errors = Yutils::getInstance()->parseErrorcodeFromValidatorErrors($messages, [
+                'email'
+            ]);
+            return JsonHelper::fail($errors, ErrorCode::NORMAL_FAILURE);
         }
-        $credentials['email'] = $request->get('email');
-        $credentials['password'] = $request->get('password');
-        $credentials['is_active'] = 1;
-        if ($this->auth->attempt($credentials, $request->has('remember')))
+        $credentials['email'] = $account;
+        $credentials['password'] = $inputPasswrod;
+        if ($this->auth->attempt($credentials, true))
         {
-            if(LoginUserHistory::getInstance()->createLoginUserHistory($this->auth->user()->id))
-                return JsonHelper::json('', 'login success', 10000);
+            $uid = $this->auth->user()->id;
+            return redirect('/');
         }
-        return JsonHelper::json([], $this->getFailedLoginMesssage(), 50001);
+        return JsonHelper::fail('login fail', ErrorCode::NORMAL_FAILURE);
     }
 
     /**
@@ -177,14 +122,16 @@ class AuthController extends WwwBaseController
     /**
      * Log the user out of the application.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function getLogout()
+    public function getLogout(Request $request)
     {
-       if(LoginUserHistory::getInstance()->deleteLoginUserHistory($this->auth->user()->id))
-       {
-           $this->auth->logout();
-       }
-        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
+        if($this->auth->guest())
+        {
+            return JsonHelper::mustLogin();
+        }
+        $this->auth->logout();
+        return new RedirectResponse(url('/'));
     }
 }

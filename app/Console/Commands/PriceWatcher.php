@@ -7,7 +7,7 @@ use App\Http\Helpers\Crawler\SimpleCrawler;
 use App\Http\Helpers\ErrorCode;
 use App\Http\Helpers\Yconst;
 use App\Http\Helpers\Yutils;
-use App\Http\Models\Frontend\PriceCart;
+use App\Http\Models\Www\PriceCart;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\DB;

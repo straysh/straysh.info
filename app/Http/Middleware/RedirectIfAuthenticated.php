@@ -31,9 +31,9 @@ class RedirectIfAuthenticated {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->check() and $this->auth->user()->is('admin'))
+		if ($this->auth->check())
 		{
-			return new RedirectResponse(route('home'));
+			return redirect('/');
 		}
 
 		return $next($request);

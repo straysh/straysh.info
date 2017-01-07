@@ -1,7 +1,7 @@
 <?php namespace App\Console\Commands;
 
-use App\Http\Models\Frontend\Article;
-use App\Http\Models\Frontend\Life;
+use App\Http\Models\Www\Article;
+use App\Http\Models\Www\Life;
 use App\Http\ModelServices\CategoryService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;

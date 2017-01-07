@@ -1,4 +1,4 @@
-/*!
+/*
  * Sizzle CSS Selector Engine v2.2.0-pre
  * http://sizzlejs.com/
  *

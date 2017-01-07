@@ -1,4 +1,4 @@
-/*!
+/*
  * Select2 4.0.0
  * https://select2.github.io
  *
@@ -5871,7 +5871,7 @@ S2.define('jquery.select2',[
   return Select2;
 });
 
-/*!
+/*
  * jQuery Mousewheel 3.1.12
  *
  * Copyright 2014 jQuery Foundation and other contributors

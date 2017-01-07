@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Www;
 
 use App\Exceptions\DevInvalidParamsException;
-use App\Http\Models\Frontend\Life;
-use App\Http\Models\Frontend\PriceCart;
-use App\Http\Models\Frontend\PriceWatcher;
+use App\Http\Models\Www\Life;
+use App\Http\Models\Www\PriceCart;
+use App\Http\Models\Www\PriceWatcher;
 use App\Http\ModelServices\ArticleService;
 use Illuminate\Http\Request;
 
