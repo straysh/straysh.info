@@ -1162,7 +1162,7 @@ i {
   .recommended .left-aside {
     width: 24% !important;
   }
-  .recommended .right-aside {
+  .recommended .left-aside + .right-aside {
     margin-left: 25% !important;
   }
 }
