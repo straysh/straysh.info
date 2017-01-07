@@ -13,7 +13,7 @@
 
 
 Route::group([
-	'namespace' => 'Frontend',
+	'namespace' => 'Www',
 	'domain' => config('setting.web_host')
 ], function()
 {
@@ -38,23 +38,8 @@ Route::group([
 
 });
 
-//Route::group([
-//	'namespace' => 'Api',
-//	'domain' => config('setting.api_host'),
-//	'middleware' => 'api.version'
-//], function()
-//{
-////	Route::post('image', 'V1\ImageController@postNormal');
-////
-////	Route::controller('auth', 'V1\Auth\AuthController');
-////	Route::controller('user', 'V1\UserController');
-////	Route::controller('search', 'V1\SearchController');
-////	Route::controller('test', 'V1\TestController');
-//
-//});
-
 Route::group([
-	'namespace' => 'Backend',
+	'namespace' => 'Admin',
 	'domain' => config('setting.admin_host')/*,
 	'middleware' => 'api.version'*/
 ], function () {

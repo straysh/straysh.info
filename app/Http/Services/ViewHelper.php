@@ -38,7 +38,7 @@ class ViewHelper
 		$tplTag = "<script id='%s-tpl' type='text/template'>%s</script>";
 		$errorTag = "<script>%s</script>";
 		$tpl = '';
-		$path = base_path().'/resources/views/frontend/JsTemplate';
+		$path = base_path().'/resources/views/www/JsTemplate';
 		$emptyTemplate = $path."/empty.blade.php";
 		foreach($templateArray as $id)
 		{

@@ -1,5 +1,7 @@
 <?php namespace App\Exceptions;
 
+use App\Http\Helpers\ErrorCode;
+use App\Http\Helpers\JsonHelper;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -45,9 +47,21 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if ($e instanceof ModelNotFoundException) {
-            $e = new NotFoundHttpException($e->getMessage(), $e);
+//        if ($e instanceof ModelNotFoundException) {
+//            $e = new NotFoundHttpException($e->getMessage(), $e);
+//        }
+        if($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException)
+        {
+            if($request->ajax())
+            {
+                return JsonHelper::fail('bad request', ErrorCode::REQUEST_404);
+            }else{
+//                return response()->view('errors.404', ['message'=>$e->getMessage()], 404);
+                return response()->view('www.errors.404', ['message'=>$e->getMessage()]);
+            }
         }
+        if(!config('app.debug'))
+            return response()->view('www.errors.404', ['message'=>$e->getMessage()]);
 
         return parent::render($request, $e);
     }

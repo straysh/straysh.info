@@ -27,7 +27,7 @@ if (! function_exists('modal_popup')) {
      */
     function modal_popup($url, $title, $message)
     {
-        return view('backend.partials.popup', compact('url', 'title', 'message'))->render();
+        return view('admin.partials.popup', compact('url', 'title', 'message'))->render();
     }
 }
 
