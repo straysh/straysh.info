@@ -68,7 +68,7 @@ class ViewHelper
 			$js[] = "<script data-main='/js_develop/app/%s.js?r={$version}' src='/js_develop/require.js'></script>";
 		}else
 		{
-			$js[] = "<script src='/js/%s.min.js'></script>";
+			$js[] = "<script src='/js/%s.min.js?r={$version}'></script>";
 		}
 
 		$js = implode('', $js);
