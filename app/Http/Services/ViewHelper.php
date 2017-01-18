@@ -81,10 +81,10 @@ class ViewHelper
 		$version = config('app.debug') ? time() : config('setting.app_version');
 		if(config('app.debug'))
 		{
-			$href = asset("/css_develop/{$filename}.css?r={$version}");
+			$href = "/css_develop/{$filename}.css?r={$version}";
 		}else
 		{
-			$href = asset("/css/{$filename}.min.css?r={$version}");
+			$href = "/css/{$filename}.min.css?r={$version}";
 		}
 		return "<link type='text/css' rel=\"stylesheet\" href=\"{$href}\" />";
 	}
