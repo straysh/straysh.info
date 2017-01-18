@@ -64,11 +64,11 @@ class ViewHelper
 		$version = config('app.debug') ? time() : config('setting.app_version');
 		if( config('app.debug') )
 		{
-			$js[] = "<script src='/js_develop/app/mainConfigFile.js'></script>";
-			$js[] = "<script data-main='/js_develop/app/%s.js?r={$version}' src='/js_develop/require.js'></script>";
+			$js[] = "<script type='text/javascript' src='/js_develop/app/mainConfigFile.js'></script>";
+			$js[] = "<script type='text/javascript' data-main='/js_develop/app/%s.js?r={$version}' src='/js_develop/require.js'></script>";
 		}else
 		{
-			$js[] = "<script src='/js/%s.min.js?r={$version}'></script>";
+			$js[] = "<script type='text/javascript' src='/js/%s.min.js?r={$version}'></script>";
 		}
 
 		$js = implode('', $js);
@@ -86,7 +86,7 @@ class ViewHelper
 		{
 			$href = asset("/css/{$filename}.min.css?r={$version}");
 		}
-		return "<link rel=\"stylesheet\" href=\"{$href}\" />";
+		return "<link type='text/css' rel=\"stylesheet\" href=\"{$href}\" />";
 	}
 
 	/**
