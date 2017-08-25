@@ -1,6 +1,7 @@
 
 // Body
 $body-bg: #f5f8fa;
+$font-family-base: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -36,3 +37,6 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #fff;
+
+//a link
+$link-hover-decoration: none;

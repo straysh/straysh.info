@@ -5,6 +5,6 @@ Homestead.json
 .env
 /storage
 .idea
-bootstrap/cache
 composer.lock
 _ide_helper.php
+bootstrap/cache

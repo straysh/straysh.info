@@ -20,27 +20,7 @@
   </script>
 </head>
 <body>
-<div class="container-fluid">
-  <div class="navbar navbar-jianshu expanded">
-    <div class="dropdown">
-      <a class="active logo" href="/">
-        <b>S</b>{{--<i class="fa fa-home hidden"></i>--}}<span class="title hidden">首页</span>
-      </a>
-      <a href="javascript:void 0;">
-        <i class="fa fa-th"></i><span class="title hidden">Category</span>
-      </a>
-    </div>
-    <div class="nav-user">
-      {{--<a href="#view-mode-modal" data-toggle="modal"><i class="fa fa-font"></i><span class="title">显示模式</span></a>--}}
-      <a class="signin" href="javascript:void 0;">
-        <i class="fa fa-sign-in"></i><span class="title hidden">登录</span>
-      </a>
-    </div>
-  </div>
-  //导航栏s
-  //内容区
-</div>
-
+<div id="app"></div>
 <script src="{{ mix('js/manifest.js') }}"></script>
 <script src="{{ mix('js/vendor.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>

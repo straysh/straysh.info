@@ -5,18 +5,27 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+window.$ = window.jQuery = require('jquery');
+require('bootstrap-sass');
 
-window.Vue = require('vue');
+import Vue from 'vue';
+import { sync } from 'vuex-router-sync';
+import App from './App.vue';
+import store from './store';
+import router from './router';
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+// sync the router with the vuex store.
+// this registers `store.state.route`
+sync(store, router);
 
-Vue.component('example', require('./components/Example.vue'));
-
+// create the app instance.
+// here we inject the router and store to all child components,
+// making them available everywhere as `this.$router` and `this.$store`.
 const app = new Vue({
-    el: '#app'
+  router,
+  store,
+  el: '#app',
+  render: h => h(App)
 });
+
+export { app, router, store };
