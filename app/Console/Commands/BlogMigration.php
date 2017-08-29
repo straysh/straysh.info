@@ -86,6 +86,7 @@ class BlogMigratation  extends Command
 
     private function dumpOldBlogs()
     {
+        $basePath = resource_path().'/assets/articles';
         //导出blog
         $lastid = 0;
         while(TRUE)
@@ -96,7 +97,7 @@ class BlogMigratation  extends Command
                 ->limit(10)
                 ->orderByRaw('id ASC')
                 ->get();
-            if(empty($models)) break;
+            if($models->isEmpty()) break;
 
             foreach ($models as $item)
             {
@@ -117,11 +118,28 @@ class BlogMigratation  extends Command
                 $content = $item->body;
                 $meta = json_encode($meta, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
                 $content = $meta."\n".$content;
-                file_put_contents(resource_path().'/assets/articles/1.md', $content);
-                dd("done!");
+
+                $path = $this->prepareDirectory($basePath.'/blog', $item->created_at);
+                $slug = str_replace('/', '|', $item->slug);
+                $path = "{$path}/{$slug}.md";
+                file_put_contents($path, $content);
+                $this->comment("[OK]{$path}");
             }
         }
 
         //导出lifenote
+    }
+
+    private function prepareDirectory($path, $timestamp)
+    {
+        $carbon = Carbon::createFromTimestamp($timestamp);
+        $year = $carbon->year;
+        $month = $carbon->month;
+
+        $path = "{$path}/{$year}";
+        if(!file_exists($path)) mkdir($path);
+        $path = "{$path}/{$month}";
+        if(!file_exists($path)) mkdir($path);
+        return $path;
     }
 }
