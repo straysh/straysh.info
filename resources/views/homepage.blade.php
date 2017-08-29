@@ -14,7 +14,7 @@
       pageParams: ({!! json_encode($pageParams??[]) !!}),
       Yuser: ({!! json_encode($yuser??[]) !!}),
       singPack: ({!! json_encode($singPack??[]) !!}),
-      webHost: ({!! json_encode($webHost??'/admin') !!}),
+      webHost: ({!! json_encode($webHost??'') !!}),
       apiHost: ({!! json_encode($apiHost??'/api') !!})
     };
   </script>

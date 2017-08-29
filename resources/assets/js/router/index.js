@@ -5,17 +5,23 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import SiteInfo from './SiteInfo'
-import LifeNote from './LifeNote'
-import Aboutme from './Aboutme'
+import ArticleList from './ArticleList';
+import LifeNote from './LifeNote';
+import Profile from './Profile';
+import SiteInfo from './SiteInfo';
 
 import Home from '../components/Home.vue';
 import Article from '../components/Article.vue';
 
 const childrenRoutes = [
-  SiteInfo,
+  ArticleList,
   LifeNote,
-  Aboutme
+  Profile,
+  SiteInfo,
+  {
+    path: '',
+    redirect: '/home'
+  }
 ];
 const routes = [
   {
@@ -27,10 +33,10 @@ const routes = [
     path: '/article',
     component: Article
   },
-  {path: '/category', redirect: '/'},
-  {path: '/login', redirect: '/'},
-  {path: '', redirect: '/'},
-  {path: '*', redirect: '/'},
+  {path: '/category', redirect: '/home'},
+  {path: '/login', redirect: '/home'},
+  {path: '', redirect: '/home'},
+  {path: '*', redirect: '/home'},
 ];
 Vue.use(VueRouter);
 const router = new VueRouter({

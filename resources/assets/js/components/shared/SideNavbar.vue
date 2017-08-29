@@ -1,6 +1,6 @@
 <style rel="stylesheet/scss" lang="scss">
 .sui-navbar{
-  background:url(../../images/nav_bg/2.jpg);
+  background:url(../../../images/nav_bg/2.jpg);
   h1,ul{margin:0;padding:0;}
   .nav-content{
     position: absolute;
@@ -127,11 +127,11 @@
         怎么抓的住?
       </div>
       <ul id="nav-menu" class="nav-menu">
-        <router-link tag="li" to="/" class="menu-item" activeClass="active" exact><a>首页</a></router-link>
-        <router-link tag="li" to="/article" class="menu-item" activeClass="active"><a>工作学习</a></router-link>
+        <router-link tag="li" to="/home" class="menu-item" activeClass="active"><a>首页</a></router-link>
+        <router-link tag="li" to="/article" class="menu-item" activeClass="active" exact><a>工作学习</a></router-link>
         <router-link tag="li" to="/essay" class="menu-item" activeClass="active"><a>随笔</a></router-link>
         <router-link tag="li" to="/lifenote" class="menu-item" activeClass="active"><a>杂记</a></router-link>
-        <router-link tag="li" to="/aboutme" class="menu-item" activeClass="active"><a>关于博主</a></router-link>
+        <router-link tag="li" to="/profile" class="menu-item" activeClass="active"><a>关于博主</a></router-link>
       </ul>
       <div class="img-info">
         <i class="fa fa-info"></i>

@@ -11,6 +11,7 @@
     }
     .right-aside{
       width: 100%;
+      max-width: 1000px;
       margin-left: 30em;
     }
     .list-container-wrapper{
@@ -25,19 +26,25 @@
     <navbar class="left-aside"></navbar>
     <div class="right-aside">
       <topnavbar></topnavbar>
-      <router-view class="list-container-wrapper"></router-view>
+      <router-view class="list-container-wrapper">
+        <h1>Footer</h1>
+      </router-view>
+      <hr />
+      <siteFooter></siteFooter>
     </div>
   </div>
 </template>
 
 <script>
-import SideNavbar from './SideNavbar.vue';
-import TopNavbar from './TopNavbar.vue';
+import SideNavbar from './shared/SideNavbar.vue';
+import TopNavbar from './shared/TopNavbar.vue';
+import Footer from './shared/Footer.vue';
 
 const home = {
   components: {
     'navbar': SideNavbar,
-    'topnavbar': TopNavbar
+    'topnavbar': TopNavbar,
+    'siteFooter': Footer
   }
 };
 

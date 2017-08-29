@@ -33,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('state')->default(1)->comment('账号状态:0禁用/1启用');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

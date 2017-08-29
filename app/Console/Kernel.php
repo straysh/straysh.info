@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\BlogMigratation::class,
     ];
 
     /**
@@ -35,6 +35,12 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
+        if(env('APP_ENV')==='local')
+        {
+            config(['database.connections.mysql.host' => '127.0.0.1']);
+            config(['database.connections.raw.host' => '127.0.0.1']);
+        }
+
         require base_path('routes/console.php');
     }
 }

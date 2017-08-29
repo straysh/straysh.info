@@ -8,6 +8,7 @@
 window.$ = window.jQuery = require('jquery');
 require('bootstrap-sass');
 
+import UI from '../common/utils/UI';
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 import App from './App.vue';
@@ -25,7 +26,12 @@ const app = new Vue({
   router,
   store,
   el: '#app',
-  render: h => h(App)
+  render: h => h(App),
+  filters: {
+    formatDate: (v)=>{
+      return UI.date.currentDate(v);
+    }
+  }
 });
 
 export { app, router, store };

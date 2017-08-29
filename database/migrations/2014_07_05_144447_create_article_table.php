@@ -19,7 +19,6 @@ class CreateArticleTable extends Migration
 		Schema::create($this->_table, function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('type')->default('post'); // post, page
 			$table->integer('user_id');
 			$table->integer('category_id')->default(0);
 			$table->string('author', 64)->nullable();
@@ -33,6 +32,7 @@ class CreateArticleTable extends Migration
 //			$table->tinyInteger('nav_id', false, true)->default(0);
 
             $table->timestamps();
+            $table->softDeletes();
 		});
 	}
 

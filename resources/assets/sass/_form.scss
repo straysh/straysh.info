@@ -1,0 +1,18 @@
+input,textarea,select {
+  font-size: 100%;
+  font-family: inherit;
+}
+
+html,body,h1,h2,h3,h4,h5,h6,p,ul,ol,form,button,dl,dt,dd,input,textarea {
+  margin: 0;
+  padding: 0;
+}
+
+ul,ol {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+em,i {
+  font-style: normal;
+}
