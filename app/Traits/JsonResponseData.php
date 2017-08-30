@@ -20,7 +20,7 @@ Trait JsonResponseData
         $result['status'] = $status;
         if (!isset($options['total']) && is_array($data))
             $result['total'] = count($data);
-        if (empty($options['pagination']['maxPage'])) unset($options['pagination']);
+//        if (empty($options['pagination']['maxPage'])) unset($options['pagination']);
         $result = array_merge($result, $options);
         if(env('RESP_LOG'))
             JsonLogger::getInstance()->info($this->respTitle($status_code), $result);

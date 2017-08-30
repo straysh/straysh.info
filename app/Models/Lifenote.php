@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -7,27 +8,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Date: 17-8-28
  * Time: 下午4:07
  * @property int $id
- * @property int $user_id
- * @property int $category_id
- * @property int $hits
- * @property string $author
  * @property string $title
  * @property string $slug
  * @property string $content
  * @property string $md5sum
- * @property \Carbon\Carbon $published_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
- * @property mixed $category
  */
-class Article extends BaseModel
+class Lifenote extends Model
 {
     use SoftDeletes;
 
     private static $_instance;
 
-    protected $table = 'article';
+    protected $table = 'lifenote';
 
     /**
      * @return self
@@ -40,11 +35,6 @@ class Article extends BaseModel
             self::$_instance = new $c;
         }
         return self::$_instance;
-    }
-
-    public function category()
-    {
-        return $this->hasOne(Category::class, 'id', 'category_id');
     }
 
 //    /**
@@ -61,23 +51,4 @@ class Article extends BaseModel
 //        'created_at',
 //        'updated_at'
 //    ];
-
-    public function listArticles($options)
-    {
-        $query = Article::with('category')->orderByRaw('id DESC');
-        /* @var \Illuminate\Pagination\Paginator $result */
-        $result = $query->simplePaginate($options['limit']);
-        $result = $this->parseMaxpage($query, $result, $options);
-        $data = [];
-
-        /* @var self $item */
-        foreach ($result->items() as $item)
-        {
-            $item = $item->toArray();
-            $item['category'] = $item['category']['name'];
-            $data[] = $item;
-        }
-
-        return [$data, $result->maxPage];
-    }
 }

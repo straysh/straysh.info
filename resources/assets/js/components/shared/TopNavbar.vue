@@ -1,6 +1,7 @@
 <style rel="stylesheet/scss" lang="scss">
 .page-title {
   position: fixed;
+  top: 0;
   width: 70%;
   max-width: 1000px;
   box-sizing: border-box;

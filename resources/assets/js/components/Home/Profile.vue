@@ -10,7 +10,7 @@
 </style>
 
 <template>
-  <div class="list-container profile">
+  <div>
     <div>
       <img src="/images/profile/1.jpg" alt="香山" style="display:block;width: 350px;margin:0 auto;" />
     </div>

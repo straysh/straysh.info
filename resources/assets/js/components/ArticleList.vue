@@ -1,0 +1,180 @@
+<style rel="stylesheet/scss" lang="scss">
+#main{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  margin-left: 75px;
+  .left-aside{
+    width: 30rem;
+    height: 100%;
+    position: fixed;
+  }
+  .right-aside{
+    width: 100%;
+    max-width: 1000px;
+    margin-left: 30em;
+  }
+  .list-container-wrapper{
+    margin-top: 50px;
+    padding: 13px 2em 0 20px;
+  }
+}
+
+.thumbnails{
+  padding-left: 36px;
+  padding-right: 36px;
+  margin: 35px 0 0;
+}
+.article-list{
+  list-style: none;
+  &>li {
+    position: relative;
+    width: 100%;
+    padding-right: 2px;
+    padding-bottom: 17px;
+    margin: 0 0 17px;
+    border-bottom: 1px dashed #d9d9d9;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+  .have-img {
+    .wrap-img {
+      float: right;
+      width: 100px;
+      height: 100px;
+      img {
+        max-width: 100%;
+        vertical-align: middle;
+        border-radius: 4px;
+        border: 1px solid #eeeeee;
+        box-sizing: border-box;
+      }
+    }
+    &>div {
+      padding-right: 110px;
+    }
+  }
+  .list-top {
+    margin: 8px 0;
+    font-size: 12px;
+  }
+  .title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: 0;
+    display: inherit;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+  .list-footer {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    a{color: gray;}
+  }
+}
+.pagination {
+  line-height: 23px;
+  margin: 50px auto;
+  a {
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    margin: 2px 6px 2px 0;
+    padding: 2px 10px;
+    text-decoration: none;
+    &:hover{
+      background: #EEE;
+    }
+  }
+  .active {
+    background: #CCC;
+    border: 1px solid #8d8d8d;
+    color: #393939;
+    font-size: 14px;
+    margin: 2px 6px 2px 0;
+    padding: 2px 10px;
+  }
+}
+</style>
+
+<template>
+  <div id="main" class="">
+    <sidebar class="left-aside"></sidebar>
+    <div class="right-aside">
+      <div class="list-container">
+        <topnavbar></topnavbar>
+        <div class="list-container-wrapper">
+          <categotyList></categotyList>
+          <ul class="article-list thumbnails">
+            <li v-for="(item,index) in articles" class="have-img">
+              <router-link class="wrap-img" to="`/article/${item['id']}`" v-if="item['thumbnail-image']">
+                <img src="/images/article01.png" alt="300">
+              </router-link>
+              <div>
+                <p class="list-top">
+                  <a class="author-name blue-link" :href="`/article?category=${item['category_id']}`">{{ item['category'] }}</a>
+                  <em>·</em>
+                  <span class="time" :ctime="item['created_at']">{{ item['created_at']|formatDate }}</span>
+                </p>
+                <h4 class="title"><router-link class="title-gray" :to="`/article/${item['id']}`">{{ item['title'] }}</router-link></h4>
+                <div class="list-footer">
+                  <a target="_blank" href="javascript:void 0;">
+                    阅读 {{ item['hits'] }}
+                  </a>
+                  <a target="_blank" href="javascript:void 0;">
+                    · 评论 暂无评论
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="pagination">
+            <template v-for="page in maxPage">
+              <span class="active" v-if="page === currentPage">{{ page }}</span>
+              <router-link to="`/article`" v-else>{{ page }}</router-link>
+            </template>
+          </div>
+        </div>
+        </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import UI from '../../common/utils/UI';
+import request, { createWebRequest } from '../../common/network/request';
+import TopNavbar from './shared/TopNavbar.vue';
+import SideNavbar from './shared/SideNavbar.vue';
+import CategotyList from './Article/_CategotyList.vue';
+
+const articleList = {
+  data: ()=>({
+    maxPage: 1,
+    currentPage: 1,
+    pagination: '',
+    articles: []
+  }),
+  components: {
+    'sidebar': SideNavbar,
+    'topnavbar': TopNavbar,
+    'categotyList': CategotyList
+  },
+  created(){
+    request.get(createWebRequest('article')).then(({ data = [], maxPage=1}) => {
+      this.articles = data;
+      this.maxPage = maxPage;
+    }).catch(({info='加载失败'}) => {
+      window.alert(info);
+    });
+  },
+  filters: {
+    // https://css-tricks.com/using-filters-vue-js/
+    formatDate: (v)=>{
+      return UI.date.currentDate(v);
+    }
+  }
+};
+export default articleList;
+</script>

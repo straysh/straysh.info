@@ -47,4 +47,42 @@ class Controller extends BaseController
     {
         return Container::getInstance()->make(ExceptionHandler::class);
     }
+
+    /**
+     * @param array $input
+     * @param int $mode 1:常规/2:Sphinx搜索
+     * @return array
+     */
+    protected function pageParams($input, $mode=1)
+    {
+        $input['page'] = !empty($input['page']) ? $input['page'] : 1;
+        $params['limit'] = 10;
+        $params['page'] = $input['page'] > 1 ? $input['page'] : 1;
+
+        return $params;
+    }
+
+    protected function pagination($page, $maxPage, $category=NULL)
+    {
+        $str = <<<PAGINATION
+<div class="pagination">
+        <a href="http://ymblog.net/">最前</a>
+        <a href="http://ymblog.net/page/6/">上一页</a>
+        <a href="http://ymblog.net/page/5/" class="inactive">5</a>
+        <a href="http://ymblog.net/page/6/" class="inactive">6</a>
+        <span class="current">7</span>
+    </div>
+PAGINATION;
+        $html = [];
+        $html[] = '<div class="pagination">';
+        for($i=1;$i<=$maxPage;$i++)
+        {
+            $html[] = $i == $page
+                ? sprintf('<span class="active">%s</span>', $i)
+                : sprintf("<a href='/article/timeline?page=%1\$s%3\$s' class='%2\$s'>%1\$s</a>", $i, "", $category?"&category={$category}":"");
+        }
+        $html[] = '</div>';
+
+        return implode('', $html);
+    }
 }

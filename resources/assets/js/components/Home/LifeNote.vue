@@ -10,15 +10,13 @@
 </style>
 
 <template>
-  <div class="list-container">
-    <div class="timeline">
-      <template v-for="(item,index) in articles">
-        <h1 class="justcenter">{{ item.title }}</h1>
-        <template v-if="item.link">原文: <a :href="item.link" target="_blank">{{ item.link }}</a></template>
-        <div class="article" v-html="item.content"></div>
-        <hr v-if="articles[index+1]" />
-      </template>
-    </div>
+  <div class="timeline">
+    <template v-for="(item,index) in articles">
+      <h1 class="justcenter">{{ item.title }}</h1>
+      <template v-if="item.link">原文: <a :href="item.link" target="_blank">{{ item.link }}</a></template>
+      <div class="article" v-html="item.content"></div>
+      <hr v-if="articles[index+1]" />
+    </template>
   </div>
 </template>
 

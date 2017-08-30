@@ -25,8 +25,7 @@
       "database/factories"
     ],
     "psr-4": {
-      "App\\": "app/",
-      "Straysh\\Markdown\\": "vendor_straysh/Markdown/src"
+      "App\\": "app/"
     },
     "files": [
       "app/helpers.php"

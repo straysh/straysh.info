@@ -14,3 +14,12 @@ $fa-font-path: "~font-awesome/fonts";
 
 @import "_form";
 @import "highlight/monokai_sublime";
+
+.blue-link{
+  font-size: 14px;
+  font-weight: bold;
+  color: #00a2ca;
+}
+.title-gray {
+  color: #4d4d4d;
+}

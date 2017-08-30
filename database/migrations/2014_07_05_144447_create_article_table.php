@@ -25,11 +25,10 @@ class CreateArticleTable extends Migration
 			$table->string('title');
 			$table->string('slug');
 			$table->unsignedInteger('hits')->default(0);
-			$table->text('body');
-//			$table->string('image')->nullable();
+			$table->text('content');
+			$table->string('head_image')->nullable();
 			$table->string('published_at')->nullable();
-//			$table->string('title', 128);
-//			$table->tinyInteger('nav_id', false, true)->default(0);
+			$table->char('md5sum', 32);
 
             $table->timestamps();
             $table->softDeletes();

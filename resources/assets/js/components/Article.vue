@@ -1,46 +1,37 @@
 <style rel="stylesheet/scss" lang="scss">
-  #main{
-    display: flex;
-    flex-direction: row;
-    width:100%;
-    margin-left: 75px;
-    .left-aside{
-      width: 30rem;
-      height: 100%;
-      position: fixed;
-    }
-    .right-aside{
-      width: 100%;
-      max-width: 1000px;
-      margin-left: 30em;
-    }
-    .list-container-wrapper{
-      margin-top: 50px;
-      padding: 13px 2em 0 20px;
-    }
+#article-container{
+  width:100%;
+  margin-left: 75px;
+  .list-container{
+    margin-top: 0;
+    padding: 13px 4em 0 4em;
   }
+  .list-container-wrapper{
+    padding: 13px 2em 0 20px;
+  }
+}
 </style>
 
 <template>
-  <div id="main" class="">
+  <div id="article-container" class="">
     <div class="right-aside">
-      <topnavbar></topnavbar>
-      <router-view class="list-container-wrapper">
-        <h1>Footer</h1>
-      </router-view>
-      <hr />
-      <siteFooter></siteFooter>
+      <div class="list-container">
+        <articleTopnavbar></articleTopnavbar>
+        <router-view class="list-container-wrapper"></router-view>
+        <hr />
+        <siteFooter></siteFooter>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  import TopNavbar from './shared/TopNavbar.vue';
+  import ArticleTopNavbar from './shared/ArticleTopNavbar.vue';
   import Footer from './shared/Footer.vue';
 
   const home = {
     components: {
-      'topnavbar': TopNavbar,
+      'articleTopnavbar': ArticleTopNavbar,
       'siteFooter': Footer
     }
   };
