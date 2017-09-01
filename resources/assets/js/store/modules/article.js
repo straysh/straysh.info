@@ -7,7 +7,8 @@ import {ARTICLE_UPDATE} from "../mutation_types";
 const state = {
   updated_at: '',
   created_at: '',
-  content: ''
+  content: '',
+  category: {name: '', article_amount: 0}
 };
 
 const mutations = {
@@ -15,6 +16,7 @@ const mutations = {
     state.updated_at = article.updated_at;
     state.created_at = article.created_at;
     state.content = article.content;
+    state.category = article.category;
   }
 };
 
@@ -33,6 +35,9 @@ const getters = {
   },
   article_created_at (){
     return state.created_at;
+  },
+  article_category (){
+    return state.category;
   }
 };
 

@@ -114,7 +114,7 @@
               </router-link>
               <div>
                 <p class="list-top">
-                  <a class="author-name blue-link" :href="`/article?category=${item['category_id']}`">{{ item['category'] }}</a>
+                  <router-link :to="`/article?category=${item.category_id}`" class="author-name blue-link">{{ item.category }}</router-link>
                   <em>·</em>
                   <span class="time" :ctime="item['created_at']">{{ item['created_at']|formatDate }}</span>
                 </p>
@@ -133,7 +133,7 @@
           <div class="pagination">
             <template v-for="page in maxPage">
               <span class="active" v-if="page === currentPage">{{ page }}</span>
-              <router-link to="`/article?page=${currentPage}`" v-else>{{ page }}</router-link>
+              <a :href="`/article?page=${page}`" @click.stop.prevent="gotoPage(page)" v-else>{{ page }}</a>
             </template>
           </div>
         </div>
@@ -160,13 +160,23 @@ const articleList = {
     'topnavbar': TopNavbar,
     'categotyList': CategotyList
   },
+  methods: {
+    gotoPage(page){
+      this.currentPage = page;
+      this.loadPageData();
+    },
+    loadPageData(){
+      request.get(createWebRequest('article')+`?page=${this.currentPage}`).then(({ data = [], maxPage=1}) => {
+        this.articles = data;
+        maxPage ? this.maxPage = maxPage : null;
+      }).catch(({info='加载失败'}) => {
+        window.alert(info);
+      });
+    }
+  },
   created(){
-    request.get(createWebRequest('article')).then(({ data = [], maxPage=1}) => {
-      this.articles = data;
-      this.maxPage = maxPage;
-    }).catch(({info='加载失败'}) => {
-      window.alert(info);
-    });
+    this.currentPage = 1;
+    this.loadPageData();
   }
 };
 export default articleList;

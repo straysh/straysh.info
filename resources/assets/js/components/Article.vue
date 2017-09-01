@@ -19,7 +19,7 @@
       <div class="list-container">
         <articleTopnavbar></articleTopnavbar>
         <div class="summary">
-          <a href="/">分类</a>: {{ category.name }} ( 共{{ category.article_amount }}篇文章 )
+          <router-link :to="`/article?category=${category.id}`">分类</router-link>: {{ category.name }} ( 共{{ category.article_amount }}篇文章 )
           <p>Created At: {{ article_created_at }} | Last Updated At: {{ article_updated_at }}</p>
         </div>
         <articleContent></articleContent>
@@ -37,10 +37,6 @@ import Footer from './shared/Footer.vue';
 
 export default {
   data: ()=>({
-    category: {
-      'name': 'Python',
-      'article_amount': 30
-    },
   }),
   computed: {
     article_updated_at (){
@@ -48,6 +44,9 @@ export default {
     },
     article_created_at (){
       return this.$store.getters.article_created_at;
+    },
+    category (){
+      return this.$store.getters.article_category;
     }
   },
   components: {

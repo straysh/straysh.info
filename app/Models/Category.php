@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
+ * @property string $name
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
@@ -44,6 +45,15 @@ class Category extends Model
 		'created_at',
 		'updated_at'
 	];
+
+    public function format()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'article_amount' => $this->article_amount,
+        ];
+	}
 
 //	/**
 //	 * @param $query

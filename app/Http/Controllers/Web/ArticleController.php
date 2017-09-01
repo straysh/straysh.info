@@ -51,7 +51,7 @@ class ArticleController extends Controller
     // 文章详情
     public function show($id)
     {
-        $article = Article::find($id);
+        $article = Article::with('category')->find($id);
         if(empty($article))
             return $this->json("文章不存在");
 
@@ -62,6 +62,7 @@ class ArticleController extends Controller
             'content' => $content,
             'created_at' => $article->created_at->toDateTimeString(),
             'updated_at' => $article->updated_at->toDateTimeString(),
+            'category'   => $article->category->format(),
         ]);
     }
 }
