@@ -8,6 +8,7 @@
 window.$ = window.jQuery = require('jquery');
 require('bootstrap-sass');
 
+import UI from '../common/utils/UI';
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 import App from './App.vue';
@@ -18,6 +19,10 @@ import router from './router';
 // this registers `store.state.route`
 sync(store, router);
 
+// https://css-tricks.com/using-filters-vue-js/
+Vue.filter('formatDate', function(value) {
+  return UI.date.currentDate(value);
+});
 // create the app instance.
 // here we inject the router and store to all child components,
 // making them available everywhere as `this.$router` and `this.$store`.

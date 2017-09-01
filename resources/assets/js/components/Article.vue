@@ -5,9 +5,10 @@
   .list-container{
     margin-top: 0;
     padding: 13px 4em 0 4em;
-  }
-  .list-container-wrapper{
-    padding: 13px 2em 0 20px;
+    .summary{
+      border-top: 2px solid #DDDDDD;
+      margin-bottom: 2em;
+    }
   }
 }
 </style>
@@ -17,7 +18,11 @@
     <div class="right-aside">
       <div class="list-container">
         <articleTopnavbar></articleTopnavbar>
-        <router-view class="list-container-wrapper"></router-view>
+        <div class="summary">
+          <a href="/">分类</a>: {{ category.name }} ( 共{{ category.article_amount }}篇文章 )
+          <p>Created At: {{ article_created_at }} | Last Updated At: {{ article_updated_at }}</p>
+        </div>
+        <articleContent></articleContent>
         <hr />
         <siteFooter></siteFooter>
       </div>
@@ -26,15 +31,29 @@
 </template>
 
 <script>
-  import ArticleTopNavbar from './shared/ArticleTopNavbar.vue';
-  import Footer from './shared/Footer.vue';
+import ArticleTopNavbar from './shared/ArticleTopNavbar.vue';
+import ArticleContent from './Article/_ArticleContent.vue';
+import Footer from './shared/Footer.vue';
 
-  const home = {
-    components: {
-      'articleTopnavbar': ArticleTopNavbar,
-      'siteFooter': Footer
+export default {
+  data: ()=>({
+    category: {
+      'name': 'Python',
+      'article_amount': 30
+    },
+  }),
+  computed: {
+    article_updated_at (){
+      return this.$store.getters.article_updated_at;
+    },
+    article_created_at (){
+      return this.$store.getters.article_created_at;
     }
-  };
-
-  export default home;
+  },
+  components: {
+    'articleTopnavbar': ArticleTopNavbar,
+    'articleContent': ArticleContent,
+    'siteFooter': Footer
+  }
+};
 </script>

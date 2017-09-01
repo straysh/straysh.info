@@ -30,8 +30,9 @@ class BlogMigratation  extends Command
     protected $signature = 'blog:migrate
         {--all : migrate category list then blog articles.}
         {--dump : dump old blog to local files.}
-        {--c|category : migrate category list.}
-        {--b|blog : migrate blog articles.}';
+        {--c|category : seed category list.}
+        {--f|force : force seed blog.}
+        {--b|blog : seed blog articles.}';
 
     /**
      * The console command description.
@@ -244,7 +245,7 @@ class BlogMigratation  extends Command
             $model = new Article();
 
         $md5sum = $this->sign($meta, $content);
-        if($model->md5sum && $model->md5sum===$md5sum)
+        if(!$this->option('force') && $model->md5sum && $model->md5sum===$md5sum)
         {
             $this->comment("skip because nothing modified...{$file}");
             return FALSE;
@@ -260,7 +261,7 @@ class BlogMigratation  extends Command
         $model->content      = $content;
         $model->published_at = $this->toDate($meta['published_at']);
         $model->created_at   = $this->toDate($meta['created_at']);
-        $model->updated_at   = $this->toDate($meta['updated_at']);
+        $model->updated_at   = $model->created_at;
         $model->deleted_at   = $this->toDate($meta['deleted_at']);
         $model->md5sum       = $md5sum;
 

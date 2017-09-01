@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Blog;
+use App\Traits\ArticleParser;
 use App\Traits\JsonResponseData;
 use Illuminate\Http\Request;
 use Straysh\Markdown\Markdown;
@@ -16,7 +17,7 @@ use Straysh\Markdown\Parsedown;
  */
 class ArticleController extends Controller
 {
-    use JsonResponseData;
+    use JsonResponseData, ArticleParser;
 
     public function __construct()
     {
@@ -45,5 +46,22 @@ class ArticleController extends Controller
         }, $data->toArray());
 
         return $this->success($data);
+    }
+
+    // 文章详情
+    public function show($id)
+    {
+        $article = Article::find($id);
+        if(empty($article))
+            return $this->json("文章不存在");
+
+        $content = $this->markdown($article);
+
+        return $this->json([
+            'id' => $article->id,
+            'content' => $content,
+            'created_at' => $article->created_at->toDateTimeString(),
+            'updated_at' => $article->updated_at->toDateTimeString(),
+        ]);
     }
 }

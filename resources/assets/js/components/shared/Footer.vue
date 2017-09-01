@@ -25,7 +25,7 @@
 
     <h2 class="epsilon">个人简介</h2>
     <ul>
-      <li><a href="/profile">曹庭汉</a></li>
+      <li><router-link to="/profile">曹庭汉</router-link></li>
     </ul>
 
     <h2 class="epsilon">电子邮件</h2>

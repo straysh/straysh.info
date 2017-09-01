@@ -133,7 +133,7 @@
           <div class="pagination">
             <template v-for="page in maxPage">
               <span class="active" v-if="page === currentPage">{{ page }}</span>
-              <router-link to="`/article`" v-else>{{ page }}</router-link>
+              <router-link to="`/article?page=${currentPage}`" v-else>{{ page }}</router-link>
             </template>
           </div>
         </div>
@@ -143,7 +143,6 @@
 </template>
 
 <script>
-import UI from '../../common/utils/UI';
 import request, { createWebRequest } from '../../common/network/request';
 import TopNavbar from './shared/TopNavbar.vue';
 import SideNavbar from './shared/SideNavbar.vue';
@@ -168,12 +167,6 @@ const articleList = {
     }).catch(({info='加载失败'}) => {
       window.alert(info);
     });
-  },
-  filters: {
-    // https://css-tricks.com/using-filters-vue-js/
-    formatDate: (v)=>{
-      return UI.date.currentDate(v);
-    }
   }
 };
 export default articleList;

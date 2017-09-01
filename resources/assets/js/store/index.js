@@ -5,10 +5,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import article from './modules/article';
+
 Vue.use(Vuex);
 
 const modules = {
-
+  article
 };
 
 const store = new Vuex.Store({
