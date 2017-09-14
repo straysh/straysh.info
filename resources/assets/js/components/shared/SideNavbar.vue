@@ -136,7 +136,7 @@
       <div class="img-info">
         <i class="fa fa-info"></i>
         <div class="info">
-          Photo by <a target="_blank" href="javascript:void 0;">unsplash</a>
+          Photo by <a target="_blank" href="#">unsplashaa</a>
         </div>
       </div>
     </div>

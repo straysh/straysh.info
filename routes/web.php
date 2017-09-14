@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@homepage');
 Route::get('/test', 'HomeController@test');
+Route::get('/test/phpinfo', function(){phpinfo();});
 Route::get('/article/category', 'ArticleController@category');
 Route::resource('/lifenote', 'LifenoteController');
 Route::resource('/article', 'ArticleController');

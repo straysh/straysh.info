@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   width:100%;
-  margin-left: 75px;
+  margin-left: 4.5rem;
   .left-aside{
     width: 30rem;
     height: 100%;
@@ -12,7 +12,7 @@
   .right-aside{
     width: 100%;
     max-width: 1000px;
-    margin-left: 30em;
+    margin-left: 30rem;
   }
   .list-container-wrapper{
     margin-top: 50px;
@@ -160,13 +160,40 @@ const articleList = {
     'topnavbar': TopNavbar,
     'categotyList': CategotyList
   },
+  beforeRouteUpdate(to, from, next){
+    this.currentPage = 1;
+    this.category_id = to.query.category;
+    this.loadPageData();
+  },
+//  watch: {
+//    '$route'(to, from){
+//      console.log('this', this);
+//      console.log('to', to);
+//      console.log('from', from);
+////      this.currentPage = 1;
+////      this.category_id = to.params.category;
+////      this.loadPageData();
+//      console.log('2 The current ID is ' + to.query.category);
+//    },
+//    '$route.query.category' () {
+//      this.currentPage = 1;
+//      this.category_id = this.$route.query.category;
+//      this.loadPageData();
+//      console.log('The current ID is ' + this.$route.query.category);
+//    }
+//  },
   methods: {
     gotoPage(page){
       this.currentPage = page;
+      this.category_id = this.category_id || null;
       this.loadPageData();
     },
     loadPageData(){
-      request.get(createWebRequest('article')+`?page=${this.currentPage}`).then(({ data = [], maxPage=1}) => {
+      console.log('load category data');
+      request.get(createWebRequest('article'), {params:{
+        page: this.currentPage,
+        category: this.category_id
+      }}).then(({ data = [], maxPage=1}) => {
         this.articles = data;
         maxPage ? this.maxPage = maxPage : null;
       }).catch(({info='加载失败'}) => {

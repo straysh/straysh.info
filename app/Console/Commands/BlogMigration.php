@@ -146,12 +146,12 @@ class BlogMigratation  extends Command
                     'updated_at'  => $item->updated_at,
                     'deleted_at'  => $item->deleted_at,
                 ];
-                $content = $item->content;
+                $content = $item->body;
                 $meta = json_encode($meta, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
                 $content = $meta."\n".$content;
 
                 $path = $this->prepareDirectory($basePath.'/blog', $item->created_at);
-                $slug = str_replace('/', '|', $item->slug);
+                $slug = str_replace([':'," ",'/','|'], ['-','_','__','__'], $item->slug);
                 $path = "{$path}/{$slug}.md";
                 file_put_contents($path, $content);
                 $this->info("[OK]".str_replace($basePath, '', $path));
@@ -176,7 +176,7 @@ class BlogMigratation  extends Command
                 $meta = [
                     'id'          => $item->id,
                     'title'       => $item->title,
-                    'slug'        => $item->slug,
+                    'slug'        => $item->slug??$item->title,
                     'created_at'  => $item->created_at,
                     'updated_at'  => $item->updated_at,
                     'deleted_at'  => $item->deleted_at,
@@ -186,7 +186,7 @@ class BlogMigratation  extends Command
                 $content = $meta."\n".$content;
 
                 $path = $this->prepareDirectory($basePath.'/lifenote', $item->created_at);
-                $slug = str_replace('/', '|', $item->slug);
+                $slug = empty($item->title) ? microtime() : str_replace(['/',':'," "], ['|', '-', '_'], $item->title);
                 $path = "{$path}/{$slug}.md";
                 file_put_contents($path, $content);
                 $this->info("[OK]".str_replace($basePath, '', $path));
@@ -200,6 +200,7 @@ class BlogMigratation  extends Command
         $year = $carbon->year;
         $month = $carbon->month;
 
+        if(!file_exists($path)) mkdir($path);
         $path = "{$path}/{$year}";
         if(!file_exists($path)) mkdir($path);
         $path = "{$path}/{$month}";

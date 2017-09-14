@@ -1,7 +1,7 @@
 <style rel="stylesheet/scss" lang="scss">
 .sui-sidebar {
   position: fixed;
-  width: 75px;
+  width: 4.5rem;
   z-index: 1049;
   overflow: visible;
   /*visibility: hidden;*/

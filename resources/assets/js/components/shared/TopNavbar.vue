@@ -2,7 +2,8 @@
 .page-title {
   position: fixed;
   top: 0;
-  width: 70%;
+  left: 34.5rem;
+  right: 0;
   max-width: 1000px;
   box-sizing: border-box;
   background: white;
